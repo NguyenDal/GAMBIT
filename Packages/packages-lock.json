@@ -30,6 +30,18 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
+=======
+    "com.unity.cinemachine": {
+      "version": "2.9.7",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.31"
+      },
+      "url": "https://packages.unity.com"
+    },
+>>>>>>> 68e09903d6f70fa2597b7acf45c703816e62bb39
     "com.unity.collab-proxy": {
       "version": "1.2.16",
       "depth": 0,
@@ -38,8 +50,13 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {
+<<<<<<< HEAD
       "version": "1.0.0",
       "depth": 0,
+=======
+      "version": "1.0.6",
+      "depth": 2,
+>>>>>>> 68e09903d6f70fa2597b7acf45c703816e62bb39
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -86,11 +103,19 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
+<<<<<<< HEAD
       "version": "1.1.14",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.ext.nunit": "1.0.0",
+=======
+      "version": "1.1.31",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ext.nunit": "1.0.6",
+>>>>>>> 68e09903d6f70fa2597b7acf45c703816e62bb39
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
       },
