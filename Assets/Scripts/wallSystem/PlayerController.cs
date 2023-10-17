@@ -39,6 +39,11 @@ namespace wallSystem
         private bool _reset;
         private int localQuota;
 
+        public float horizontalInput; //= Input.GetAxis("Horizontal");
+        public float verticalInput; //= Input.GetAxis("Vertical");
+
+        
+
         private void Start()
         {
             try
@@ -190,7 +195,7 @@ namespace wallSystem
             _playingSound = true;
         }
 
-        private void ComputeMovement()
+        public void ComputeMovement(float horizontalInput, float verticalInput)
         {
             // Dont move if the quota has been reached
             if (localQuota <= 0 & E.Get().CurrTrial.trialData.Quota !=0)
@@ -199,10 +204,10 @@ namespace wallSystem
             }
 
             // This calculates the current amount of rotation frame rate independent
-            var rotation = Input.GetAxis("Horizontal") * DS.GetData().CharacterData.RotationSpeed * Time.deltaTime;
+            var rotation = this.horizontalInput * DS.GetData().CharacterData.RotationSpeed * Time.deltaTime;
 
             // This calculates the forward speed frame rate independent
-            _moveDirection = new Vector3(0, 0, Input.GetAxis("Vertical"));
+            _moveDirection = new Vector3(0, 0, this.verticalInput);
             _moveDirection = transform.TransformDirection(_moveDirection);
             _moveDirection *= DS.GetData().CharacterData.MovementSpeed;
 
@@ -218,6 +223,9 @@ namespace wallSystem
 
         private void Update()
         {
+            horizontalInput = Input.GetAxis("Horizontal");
+            verticalInput = Input.GetAxis("Vertical");
+
             E.LogData(TrialProgress.GetCurrTrial().TrialProgress, TrialProgress.GetCurrTrial().TrialStartTime, transform);
 
             // Wait for the sound to finish playing before ending the trial
@@ -249,7 +257,7 @@ namespace wallSystem
                 // Move the character.
                 try
                 {
-                    ComputeMovement();
+                    ComputeMovement(horizontalInput, verticalInput);
                 }
                 catch (MissingComponentException e)
                 {
