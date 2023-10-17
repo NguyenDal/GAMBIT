@@ -195,7 +195,7 @@ namespace wallSystem
             _playingSound = true;
         }
 
-        public void ComputeMovement(float horizontalInput, float verticalInput)
+        public void ComputeMovement(float rotationInput, float movementInput, String keyImput)
         {
             // Dont move if the quota has been reached
             if (localQuota <= 0 & E.Get().CurrTrial.trialData.Quota !=0)
@@ -204,10 +204,10 @@ namespace wallSystem
             }
 
             // This calculates the current amount of rotation frame rate independent
-            var rotation = this.horizontalInput * DS.GetData().CharacterData.RotationSpeed * Time.deltaTime;
+            var rotation = rotationInput * DS.GetData().CharacterData.RotationSpeed * Time.deltaTime;
 
             // This calculates the forward speed frame rate independent
-            _moveDirection = new Vector3(0, 0, this.verticalInput);
+            _moveDirection = new Vector3(0, 0, movementInput);
             _moveDirection = transform.TransformDirection(_moveDirection);
             _moveDirection *= DS.GetData().CharacterData.MovementSpeed;
 
@@ -257,7 +257,8 @@ namespace wallSystem
                 // Move the character.
                 try
                 {
-                    ComputeMovement(horizontalInput, verticalInput);
+                    //is now called from inputHandler
+                    //ComputeMovement();
                 }
                 catch (MissingComponentException e)
                 {
