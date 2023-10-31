@@ -39,11 +39,6 @@ namespace wallSystem
         private bool _reset;
         private int localQuota;
 
-        public float horizontalInput; //= Input.GetAxis("Horizontal");
-        public float verticalInput; //= Input.GetAxis("Vertical");
-
-        
-
         private void Start()
         {
             try
@@ -223,9 +218,6 @@ namespace wallSystem
 
         private void Update()
         {
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
-
             E.LogData(TrialProgress.GetCurrTrial().TrialProgress, TrialProgress.GetCurrTrial().TrialStartTime, transform);
 
             // Wait for the sound to finish playing before ending the trial
