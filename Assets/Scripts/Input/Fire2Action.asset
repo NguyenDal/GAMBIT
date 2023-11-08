@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b409a2bb66e60f94da35df23f48bd1cc, type: 3}
+  m_Name: Fire2Action
+  m_EditorClassIdentifier: 
+  hzValue: 0
+  keyName: Fire2
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6633496193895934865, guid: ab9a01e55db45f447a575f1bd0041aad,
+          type: 3}
+        m_MethodName: print
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: fire 2
+          m_BoolArgument: 0
+        m_CallState: 2
+  spawnPoints: []
