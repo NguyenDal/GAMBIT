@@ -72,5 +72,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # trying to block ArtifactDB
-Library/ArtifactDB
-Library/SourceAssetDB
+/[Ll]ibrary/ArtifactDB
+/[Ll]ibrary/SourceAssetDB
+
+# ADDED FOR GAMBIT: we probably do not need to keep Output files tracked in the remote repo.
+# for now at least.
+/[Aa}ssets/Outputfiles~
