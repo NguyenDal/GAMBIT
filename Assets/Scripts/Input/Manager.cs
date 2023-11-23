@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
+public class sendKeyBoardInput : UnityEvent<float, float, string> { }
+
 public class Manager : MonoBehaviour
 {
     public List<InputObject> inputList;
 
+    public int pressCounter = 0;
 
-    public UnityEvent unityEvent;
+    public int pressWaitTime = 50;
 
-    public enum checkType
+    public float movementInput = 0;
+
+    public float rotationInput = 0;
+
+    public sendKeyBoardInput sendInput;
+
+    public enum inputStage
     {
         pressed,
         held,
@@ -23,17 +33,76 @@ public class Manager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         for (int i = 0; i < inputList.Count; i++)
-        {       
+        {
             // todo; function for however the HZ value is being checked for (driver team, this is up to you i guess). 
-            if (Input.GetButton(inputList[i].keyName))
+            if (inputList[i].keyName != null)
             {
-                //inputList[i].testFunction();
-                //inputList[i].unityEvent.Invoke();
+                print(getInputStage().ToString());
+                if (Input.GetButton(inputList[i].keyName))
+                {
+                    getMovmentInputs(inputList[i].keyName);
+                    sendInput.Invoke(rotationInput, movementInput, "w");
+                }
             }
         }
+    }
+
+    public void getMovmentInputs(string currentButton) 
+    {
+        if (currentButton.Equals("w"))
+        {
+            movementInput = (float)0.3;
+            rotationInput = 0;
+        }
+        else if (currentButton.Equals("a"))
+        {
+            movementInput = 0;
+            rotationInput = (float)-0.3;
+        }
+        //location is bottom right
+        else if (currentButton.Equals("s"))
+        {
+            movementInput = (float)-0.3;
+            rotationInput = 0;
+        }
+        //location is bottom left
+        else if (currentButton.Equals("d"))
+        {
+            movementInput = 0;
+            rotationInput = (float)0.3;
+        }
+    }
+
+
+    public inputStage getInputStage()
+    {
+        bool keyDown = false;
+        inputStage result = inputStage.released;
+        for (int i = 0; i < inputList.Count; i++)
+        {
+            //if a key is down check if being held or pressed;
+            if (Input.GetButton(inputList[i].keyName))
+            {
+                keyDown = true;
+                if(pressCounter > pressWaitTime)
+                {
+                    result = inputStage.held;
+                    break;
+                }
+                pressCounter++;
+                result = inputStage.pressed;
+                break;
+            }
+        }
+        //no key down, reset counter
+        if (!keyDown)
+        {
+            pressCounter = 0;
+        }
+        return result;
+            
     }
 }

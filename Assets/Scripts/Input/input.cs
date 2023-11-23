@@ -2,31 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
-public class input : MonoBehaviour
+ 
+public class MovementController : MonoBehaviour
 {
-
     public UnityEvent unityEvent;
-
-
-
     public UnityEvent otherEvent;
 
- 
+    public float moveSpeed = 5f;  // can change speed based on requirements
 
-        // Update is called once per frame
+    // Method to calculate x and y movement values
+    public Vector2 CalculateMovement(float inputX, float inputY)
+    {
+        // Calculate movement values based on input
+        float moveX = inputX * moveSpeed * Time.deltaTime;
+        float moveY = inputY * moveSpeed * Time.deltaTime;
+
+        return new Vector2(moveX, moveY);
+    }
+
+    //example of Update() method
     void Update()
     {
-        // pretend theres an if statement here that checks if player mouse is in a specific corner of screen.
+        // Example input (you can replace this with your actual input)
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        if (Input.GetButton("Fire1"))
-        {
-            unityEvent.Invoke();
-        }
+        // Calculate movement using the CalculateMovement method
+        Vector2 movement = CalculateMovement(horizontalInput, verticalInput);
 
-        if (Input.GetButton("Fire2"))
-        {
-            otherEvent.Invoke();
-        }
+        // Apply the movement to the object's position
+        //transform.Translate(movement);
     }
 }
