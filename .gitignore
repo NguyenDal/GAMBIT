@@ -77,4 +77,4 @@ crashlytics-build.properties
 
 # ADDED FOR GAMBIT: we probably do not need to keep Output files tracked in the remote repo.
 # for now at least.
-/[Aa}ssets/Outputfiles~
+/[Aa]ssets/Outputfiles~
