@@ -13,4 +13,7 @@ public class InputObject : ScriptableObject
     // this is set for testing / debug purposes. 
     public string keyName;
 
+    public float movmentInput;
+
+    public float rotationInput;
 }

@@ -11,8 +11,8 @@ public class Manager : MonoBehaviour
     public List<InputObject> inputList;
 
     public int pressCounter = 0;
-
-    public int pressWaitTime = 50;
+     
+    public int pressWaitTime = 50; //Amount of physics updates that need to pass before button is held
 
     public float movementInput = 0;
 
@@ -43,39 +43,11 @@ public class Manager : MonoBehaviour
                 print(getInputStage().ToString());
                 if (Input.GetButton(inputList[i].keyName))
                 {
-                    getMovmentInputs(inputList[i].keyName);
-                    sendInput.Invoke(rotationInput, movementInput, "w");
+                    sendInput.Invoke(inputList[i].rotationInput, inputList[i].movmentInput, getInputStage().ToString());
                 }
             }
         }
     }
-
-    public void getMovmentInputs(string currentButton) 
-    {
-        if (currentButton.Equals("w"))
-        {
-            movementInput = (float)0.3;
-            rotationInput = 0;
-        }
-        else if (currentButton.Equals("a"))
-        {
-            movementInput = 0;
-            rotationInput = (float)-0.3;
-        }
-        //location is bottom right
-        else if (currentButton.Equals("s"))
-        {
-            movementInput = (float)-0.3;
-            rotationInput = 0;
-        }
-        //location is bottom left
-        else if (currentButton.Equals("d"))
-        {
-            movementInput = 0;
-            rotationInput = (float)0.3;
-        }
-    }
-
 
     public inputStage getInputStage()
     {
