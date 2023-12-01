@@ -125,19 +125,8 @@ namespace trial
                 var Field1Text = _fields[0].transform.GetComponentsInChildren<Text>()[1];
                 TrialProgress.Field1 = Field1Text.text;
 
-                var Field2Text = _fields[1].transform.GetComponentsInChildren<Text>()[1];
-                TrialProgress.Field2 = Field2Text.text;
-
-                var Field3Text = _fields[2].transform.GetComponentsInChildren<Text>()[1];
-                TrialProgress.Field3 = Field3Text.text;
-
-                var Field4Text = _fields[3].transform.GetComponentsInChildren<Text>()[1];
-                TrialProgress.Field4 = Field4Text.text;
-
-                DS.GetData().OutputFile = TrialProgress.Field1 + "_" +
-                                          TrialProgress.Field2 + "_" +
-                                          TrialProgress.Field3 + "_" +
-                                          TrialProgress.Field4 + "_" + 
+                DS.GetData().OutputFile = "ExperimentNo_" + ExperimentNumberGenerator.launchCount + "_" +
+                                          "Frequency_" + TrialProgress.Field1 + "Hz_" +
                                           DateTime.Now.ToString("yyyy-MM-dd-HH.mm.ss") + ".csv";
 
                 GenerateTrials();
