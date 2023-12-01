@@ -2619,10 +2619,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: e8b301303d5ae7c409e6a4f45c0589ba, type: 2}
+  - {fileID: 11400000, guid: 35579ece075973e4aaf5515db4337360, type: 2}
+  - {fileID: 11400000, guid: 71f1157bf365c354eae607ef3c91c5cc, type: 2}
+  - {fileID: 11400000, guid: f4f35da9d233178438bdff5c9a21d74a, type: 2}
   pressCounter: 0
   pressWaitTime: 50
   movementInput: 0
@@ -10007,6 +10007,11 @@ PrefabInstance:
         type: 3}
       propertyPath: sendInput.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280264944427126254, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}

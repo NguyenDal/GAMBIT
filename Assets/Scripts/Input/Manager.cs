@@ -41,7 +41,7 @@ public class Manager : MonoBehaviour
             if (inputList[i].keyName != null)
             {
                 print(getInputStage().ToString());
-                if (Input.GetButton(inputList[i].keyName))
+                if (Input.GetKey(inputList[i].keyName))
                 {
                     sendInput.Invoke(inputList[i].rotationInput, inputList[i].movmentInput, getInputStage().ToString());
                 }
@@ -56,7 +56,7 @@ public class Manager : MonoBehaviour
         for (int i = 0; i < inputList.Count; i++)
         {
             //if a key is down check if being held or pressed;
-            if (Input.GetButton(inputList[i].keyName))
+            if (Input.GetKey(inputList[i].keyName))
             {
                 keyDown = true;
                 if(pressCounter > pressWaitTime)
