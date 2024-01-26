@@ -10,7 +10,6 @@ using UnityEngine;
 public class FallScript : MonoBehaviour
 {
 
-    //public GameObject n;
     public Rigidbody plyr;
     public float flapStrength;
 
@@ -24,17 +23,12 @@ public class FallScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.Space) == true)
-        {
-            plyr.velocity = Vector3.up * flapStrength;    
-        }*/
-
+      
     }
     
 
     private void OnCollisionEnter(Collision collision)
     {
-        //plyr.isKinematic = true;
         Debug.Log("Player entering map.");
         plyr.useGravity = false;
         
@@ -44,7 +38,6 @@ public class FallScript : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         Debug.Log("Player on map.");
-        //plyr.isKinematic = true;
         //plyr.useGravity = false;
 
     }
@@ -54,26 +47,10 @@ public class FallScript : MonoBehaviour
 
         if (collision.gameObject.tag == "Wall")
         {
-            //plyr.isKinematic = false;
             Debug.Log("Player fell off map.");
             plyr.useGravity = true;
         }
-        /*
-         * Original code
-         * 
-         * if (collision.gameObject.tag == "Wall" && transform.position.y < 0.184)
-        {
-            Debug.Log("Player fell off map.");
-        }*/
-
-        /* Above is more specific - when clicking play button at top of unity cylinder falls over. Above code (rightly) 
-         * does not consider that to mean the player fell off the map. Below code, however, would print "player fell off map" 
-         * in console. Number i.e. 0.184 is derived from y position listed under transform under cylinder. 
-         * 
-         * if(collision.gameObject.tag == "Wall" && transform.position.y < 0.184)
-        {
-            Debug.Log("Player fell off map.");
-        }*/
+       
 
     }
 
