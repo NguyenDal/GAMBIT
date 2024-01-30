@@ -12,12 +12,12 @@ public class FallScript : MonoBehaviour
 
     public Rigidbody plyr;
     public float flapStrength;
-
+    public Collider col;
     // Start is called before the first frame update
     void Start()
     {
         plyr.useGravity = false;
-
+        col.enabled = true;
     }
 
     // Update is called once per frame
@@ -31,6 +31,7 @@ public class FallScript : MonoBehaviour
     {
         Debug.Log("Player entering map.");
         plyr.useGravity = false;
+        col.enabled = false;
         
 
     }
@@ -39,6 +40,7 @@ public class FallScript : MonoBehaviour
     {
         Debug.Log("Player on map.");
         //plyr.useGravity = false;
+        col.enabled = false;
 
     }
 
@@ -49,6 +51,7 @@ public class FallScript : MonoBehaviour
         {
             Debug.Log("Player fell off map.");
             plyr.useGravity = true;
+
         }
        
 
