@@ -698,6 +698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 78175464}
+  - component: {fileID: 78175465}
   m_Layer: 0
   m_Name: Wall2
   m_TagString: Untagged
@@ -721,6 +722,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &78175465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78175463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82fa835664c196a43ac58c253302269e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall: {fileID: 78175463}
+  player: {fileID: 3280264944427126249, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
 --- !u!1001 &86526048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7441,6 +7456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1392390356}
+  - component: {fileID: 1392390357}
   m_Layer: 0
   m_Name: Wall3
   m_TagString: Untagged
@@ -7464,6 +7480,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1392390357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392390355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82fa835664c196a43ac58c253302269e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall: {fileID: 1392390355}
+  player: {fileID: 3280264944427126249, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
 --- !u!1001 &1408011344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9267,6 +9297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1879717342}
+  - component: {fileID: 1879717343}
   m_Layer: 0
   m_Name: Wall1
   m_TagString: Untagged
@@ -9290,6 +9321,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1879717343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879717341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82fa835664c196a43ac58c253302269e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall: {fileID: 1879717341}
+  player: {fileID: 3280264944427126249, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
 --- !u!1001 &1902998833
 PrefabInstance:
   m_ObjectHideFlags: 0
