@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class DestroyObjectScript : MonoBehaviour
 {
-    public GameObject wall;    //gameobj1
-    public GameObject player;   //gameobj2
+    private GameObject wall;    //gameobj1
+    private GameObject player;   //gameobj2
     
+    private Transform playerPos;
+    private Transform wallPos;
+    private double differenceX;
+    private double differenceZ;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        wall = gameObject;
+        wallPos =  wall.transform;
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
+        playerPos = player.transform;
+        differenceZ = wallPos.position.z - playerPos.position.z;
+        differenceX = wallPos.position.x - playerPos.position.x;
         if (wall != null) {
-            if (Input.GetKey(KeyCode.UpArrow) && (player.transform.position.x <= wall.transform.position.x + 1) && 
-            (player.transform.position.x >= wall.transform.position.x - 1) && (player.transform.position.y <= wall.transform.position.y + 1) &&
-            (player.transform.position.y >= wall.transform.position.y - 1)) {
+            if (differenceX < 1 && differenceX > -1 && differenceZ > -1 && differenceZ < 1) {
                 wall.SetActive(false);
             }
         }
