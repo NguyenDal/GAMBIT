@@ -1,0 +1,232 @@
+{
+    "OutputTimesPerSecond": 30,
+    "IgnoreUserInputDelay": 0.5,
+    "TimingVerification": false,
+    "CHARACTER DATA": "CHARACTER DATA----------*********-------------------CHARACTER DATA",
+    "CharacterData": {
+        "Height": 2,
+        "MovementSpeed": 5.0,
+        "RotationSpeed": 75.0,
+        "DistancePickup": 2,
+        "GoalRotationSpeed": 0
+    },
+
+"BLOCK DATA" : "BLOCK DATA---------------------*********--------------------BLOCK DATA",   
+   
+    "BlockOrder" : [1],
+    
+    "Blocks" : [
+        {
+            "Block 1" : "Find objects Visible",
+              "Notes" : "Trials will be presented in order from TrialOrder list",
+              "TrialOrder": [1,2,3,4,5]
+        }
+    ],
+
+"TRIAL DATA" : "TRIAL DATA--------------------*********------------------TRIAL DATA",
+    
+    "Trials": [
+        {
+            "Trial 1" : "Welcome",
+            "Instructional": 1,
+            "FileLocation": "Tutorial_Instructions/Welcome.png",
+            "TrialTime": -1,
+            "TrialEndKey": "Space"
+        },
+        {
+            "Trial 2" : "Collect the Goals",
+            "DisplayText": "Collect The Goals!",
+            "TrialTime" : 600,
+            "Scene": 2,
+            "StartFacing" : 0,
+            "Rotate": 0,
+            "ActiveGoals" : [1,2,3,11],
+            "InactiveGoals" : [],
+            "InvisibleGoals" : [],
+            "Quota": 4,
+            "LandMarks" :[],
+            "TrialEndKey": "x"
+        },
+        {
+            "Trial 3" : "Collect the Goals",
+            "DisplayText": "Collect the Goals!",
+            "TrialTime" : 600,
+            "Scene": 3,
+            "StartFacing" : 0,
+            "Rotate": 0,
+            "ActiveGoals" : [4,5,6,12],
+            "InactiveGoals" : [],
+            "InvisibleGoals" : [],
+            "Quota": 4,
+            "LandMarks" :[],
+            "TrialEndKey": "y"
+        },
+        {
+            "Trial 4" : "Collect the Goals",
+            "DisplayText": "Collect the Goals!",
+            "TrialTime" : 600,
+            "Scene": 4,
+            "StartFacing" : 0,
+            "Rotate": 0,
+            "ActiveGoals" : [7,8,9,10,13],
+            "InactiveGoals" : [],
+            "InvisibleGoals" : [],
+            "Quota": 5,
+            "LandMarks" :[],
+            "TrialEndKey": "z"
+        },
+        {
+            "Trial 5" : "End",
+            "Instructional": 1,
+            "FileLocation": "Tutorial_Instructions/End.png",
+            "TrialTime": -1,
+            "TrialEndKey": "Space"
+        }
+    ],
+
+
+"GOAL DATA" : "GOAL DATA--------------------*********------------------GOAL DATA",
+
+    "Goals": [
+
+        {
+            "Goal 1" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Cube",
+            "Color": "0000ff",
+            "Position": [0.994, 0.45, -6.993],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        },
+            
+        {
+            "Goal 2" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Cube",
+            "Color": "ff0000",
+            "Position": [-4.49, 0.45, 1.018],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        },
+
+        {
+            "Goal 3" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Cube",
+            "Color": "00ff00",
+            "Position": [-12.048, 0.45, -8.515],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        },
+
+        {
+            "Goal 4" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Cube",
+            "Color": "0000ff",
+            "Position": [-1.5, 0.45, -10.48],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        },
+
+        {
+            "Goal 5" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Cube",
+            "Color": "ff0000",
+            "Position": [-5.52, 0.45, 2.512],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        },
+
+        {
+            "Goal 6" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Cube",
+            "Color": "00ff00",
+            "Position": [-7.275, 0.45, -11.995],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        },
+
+        {
+            "Goal 7" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Cube",
+            "Color": "0000ff",
+            "Position": [-1.5, 0.45, -10.48],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        },
+
+        {
+            "Goal 8" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Cube",
+            "Color": "ff0000",
+            "Position": [-5.52, 0.45, 2.512],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        },
+
+        {
+            "Goal 9" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Cube",
+            "Color": "00ff00",
+            "Position": [-7.275, 0.45, -11.995],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        },
+        {
+            "Goal 10" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Cube",
+            "Color": "00ffff",
+            "Position": [-2.992, 0.45, -17.45],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        },
+        {
+            "Goal 11" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Sphere",
+            "Color": "ffff00",
+            "Position": [-5.518, 0.45, -10.473],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        },
+        {
+            "Goal 12" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Sphere",
+            "Color": "ffff00",
+            "Position": [-5.008, 0.45, -13.468],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        },
+        {
+            "Goal 13" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Sphere",
+            "Color": "ffff00",
+            "Position": [-0.304, 0.45, -13.246],
+            "Rotation": [0,0,0],
+            "Scale": [1, 1, 1]
+        }
+
+    ],
+
+"LANDMARK DATA" : "LANDMARK DATA----------*********------------------LANDMARK DATA",
+
+    "Landmarks": [
+
+
+    ], 
+
+"Enclosure DATA" : "Enclosure DATA--------------------*********------------------Enclosure DATA",
+
+    "Enclosures": [
+ 
+    ]
+}
