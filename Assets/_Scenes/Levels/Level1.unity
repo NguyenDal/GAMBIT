@@ -1252,16 +1252,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 101422488442441119, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
-    - {fileID: 101422488442441116, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
-    - {fileID: 101422488385282142, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
-    - {fileID: 101422487902424746, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
-    - {fileID: 101422487902424747, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
-    - {fileID: 101422488160763515, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
-    - {fileID: 101422487382103302, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
-    - {fileID: 101422487382103303, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
-    - {fileID: 101422487597860458, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
+    m_RemovedComponents: [{fileID: 101422488442441119, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}, {fileID: 101422488442441116, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}, {fileID: 101422488385282142, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}, {fileID: 101422487902424746, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}, {fileID: 101422487902424747, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}, {fileID: 101422488160763515, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}, {fileID: 101422487382103302, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}, {fileID: 101422487382103303, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}, {fileID: 101422487597860458, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}]
   m_SourcePrefab: {fileID: 100100000, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
 --- !u!114 &138946205 stripped
 MonoBehaviour:
