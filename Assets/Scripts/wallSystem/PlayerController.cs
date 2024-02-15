@@ -21,7 +21,10 @@ namespace wallSystem
         private readonly string _outDir;
 
         // This is the character controller system used for collision
-        private CharacterController _controller;
+
+        //original code in line below
+        //private CharacterController _controller;
+        public CharacterController _controller;
 
         // The initial move direction is static zero.
         private Vector3 _moveDirection = Vector3.zero;
@@ -192,6 +195,7 @@ namespace wallSystem
 
         public void ComputeMovement(float rotationInput, float movementInput, String keyImput)
         {
+            //compute movement is never actually called. Comment says its called in inputHandler.cs, but it is not.
             // Dont move if the quota has been reached
             if (localQuota <= 0 & E.Get().CurrTrial.trialData.Quota !=0)
             {
@@ -202,9 +206,12 @@ namespace wallSystem
             var rotation = rotationInput * DS.GetData().CharacterData.RotationSpeed * Time.deltaTime;
 
             // This calculates the forward speed frame rate independent
-            _moveDirection = new Vector3(0, 0, movementInput);
+            // sheikh's recc. -> _moveDirection = new Vector3(0, -1, movementInput);
+            //lines below seems to be the problem lines.
+            /*_moveDirection = new Vector3(0, 0, movementInput);
             _moveDirection = transform.TransformDirection(_moveDirection);
-            _moveDirection *= DS.GetData().CharacterData.MovementSpeed;
+            _moveDirection *= DS.GetData().CharacterData.MovementSpeed;*/
+            _moveDirection = transform.forward * movementInput * DS.GetData().CharacterData.MovementSpeed;
 
             // Here is the movement system
             const double tolerance = 0.0001;
@@ -250,7 +257,12 @@ namespace wallSystem
                 try
                 {
                     //is now called from inputHandler
+                    //Original code below
                     //ComputeMovement();
+                 
+//There is no call from inside inputHandler. Need to figure out correct combination of inputs to make this work, below is not it.
+// left in so that code can be ran to view impact.
+                    //ComputeMovement(0, -1, "down");
                 }
                 catch (MissingComponentException e)
                 {
