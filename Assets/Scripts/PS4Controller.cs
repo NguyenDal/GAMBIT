@@ -27,7 +27,7 @@ public class PS4Controller : MonoBehaviour
     {
         frame++;
 
-        if (frame == 10) {
+        if (frame == 30) {
 
             frame = 0;
 
