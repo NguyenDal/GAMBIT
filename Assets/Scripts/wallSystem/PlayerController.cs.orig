@@ -41,18 +41,20 @@ namespace wallSystem
 
         private bool _reset;
         private int localQuota;
-<<<<<<< HEAD
-        private GameObject particpent;
-=======
 
         public bool firstperson = false;
-	    private GameObject particpent;
->>>>>>> 8c3b82da (rebased with develop)
+<<<<<<< HEAD
+	private GameObject particpent;
         public respawn respawn;
 	public bool firstperson = false;
         private void Start()
         {
 	    particpent = this.gameObject;
+=======
+
+        private void Start()
+        {
+>>>>>>> 36da2395 (I added a boolean variable to switch between first and third person)
             // if first person is true, start the experiment in first person.
             if(firstperson){
                 Cam = this.transform.Find("FirstPerson Camera").gameObject.GetComponent<Camera>();
