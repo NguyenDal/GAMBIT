@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2370549330325018827
+--- !u!114 &3530091745989946828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
   m_HeadingIsSlave: 1
---- !u!114 &8139086839658861012
+--- !u!114 &4032777141421042424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
---- !u!114 &7164931485303347528
+--- !u!114 &5396333790470517421
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 101422487382103300}
---- !u!114 &4502888482520002438
+--- !u!114 &7557816416934899099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
---- !u!114 &4602228160932395542
+--- !u!114 &9018967883003847198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
   m_HeadingIsSlave: 1
---- !u!114 &5643126424100618318
+--- !u!114 &8686153352205694956
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,7 +252,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 101422487902424744}
---- !u!114 &6640936344742132194
+--- !u!114 &8993065819700601737
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,7 +297,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 101422488442441117}
---- !u!114 &5061587437396374840
+--- !u!114 &3008756758276654222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
---- !u!114 &5966484600200015495
+--- !u!114 &4191826105513260792
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -617,6 +617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cam: {fileID: 3280264943743391459}
+  firstperson: 1
   _controller: {fileID: 0}
   respawn: {fileID: 0}
 --- !u!54 &1915639831352812518
@@ -802,6 +803,7 @@ GameObject:
   - component: {fileID: 453201755431315632}
   - component: {fileID: 4263482701193999763}
   - component: {fileID: 5830106554729841920}
+  - component: {fileID: 4313547451394099511}
   m_Layer: 0
   m_Name: FirstPerson Camera
   m_TagString: Untagged
@@ -848,7 +850,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -874,6 +876,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5247793047130483632}
   m_Enabled: 1
+--- !u!114 &4313547451394099511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247793047130483632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aabaedae1551c74cbba3fb511f2ba09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 2
 --- !u!1001 &3280264943248852657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -965,27 +980,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Rigs.Array.data[0]
       value: 
-      objectReference: {fileID: 6640936344742132194}
+      objectReference: {fileID: 8993065819700601737}
     - target: {fileID: 3237389536146605598, guid: 018021763fa02c04daef1723b7fd3d0a,
         type: 3}
       propertyPath: m_Rigs.Array.data[1]
       value: 
-      objectReference: {fileID: 5643126424100618318}
+      objectReference: {fileID: 8686153352205694956}
     - target: {fileID: 3237389536146605598, guid: 018021763fa02c04daef1723b7fd3d0a,
         type: 3}
       propertyPath: m_Rigs.Array.data[2]
       value: 
-      objectReference: {fileID: 7164931485303347528}
-    m_RemovedComponents: [{fileID: 3237389535589092142, guid: 018021763fa02c04daef1723b7fd3d0a,
-        type: 3}, {fileID: 3237389535589092141, guid: 018021763fa02c04daef1723b7fd3d0a,
-        type: 3}, {fileID: 3237389535649408751, guid: 018021763fa02c04daef1723b7fd3d0a,
-        type: 3}, {fileID: 3237389535049074715, guid: 018021763fa02c04daef1723b7fd3d0a,
-        type: 3}, {fileID: 3237389535049074714, guid: 018021763fa02c04daef1723b7fd3d0a,
-        type: 3}, {fileID: 3237389534787090634, guid: 018021763fa02c04daef1723b7fd3d0a,
-        type: 3}, {fileID: 3237389534495134647, guid: 018021763fa02c04daef1723b7fd3d0a,
-        type: 3}, {fileID: 3237389534495134646, guid: 018021763fa02c04daef1723b7fd3d0a,
-        type: 3}, {fileID: 3237389534274650331, guid: 018021763fa02c04daef1723b7fd3d0a,
-        type: 3}]
+      objectReference: {fileID: 5396333790470517421}
+    m_RemovedComponents:
+    - {fileID: 3237389535589092142, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
+    - {fileID: 3237389535589092141, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
+    - {fileID: 3237389535649408751, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
+    - {fileID: 3237389535049074715, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
+    - {fileID: 3237389535049074714, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
+    - {fileID: 3237389534787090634, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
+    - {fileID: 3237389534495134647, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
+    - {fileID: 3237389534495134646, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
+    - {fileID: 3237389534274650331, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
 --- !u!4 &101422487902424744 stripped
 Transform:
