@@ -39,8 +39,16 @@ namespace wallSystem
         private bool _reset;
         private int localQuota;
 
+        public bool firstperson = false;
+
         private void Start()
         {
+            // if first person is true, start the experiment in first person.
+            if(firstperson){
+                Cam = this.transform.Find("FirstPerson Camera").gameObject.GetComponent<Camera>();
+                transform.Find("FirstPerson Camera").gameObject.SetActive(true);
+            }
+            
             try
             {
                 var trialText = GameObject.Find("TrialText").GetComponent<Text>();
