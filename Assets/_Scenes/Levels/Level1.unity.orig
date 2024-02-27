@@ -1400,7 +1400,16 @@ GameObject:
   m_PrefabInstance: {fileID: 138946204}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
---- !u!114 &138946207
+--- !u!114 &138946207 stripped
+=======
+--- !u!4 &138946207 stripped
+>>>>>>> a29dd499 (Added the first person camera)
+Transform:
+  m_CorrespondingSourceObject: {fileID: 101422487382103300, guid: f7f900347947c3a4fb40f4a6b35a4206,
+    type: 3}
+  m_PrefabInstance: {fileID: 138946204}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1415,12 +1424,6 @@ MonoBehaviour:
   player: {fileID: 138946206}
   speed: 1
 =======
---- !u!4 &138946207 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 101422487382103300, guid: f7f900347947c3a4fb40f4a6b35a4206,
-    type: 3}
-  m_PrefabInstance: {fileID: 138946204}
-  m_PrefabAsset: {fileID: 0}
 >>>>>>> a29dd499 (Added the first person camera)
 --- !u!114 &138946208
 MonoBehaviour:
@@ -1833,22 +1836,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
-<<<<<<< HEAD
-=======
---- !u!114 &202583703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 202583696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f26c83dd640030c499b1ed8d193f5e27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  participent: {fileID: 138946206}
-  trans: {fileID: 1384912789}
 --- !u!1 &215846820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,7 +1909,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215846820}
   m_CullTransparentMesh: 0
->>>>>>> b27949b8 (Added the UI buttons on Level1 scene)
 --- !u!1001 &240325402
 PrefabInstance:
   m_ObjectHideFlags: 0
