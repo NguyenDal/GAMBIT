@@ -41,9 +41,13 @@ namespace wallSystem
 
         private bool _reset;
         private int localQuota;
+<<<<<<< HEAD
+        private GameObject particpent;
+=======
 
         public bool firstperson = false;
-	private GameObject particpent;
+	    private GameObject particpent;
+>>>>>>> 8c3b82da (rebased with develop)
         public respawn respawn;
 	public bool firstperson = false;
         private void Start()
