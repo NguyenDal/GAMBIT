@@ -41,9 +41,11 @@ namespace wallSystem
 
         private bool _reset;
         private int localQuota;
-
+        private GameObject particpent;
+        public respawn respawn;
         private void Start()
         {
+            particpent = this.gameObject;
             try
             {
                 var trialText = GameObject.Find("TrialText").GetComponent<Text>();
@@ -225,6 +227,10 @@ namespace wallSystem
 
         private void Update()
         {
+            Debug.Log(particpent.transform.position.y);
+            if(particpent.transform.position.y < -1){
+                respawn.Respawn(particpent);
+            }
             E.LogData(TrialProgress.GetCurrTrial().TrialProgress, TrialProgress.GetCurrTrial().TrialStartTime, transform);
 
             // Wait for the sound to finish playing before ending the trial
