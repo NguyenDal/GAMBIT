@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using trial;
@@ -52,15 +52,17 @@ namespace wallSystem
 	    particpent = this.gameObject;
 =======
 
+        public bool firstperson = false;
+
         private void Start()
         {
->>>>>>> 36da2395 (I added a boolean variable to switch between first and third person)
             // if first person is true, start the experiment in first person.
             if(firstperson){
                 Cam = this.transform.Find("FirstPerson Camera").gameObject.GetComponent<Camera>();
                 transform.Find("FirstPerson Camera").gameObject.SetActive(true);
             }
             
+>>>>>>> 36da23953c426ec93cb5a791ff7c19714c336d24
             try
             {
                 var trialText = GameObject.Find("TrialText").GetComponent<Text>();

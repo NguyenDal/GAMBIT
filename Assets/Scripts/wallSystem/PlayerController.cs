@@ -43,7 +43,7 @@ namespace wallSystem
         private int localQuota;
 
         public bool firstperson = false;
-	private GameObject particpent;
+	    private GameObject particpent;
         public respawn respawn;
 	public bool firstperson = false;
         private void Start()
