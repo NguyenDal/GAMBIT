@@ -41,10 +41,15 @@ namespace wallSystem
 
         private bool _reset;
         private int localQuota;
+<<<<<<< HEAD
+        private GameObject particpent;
+        public respawn respawn;
+        private void Start()
+        {
+            particpent = this.gameObject;
+=======
 
         public bool firstperson = false;
-	    private GameObject particpent;
-        public respawn respawn;
 
         private void Start()
         {
@@ -53,7 +58,8 @@ namespace wallSystem
                 Cam = this.transform.Find("FirstPerson Camera").gameObject.GetComponent<Camera>();
                 transform.Find("FirstPerson Camera").gameObject.SetActive(true);
             }
-            particpent = this.gameObject;
+            
+>>>>>>> 36da23953c426ec93cb5a791ff7c19714c336d24
             try
             {
                 var trialText = GameObject.Find("TrialText").GetComponent<Text>();
