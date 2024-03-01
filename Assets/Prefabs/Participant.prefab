@@ -238,6 +238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cam: {fileID: 3280264943743391459}
+  _controller: {fileID: 0}
+  respawn: {fileID: 0}
 --- !u!54 &1915639831352812518
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -271,7 +273,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!82 &3280264944427126253
 AudioSource:
   m_ObjectHideFlags: 0
@@ -410,7 +412,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plyr: {fileID: 1915639831352812518}
-  flapStrength: 0
 --- !u!1001 &3280264943248852657
 PrefabInstance:
   m_ObjectHideFlags: 0
