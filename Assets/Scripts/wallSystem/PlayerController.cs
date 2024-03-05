@@ -229,7 +229,7 @@ namespace wallSystem
         {
             Debug.Log(particpent.transform.position.y);
             if(particpent.transform.position.y < -1){
-                respawn.Respawn(particpent);
+                respawn.Respawn();
             }
             E.LogData(TrialProgress.GetCurrTrial().TrialProgress, TrialProgress.GetCurrTrial().TrialStartTime, transform);
 
