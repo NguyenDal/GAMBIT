@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControllerScript : MonoBehaviour
+public class GamepadController : MonoBehaviour
 {
     Vector3 move;
     public GameObject player;
