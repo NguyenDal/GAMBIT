@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using trial;
@@ -43,6 +43,10 @@ namespace wallSystem
         private int localQuota;
 <<<<<<< HEAD
         private GameObject particpent;
+        public respawn respawn;
+        private void Start()
+        {
+            particpent = this.gameObject;
 =======
 
         public bool firstperson = false;
