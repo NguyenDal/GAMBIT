@@ -45,10 +45,9 @@ namespace wallSystem
         public bool firstperson = false;
 	    private GameObject particpent;
         public respawn respawn;
-	public bool firstperson = false;
         private void Start()
         {
-	    particpent = this.gameObject;
+	        particpent = this.gameObject;
             // if first person is true, start the experiment in first person.
             if(firstperson){
                 Cam = this.transform.Find("FirstPerson Camera").gameObject.GetComponent<Camera>();
