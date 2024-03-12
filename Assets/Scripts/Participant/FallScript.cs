@@ -3,14 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//Code currently works as is. This is the best code for functionality and movement without being launched away.
-//Note that you will still be pushed off the map when you approach the flashing squares because the collision sphere is
-//large. To see what I mean, click on second selector from the right - just above the tab that says hierarchy (i.e. from the
-//tab with the hand that you use to drag your way around the screen).
+//Code currently works as is. This is the best code for functionality and movement.
 
 
-//below is working except in level 2, in level 2 it breaks completely CHECK InputManager script (input/manager.cs), it seems to
-//be source of our issues
 
 public class FallScript : MonoBehaviour
 {
@@ -25,7 +20,6 @@ public class FallScript : MonoBehaviour
     {
         GetComponent<CharacterController>().enabled = true;
 
-        //plyr.useGravity = false;
 
     }
 
@@ -68,14 +62,7 @@ public class FallScript : MonoBehaviour
                 return;
             }
         }
-        /*if (collision.gameObject.tag.Equals("Wall"))
-        {
-            if (GetComponent<CharacterController>().isGrounded)
-            {
-                GetComponent<CharacterController>().enabled = true;
-                Debug.Log("is grnded");
-            }
-        }*/
+        
 
     }
 
@@ -113,7 +100,7 @@ public class FallScript : MonoBehaviour
         }*/
 
         //another potential solution, remove below commented out code to return to version in git lab. This solution works, but
-        // character does a weird jump when it walks off the map - this can be exploited to land on
+        // character does a weird jump when it walks off the map - this can be exploited to add a falling animation however
 
         if (collision.gameObject.tag == "Wall")
         {
@@ -129,8 +116,6 @@ public class FallScript : MonoBehaviour
             {
                 //GetComponent<CharacterController>().enabled = false;
                 plyr.useGravity = true;
-                //plyr.AddForce(Vector3.down * 1100f, ForceMode.Acceleration);
-                //plyr.mass = 10000;
                 Debug.Log("not grounded");
 
                 //line has been commented out and moved outside of nested if. Appears to more consistently give desired result
@@ -138,17 +123,12 @@ public class FallScript : MonoBehaviour
                 //plyr.AddForce(Vector3.down * 1000f, ForceMode.Acceleration);
             }
             /*if (GetComponent<CharacterController>().isGrounded){
-                Debug.Log("psyke it is grounded");
+                Debug.Log("it is grounded");
             }*/
 
 
         }
 
-        //adding below line of code has helped - it isolated the issue as explicitly occurring when the user is dealing with the
-        //flickering square. This suggests, to me, that the flickering square interaction is the issue. I actually managed to -
-        //complete the level, but each time I interacted with the ^ square it glitched, causing the player to fall through or off -
-        //the map. I could then retrace my steps and pick up the coloured square and continue to the next flickering box.
-        //Thus isolating the issue.
         else if (collision.gameObject.tag != "Wall")
         {
             return;
