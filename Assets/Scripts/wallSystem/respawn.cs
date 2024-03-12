@@ -6,16 +6,14 @@ using UnityEngine.UIElements;
 
 public class respawn : MonoBehaviour
 {
-    public GameObject participent;
-    public Transform trans;
-    
-    // if the player enters the collision zone, the player is respawned back to the original position
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag.Equals("Player")){
-            participent.transform.position = trans.position;
-            
-        }
-        
+    private GameObject participent;
+    private GameObject trans;
+    private Transform respawnLocation;
+
+    public void Respawn(){
+        participent = GameObject.FindGameObjectWithTag("Player");
+        trans = GameObject.FindGameObjectWithTag("Respawn");
+        respawnLocation = trans.transform;
+        participent.transform.position = respawnLocation.position;
     }
 }
