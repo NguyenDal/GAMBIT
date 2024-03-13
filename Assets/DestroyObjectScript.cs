@@ -32,5 +32,6 @@ public class DestroyObjectScript : MonoBehaviour
                 wall.SetActive(false);
             }
         }
+        
     }
 }
