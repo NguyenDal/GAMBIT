@@ -27,6 +27,21 @@
     
     "Trials": [
         {
+            "Trial 0" : "Testing Level 0",
+            "DisplayText": "Collect The Goals!",
+            "TrialTime" : 600,
+            "Scene": 5,
+            "StartPosition" : [0,0],
+            "StartFacing" : 0,
+            "Rotate": 0,
+            "ActiveGoals" : [1],
+            "InactiveGoals" : [],
+            "InvisibleGoals" : [],
+            "Quota": 1,
+            "LandMarks" :[],
+            "TrialEndKey": "x"
+        },
+        {
             "Trial 1" : "Welcome",
             "Instructional": 1,
             "FileLocation": "Tutorial_Instructions/Welcome.png",
