@@ -1323,13 +1323,18 @@ PrefabInstance:
     - target: {fileID: 3280264944427126251, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3280264944427126251, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: respawn
       value: 
       objectReference: {fileID: 1384912790}
+    - target: {fileID: 3280264944427126251, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: firstperson
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3280264944427126252, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: m_Enabled
@@ -1388,7 +1393,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 138946204}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138946206}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44612a2c49780a8488c271f5ecde78ed, type: 3}
   m_Name: 
@@ -4754,7 +4759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   participant: {fileID: 138946206}
-  moveSpeed: 5
+  moveSpeed: 1.9
 --- !u!1001 &627825847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5505,6 +5510,7 @@ GameObject:
   - component: {fileID: 766329607}
   - component: {fileID: 766329606}
   - component: {fileID: 766329605}
+  - component: {fileID: 766329610}
   m_Layer: 5
   m_Name: Right-Button
   m_TagString: Untagged
@@ -5627,6 +5633,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766329603}
   m_CullTransparentMesh: 0
+--- !u!114 &766329610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766329603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1a2cd52c1da4860a63e62d2038b406, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  participant: {fileID: 138946206}
+  cameraObject: {fileID: 0}
+  rotationSpeed: 25
 --- !u!1001 &766498218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7132,6 +7153,7 @@ GameObject:
   - component: {fileID: 1070982961}
   - component: {fileID: 1070982960}
   - component: {fileID: 1070982959}
+  - component: {fileID: 1070982963}
   m_Layer: 5
   m_Name: Backward-Button
   m_TagString: Untagged
@@ -7254,6 +7276,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070982957}
   m_CullTransparentMesh: 0
+--- !u!114 &1070982963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070982957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9830d0013904a99b1750af35001321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  participant: {fileID: 138946206}
+  moveSpeed: 1.9
 --- !u!1 &1076901539
 GameObject:
   m_ObjectHideFlags: 0
@@ -9458,7 +9494,7 @@ GameObject:
   - component: {fileID: 1458865836}
   - component: {fileID: 1458865835}
   m_Layer: 5
-  m_Name: '[HUD] Canvas '
+  m_Name: '[HUD] Buttons '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10000,6 +10036,7 @@ GameObject:
   - component: {fileID: 1546763489}
   - component: {fileID: 1546763488}
   - component: {fileID: 1546763487}
+  - component: {fileID: 1546763491}
   m_Layer: 5
   m_Name: Left-Button
   m_TagString: Untagged
@@ -10122,6 +10159,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546763485}
   m_CullTransparentMesh: 0
+--- !u!114 &1546763491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546763485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f177189ac5ee8495a943dfb8deb851f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  participant: {fileID: 138946206}
+  cameraObject: {fileID: 0}
+  rotationSpeed: 25
 --- !u!1001 &1570474163
 PrefabInstance:
   m_ObjectHideFlags: 0
