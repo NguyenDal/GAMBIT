@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
 
+/*
+ * Class for the move back button, captures button press (& being held) & release for movement.
+ */
 public class MoveBackwardButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     // Reference to the Participant GameObject

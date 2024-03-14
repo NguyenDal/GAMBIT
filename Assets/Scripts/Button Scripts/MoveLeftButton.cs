@@ -2,13 +2,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
 
+/*
+ * Class for the move left button, captures button press (& being held) & release for movement.
+ */
 public class MoveLeftButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     // Reference to the Participant GameObject
     public GameObject participant;
-
-    // Reference to the Camera GameObject
-    public GameObject cameraObject;
 
     // Speed of rotation
     public float rotationSpeed = 50f;
@@ -16,13 +16,13 @@ public class MoveLeftButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     // Flags to track button press state
     private bool isRotating = false;
 
-    // Start rotating the camera left when the button is pressed
+    // Start rotating left when the button is pressed
     public void OnPointerDown(PointerEventData eventData)
     {
         isRotating = true;
     }
 
-    // Stop rotating the camera when the button is released
+    // Stop rotating when the button is released
     public void OnPointerUp(PointerEventData eventData)
     {
         isRotating = false;
@@ -33,9 +33,8 @@ public class MoveLeftButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     {
         if (isRotating)
         {
-            // Rotate the participant and camera to the left
+            // Rotate the participant to the left
             participant.transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime);
-            cameraObject.transform.RotateAround(participant.transform.position, Vector3.up, -rotationSpeed * Time.deltaTime);
         }
     }
 }

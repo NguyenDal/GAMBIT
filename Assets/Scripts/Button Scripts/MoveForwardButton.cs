@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
 
+/*
+ * Class for the move forward button, captures button press (& being held) & release for movement.
+ */
 public class MoveForwardButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     // Reference to the Participant GameObject
