@@ -868,6 +868,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2249969209048975694, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: participant
+      value: 
+      objectReference: {fileID: 56405458}
+    - target: {fileID: 2249969209168565572, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: participant
+      value: 
+      objectReference: {fileID: 56405458}
+    - target: {fileID: 2249969209477411197, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: participant
+      value: 
+      objectReference: {fileID: 56405458}
+    - target: {fileID: 2249969209894686948, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249969209999354541, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: participant
+      value: 
+      objectReference: {fileID: 56405458}
     - target: {fileID: 3280264944427126249, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: m_Name
@@ -933,6 +958,11 @@ PrefabInstance:
       propertyPath: respawn
       value: 
       objectReference: {fileID: 113755608}
+    - target: {fileID: 3280264944427126251, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: firstperson
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3280264944427126254, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: sendInput.m_PersistentCalls.m_Calls.Array.size
