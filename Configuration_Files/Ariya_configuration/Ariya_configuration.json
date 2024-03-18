@@ -19,7 +19,7 @@
         {
             "Block 1" : "Find objects Visible",
               "Notes" : "Trials will be presented in order from TrialOrder list",
-              "TrialOrder": [1,2,3,4,5]
+              "TrialOrder": [0,1,2,3,4,5]
         }
     ],
 
@@ -34,7 +34,7 @@
             "StartPosition" : [0,0],
             "StartFacing" : 0,
             "Rotate": 0,
-            "ActiveGoals" : [1],
+            "ActiveGoals" : [14],
             "InactiveGoals" : [],
             "InvisibleGoals" : [],
             "Quota": 1,
@@ -196,6 +196,7 @@
             "Rotation": [0,0,0],
             "Scale": [0.25, 0.25, 0.25]
         },
+
         {
             "Goal 10" : "3D Object Goal",
             "Type": "3D",
@@ -205,6 +206,7 @@
             "Rotation": [0,0,0],
             "Scale": [0.25, 0.25, 0.25]
         },
+
         {
             "Goal 11" : "3D Object Goal",
             "Type": "3D",
@@ -214,6 +216,7 @@
             "Rotation": [0,0,0],
             "Scale": [0.25, 0.25, 0.25]
         },
+
         {
             "Goal 12" : "3D Object Goal",
             "Type": "3D",
@@ -223,6 +226,7 @@
             "Rotation": [0,0,0],
             "Scale": [0.25, 0.25, 0.25]
         },
+
         {
             "Goal 13" : "3D Object Goal",
             "Type": "3D",
@@ -231,6 +235,16 @@
             "Position": [-0.304, 0.45, -13.246],
             "Rotation": [0,0,0],
             "Scale": [0.25, 0.25, 0.25]
+        },
+
+        {
+            "Goal 14" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Sphere",
+            "Color": "ffff00",
+            "Position": [-4.28, -0.33, 1.39],
+            "Rotation": [0, 0, 0],
+            "Scale": [0.5, 0.6, 0.5]
         }
 
     ],

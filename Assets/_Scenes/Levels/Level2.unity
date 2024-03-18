@@ -3344,7 +3344,7 @@ GameObject:
   - component: {fileID: 339571506}
   m_Layer: 0
   m_Name: FlickerCube
-  m_TagString: Untagged
+  m_TagString: FlickerCube3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12695,7 +12695,7 @@ GameObject:
   - component: {fileID: 1467029871}
   m_Layer: 0
   m_Name: FlickerCube
-  m_TagString: Untagged
+  m_TagString: FlickerCube1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13127,7 +13127,7 @@ GameObject:
   - component: {fileID: 1520055901}
   m_Layer: 0
   m_Name: FlickerCube
-  m_TagString: Untagged
+  m_TagString: FlickerCube2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -7,6 +7,10 @@ TagManager:
   - Wall
   - Pickup
   - plyrBody
+  - FlickerCube1
+  - FlickerCube2
+  - FlickerCube3
+  - FlickerCube4
   layers:
   - Default
   - TransparentFX
