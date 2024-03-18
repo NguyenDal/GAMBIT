@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class onlyFlickerWhenNear : MonoBehaviour
+public class OnlyFlickerWhenNear : MonoBehaviour
 {
 
     private GameObject player;
