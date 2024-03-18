@@ -6,31 +6,35 @@ public class OnlyFlickerWhenNear : MonoBehaviour
 {
 
     private GameObject player;
-    private GameObject cube;
+    private ArrayList cubes;
+    private FlickerScript[] flickerCubes;
     private Transform playerPos;
-    private Transform cubePos;
     private double differenceX;
     private double differenceZ;
-
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        cube = GameObject.FindGameObjectWithTag("FlickerCube");
-        cubePos =  cube.transform;
+        cubes = new ArrayList();
+        flickerCubes = (FlickerScript[]) GameObject.FindObjectsOfType(typeof(FlickerScript));
+        foreach(FlickerScript flickerCube in flickerCubes){
+            cubes.Add(flickerCube.gameObject);
+            flickerCube.flicker = false;
+            Debug.Log(flickerCube.tag);
+        }
     }
 
     void Update()
     {
-        while (true) {
-            playerPos = player.transform;
-            differenceZ = cubePos.position.z - playerPos.position.z;
-            differenceX = cubePos.position.x - playerPos.position.x;
-
+        playerPos = player.transform;
+        foreach(GameObject cube in cubes){
             if (cube != null) {
-                if (differenceX < 1 && differenceX > -1 && differenceZ > -1 && differenceZ < 1) {
-                    cube.SetActiveRecursively(true);
+                differenceZ = cube.transform.position.z - playerPos.position.z;
+                differenceX = cube.transform.position.x - playerPos.position.x;
+                if (differenceX < 2 && differenceX > -2 && differenceZ > -2 && differenceZ < 2) {
+                    cube.GetComponent<FlickerScript>().flicker = true;
                 }
             }
-        }
+        } 
     }
 }
