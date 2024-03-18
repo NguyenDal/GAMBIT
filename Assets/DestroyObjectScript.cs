@@ -31,10 +31,4 @@ public class DestroyObjectScript : MonoBehaviour
             }
         }
     }
-    // void OnTriggerEnter(Collider other) {
-    //     Debug.Log("Collided!");
-    //     if (other.gameObject.CompareTag("Wall")) {
-            
-    //     }  
-    // }
 }

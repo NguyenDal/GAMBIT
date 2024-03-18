@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 64535442}
   m_Layer: 0
   m_Name: FlickerCube
-  m_TagString: Untagged
+  m_TagString: FlickerCube1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1225,30 +1225,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 101422488949751981, guid: f7f900347947c3a4fb40f4a6b35a4206,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 101422488949751981, guid: f7f900347947c3a4fb40f4a6b35a4206,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 101422488949751983, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 453201755431315632, guid: f7f900347947c3a4fb40f4a6b35a4206,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 453201755431315632, guid: f7f900347947c3a4fb40f4a6b35a4206,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 453201755431315632, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
@@ -1419,12 +1399,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 138946204}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &138946207 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 101422487382103300, guid: f7f900347947c3a4fb40f4a6b35a4206,
-    type: 3}
-  m_PrefabInstance: {fileID: 138946204}
-  m_PrefabAsset: {fileID: 0}
+--- !u!114 &138946207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1436,7 +1411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6008ea0137e0c6c46b40d4baefac507f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 138946206}
+  player: {fileID: 0}
   speed: 1
 --- !u!114 &138946208
 MonoBehaviour:
@@ -1899,7 +1874,7 @@ GameObject:
   - component: {fileID: 202583698}
   m_Layer: 0
   m_Name: FlickerCube
-  m_TagString: Untagged
+  m_TagString: FlickerCube3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11001,7 +10976,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 138946207}
+  m_ComponentOwner: {fileID: 0}
 --- !u!1 &1661169321
 GameObject:
   m_ObjectHideFlags: 0
@@ -11768,7 +11743,7 @@ GameObject:
   - component: {fileID: 1943968575}
   m_Layer: 0
   m_Name: FlickerCube
-  m_TagString: Untagged
+  m_TagString: FlickerCube2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
