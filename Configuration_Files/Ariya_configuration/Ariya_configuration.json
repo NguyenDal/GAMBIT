@@ -19,7 +19,7 @@
         {
             "Block 1" : "Find objects Visible",
               "Notes" : "Trials will be presented in order from TrialOrder list",
-              "TrialOrder": [0,1,2,3,4,5]
+              "TrialOrder": [1,2,3,4,5,6]
         }
     ],
 
@@ -27,29 +27,29 @@
     
     "Trials": [
         {
-            "Trial 0" : "Testing Level 0",
+            "Trial 1" : "Testing Level 0",
             "DisplayText": "Collect The Goals!",
             "TrialTime" : 600,
             "Scene": 5,
             "StartPosition" : [0,0],
             "StartFacing" : 0,
             "Rotate": 0,
-            "ActiveGoals" : [14],
+            "ActiveGoals" : [14,15],
             "InactiveGoals" : [],
             "InvisibleGoals" : [],
-            "Quota": 1,
+            "Quota": 2,
             "LandMarks" :[],
             "TrialEndKey": "x"
         },
         {
-            "Trial 1" : "Welcome",
+            "Trial 2" : "Welcome",
             "Instructional": 1,
             "FileLocation": "Tutorial_Instructions/Welcome.png",
             "TrialTime": -1,
             "TrialEndKey": "Space"
         },
         {
-            "Trial 2" : "Collect the Goals",
+            "Trial 3" : "Collect the Goals",
             "DisplayText": "Collect The Goals!",
             "TrialTime" : 600,
             "Scene": 2,
@@ -64,7 +64,7 @@
             "TrialEndKey": "x"
         },
         {
-            "Trial 3" : "Collect the Goals",
+            "Trial 4" : "Collect the Goals",
             "DisplayText": "Collect the Goals!",
             "TrialTime" : 600,
             "Scene": 3,
@@ -79,7 +79,7 @@
             "TrialEndKey": "y"
         },
         {
-            "Trial 4" : "Collect the Goals",
+            "Trial 5" : "Collect the Goals",
             "DisplayText": "Collect the Goals!",
             "TrialTime" : 600,
             "Scene": 4,
@@ -94,7 +94,7 @@
             "TrialEndKey": "z"
         },
         {
-            "Trial 5" : "End",
+            "Trial 6" : "End",
             "Instructional": 1,
             "FileLocation": "Tutorial_Instructions/End.png",
             "TrialTime": -1,
@@ -242,9 +242,19 @@
             "Type": "3D",
             "Object": "Sphere",
             "Color": "ffff00",
-            "Position": [-4.28, -0.33, 1.39],
-            "Rotation": [0, 0, 0],
-            "Scale": [0.5, 0.6, 0.5]
+            "Position": [-2.68, 0.098, -0.107],
+            "Rotation": [0,0,0],
+            "Scale": [0.25, 0.25, 0.25]
+        },
+
+        {
+            "Goal 15" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Sphere",
+            "Color": "00ffff",
+            "Position": [-4.276, 0.125, 1.38],
+            "Rotation": [0,0,0],
+            "Scale": [0.25, 0.25, 0.25]
         }
 
     ],
