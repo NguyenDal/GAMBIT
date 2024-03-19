@@ -34,6 +34,9 @@ public class OnlyFlickerWhenNear : MonoBehaviour
                 if (differenceX < 2 && differenceX > -2 && differenceZ > -2 && differenceZ < 2) {
                     cube.GetComponent<FlickerScript>().flicker = true;
                 }
+                else{
+                    cube.GetComponent<FlickerScript>().flicker = false;
+                }
             }
         } 
     }

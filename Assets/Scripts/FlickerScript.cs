@@ -26,6 +26,9 @@ public class FlickerScript : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
             gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             yield return new WaitForSeconds(waitTime);
+            if(!flicker){
+                break;
+            }
         }
     }
     // Update is called once per frame
@@ -33,6 +36,6 @@ public class FlickerScript : MonoBehaviour
     {
         if(flicker){
             StartCoroutine(FlickerObject(FrequencyCheck.frequency));
-        }   
+        }
     }
 }
