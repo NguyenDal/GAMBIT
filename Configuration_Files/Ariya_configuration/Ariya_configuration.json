@@ -240,8 +240,8 @@
         {
             "Goal 14" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Sphere",
-            "Color": "ffff00",
+            "Object": "Cube",
+            "Color": "00ffff",
             "Position": [-2.68, 0.098, -0.107],
             "Rotation": [0,0,0],
             "Scale": [0.25, 0.25, 0.25]
@@ -251,7 +251,7 @@
             "Goal 15" : "3D Object Goal",
             "Type": "3D",
             "Object": "Sphere",
-            "Color": "00ffff",
+            "Color": "ffff00",
             "Position": [-4.276, 0.125, 1.38],
             "Rotation": [0,0,0],
             "Scale": [0.25, 0.25, 0.25]
