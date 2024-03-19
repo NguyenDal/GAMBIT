@@ -3375,6 +3375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8caede229938b419784eec9535908e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flicker: 0
 --- !u!65 &339571507
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12726,6 +12727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8caede229938b419784eec9535908e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flicker: 0
 --- !u!65 &1467029872
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13158,6 +13160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8caede229938b419784eec9535908e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flicker: 0
 --- !u!65 &1520055902
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15275,6 +15278,18 @@ MonoBehaviour:
   connector2: {fileID: 662435615}
   connector3: {fileID: 1076901539}
   connector4: {fileID: 0}
+--- !u!114 &1778393365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778393363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82c2871b39459545b8f33c51d635c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1796575748
 PrefabInstance:
   m_ObjectHideFlags: 0
