@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using trial;
@@ -43,17 +43,26 @@ namespace wallSystem
         private int localQuota;
 
         public bool firstperson = false;
-	    private GameObject particpent;
+<<<<<<< HEAD
+	private GameObject particpent;
         public respawn respawn;
+	public bool firstperson = false;
         private void Start()
         {
-	        particpent = this.gameObject;
+	    particpent = this.gameObject;
+=======
+
+        public bool firstperson = false;
+
+        private void Start()
+        {
             // if first person is true, start the experiment in first person.
             if(firstperson){
                 Cam = this.transform.Find("FirstPerson Camera").gameObject.GetComponent<Camera>();
                 transform.Find("FirstPerson Camera").gameObject.SetActive(true);
             }
             
+>>>>>>> 36da23953c426ec93cb5a791ff7c19714c336d24
             try
             {
                 var trialText = GameObject.Find("TrialText").GetComponent<Text>();
