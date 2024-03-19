@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
-//This class is contains the central data object for all classes.
-//This is implemented using a singleton design pattern.
 namespace data
 {
-    public class DataSingleton
+    public class DataSingleton : MonoBehaviour
     {
-        //Our singleton instance
+        // Define an event that will be triggered when the data is loaded
+        public static event UnityAction DataLoaded;
+
+        // Our singleton instance
         private static Data _data;
 
         public static Data GetData()
@@ -14,13 +16,15 @@ namespace data
             return _data;
         }
 
-        //This function loads the file from a defacto location as shown below
+        // This function loads the file from a default location as shown below
         public static void Load(string fileName)
         {
             var file = System.IO.File.ReadAllText(fileName);
-
             var temp = JsonUtility.FromJson<Data>(file);
             _data = temp;
+
+            // Trigger the DataLoaded event when the data is loaded
+            DataLoaded?.Invoke();
         }
     }
 }

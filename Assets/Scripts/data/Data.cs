@@ -175,6 +175,7 @@ namespace data
             public float GoalRotationSpeed; //The rotation speed of the goals
             public float Height; //The height of the character
             public float DistancePickup; //The min distance of the pickup to the character
+            public bool FirstPerson; // The camera perspective of the character
         }
 
         // This is a pillar object.
