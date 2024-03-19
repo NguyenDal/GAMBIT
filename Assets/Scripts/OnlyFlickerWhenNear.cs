@@ -31,7 +31,7 @@ public class OnlyFlickerWhenNear : MonoBehaviour
             if (cube != null) {
                 differenceZ = cube.transform.position.z - playerPos.position.z;
                 differenceX = cube.transform.position.x - playerPos.position.x;
-                if (differenceX < 2 && differenceX > -2 && differenceZ > -2 && differenceZ < 2) {
+                if (differenceX < 1 && differenceX > -1 && differenceZ > -1 && differenceZ < 1) {
                     cube.GetComponent<FlickerScript>().flicker = true;
                 }
                 else{
