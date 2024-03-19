@@ -42,11 +42,14 @@ namespace wallSystem
         private bool _reset;
         private int localQuota;
 
-        public bool firstperson = false;
+        public bool firstperson;
 	    private GameObject particpent;
         public respawn respawn;
         private void Start()
         {
+            // Load the value of the toggle from PlayerPrefs
+            firstperson = PlayerPrefs.GetInt("FirstPersonEnabled", 0) == 1;
+
 	        particpent = this.gameObject;
             // if first person is true, start the experiment in first person.
             if(firstperson){
