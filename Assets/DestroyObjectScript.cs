@@ -21,20 +21,16 @@ public class DestroyObjectScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate() {
+    void Update() {
         playerPos = player.transform;
         differenceZ = wallPos.position.z - playerPos.position.z;
         differenceX = wallPos.position.x - playerPos.position.x;
         if (wall != null) {
+            Debug.Log("destroy: true");
             if (differenceX < 1 && differenceX > -1 && differenceZ > -1 && differenceZ < 1) {
+                
                 wall.SetActive(false);
             }
         }
     }
-    // void OnTriggerEnter(Collider other) {
-    //     Debug.Log("Collided!");
-    //     if (other.gameObject.CompareTag("Wall")) {
-            
-    //     }  
-    // }
 }
