@@ -1284,7 +1284,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
 =======
->>>>>>> c5ea4b4f (Added the connector script to config)
+>>>>>>> 5cf720d994e4ae1cdb2ee011f703e9342ed1e45c
     - target: {fileID: 3280264943850000150, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: m_TagString
