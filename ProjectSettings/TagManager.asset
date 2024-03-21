@@ -11,6 +11,7 @@ TagManager:
   - FlickerCube2
   - FlickerCube3
   - FlickerCube4
+  - Cube
   layers:
   - Default
   - TransparentFX
