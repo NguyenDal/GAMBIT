@@ -37,11 +37,17 @@ public class LV1tiles : MonoBehaviour
                 //give t5 t10 as its second next tile
                 allTiles[5].setNext2(allTiles[i + 1]);
             }
-            //t15 points to nothing, but t10 point to t16
+            //t15 points to nothing, but t10 points to t16
             else if(i == 15)
             {
                 //give t10 t16 as its second tile
                 allTiles[10].setNext2(allTiles[i + 1]);
+            }
+            //T21 points to nothing, but t18 points to t22
+            else if(i == 21)
+            {
+                //give t18 t22 as its second tile
+                allTiles[18].setNext2(allTiles[i + 1]);
             }
             //if not one of those special cases, each tile will have it's first tile set to the next tile in the index
             else
