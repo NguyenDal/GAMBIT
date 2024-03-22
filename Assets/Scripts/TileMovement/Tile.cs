@@ -28,31 +28,20 @@ public class Tile
         ingameTile = gameTile;
     }
 
-    //Setters
-    public void setOnlyPreviousTile(Tile pt)
+    //Setter
+    public void setPrevious(Tile pt)
     {
         previousTile = pt;
     }
-    public void setOnlyNextTile1(Tile t1)
+    public void setNext1(Tile t1)
     {
         nextTile1 = t1;
     }
-    public void setOnlyNextTile2(Tile t2)
+    public void setNext2(Tile t2)
     {
         nextTile2 = t2;
     }
-    //For most tiles, will want to set up multiple connected tiles at once
-    public void setTilesPrevNext1(Tile pt, Tile t1)
-    {
-        previousTile = pt;
-        nextTile1 = t1;
-    }
-    public void setTilesPrevNext1Next2(Tile pt, Tile t1, Tile t2)
-    {
-        previousTile = pt;
-        nextTile1 = t1;
-        nextTile2 = t2;
-    }
+    
 
     //Getters
     public Tile getPreviousTile()
@@ -71,5 +60,41 @@ public class Tile
     public Transform getGameTile()
     {
         return ingameTile;
+    }
+
+    //hide all tiles connected to this tile
+    public void hideAll()
+    {
+        if(nextTile1 != null)
+        {
+            nextTile1.getGameTile().gameObject.SetActive(false);
+        }
+        if(nextTile2 != null)
+        {
+            nextTile2.getGameTile().gameObject.SetActive(false);
+        }
+        if(previousTile != null)
+        {
+            previousTile.getGameTile().gameObject.SetActive(false);
+        }
+        //make sure this tile is hidden too
+        ingameTile.gameObject.SetActive(false);
+    }
+
+    //show all tiles connected to this tile
+    public void showAll()
+    {
+        if (nextTile1 != null)
+        {
+            nextTile1.getGameTile().gameObject.SetActive(true);
+        }
+        if (nextTile2 != null)
+        {
+            nextTile2.getGameTile().gameObject.SetActive(true);
+        }
+        if (previousTile != null)
+        {
+            previousTile.getGameTile().gameObject.SetActive(true);
+        }
     }
 }
