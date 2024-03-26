@@ -75,7 +75,16 @@ public class Tile
         }
         if(previousTile != null)
         {
-            previousTile.getGameTile().gameObject.SetActive(false);
+            //As of level 1 and 2, tile0 can ONLY be a previous tile. If create a level where the first tile branches into multiple paths, just add more checks.
+            //if the previous tile is tile0, hide it's mesh, leaving the collider. 
+            if (previousTile.getGameTile().name.Equals("Tile0"))
+            {
+                previousTile.getGameTile().GetComponent<Renderer>().enabled = false;
+            }
+            else
+            {
+                previousTile.getGameTile().gameObject.SetActive(false);
+            }
         }
         //make sure this tile is hidden too
         ingameTile.gameObject.SetActive(false);
@@ -94,6 +103,12 @@ public class Tile
         }
         if (previousTile != null)
         {
+            //As of level 1 and 2, tile0 can ONLY be a previous tile. If create a level where the first tile branches into multiple paths, just add more checks.
+            //if the previous tile is tile0, it may have it's mesh hidden. Bring that back.
+            if (previousTile.getGameTile().name.Equals("Tile0"))
+            {
+                previousTile.getGameTile().GetComponent<Renderer>().enabled = true;
+            }
             previousTile.getGameTile().gameObject.SetActive(true);
         }
     }
