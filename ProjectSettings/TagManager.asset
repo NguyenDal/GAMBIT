@@ -12,6 +12,8 @@ TagManager:
   - FlickerCube3
   - FlickerCube4
   - Cube
+  - Floor
+  - Connector
   layers:
   - Default
   - TransparentFX
