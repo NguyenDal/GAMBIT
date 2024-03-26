@@ -16,6 +16,8 @@ TagManager:
   - LV1tiles
   - LV2tiles
   - Tile
+  - Floor
+  - Connector
   layers:
   - Default
   - TransparentFX
