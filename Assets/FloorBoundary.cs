@@ -7,41 +7,49 @@ public class FloorBoundary : MonoBehaviour
     public GameObject[] floorObjects; // Assign cubes and connectors to this array in the inspector
     private bool withinBoundaries = true;
     private Vector3 previousPosition;
+    private bool safeMode = false;
 
     void Start()
     {
         previousPosition = transform.position;
+
+        // Load the value of the safe mode toggle from PlayerPrefs
+        safeMode = PlayerPrefs.GetInt("SafeModeEnabled", 0) == 1;
     }
 
     void Update()
     {
-        withinBoundaries = false;
+        // if safe mode is true, start the experiment (only level 0) with invisible walls activated.
+        if (safeMode) {
 
-        foreach (GameObject obj in floorObjects)
-        {
-            // Check if the object is activated
-            if (obj.activeSelf)
+            withinBoundaries = false;
+
+            foreach (GameObject obj in floorObjects)
             {
-                float minX = obj.transform.position.x - obj.transform.localScale.x / 2;
-                float maxX = obj.transform.position.x + obj.transform.localScale.x / 2;
-                float minZ = obj.transform.position.z - obj.transform.localScale.z / 2;
-                float maxZ = obj.transform.position.z + obj.transform.localScale.z / 2;
-
-                if (transform.position.x >= minX && transform.position.x <= maxX &&
-                    transform.position.z >= minZ && transform.position.z <= maxZ)
+                // Check if the object is activated
+                if (obj.activeSelf)
                 {
-                    withinBoundaries = true;
-                    break; // Exit the loop if the character is within the boundaries of any activated object
+                    float minX = obj.transform.position.x - obj.transform.localScale.x / 2;
+                    float maxX = obj.transform.position.x + obj.transform.localScale.x / 2;
+                    float minZ = obj.transform.position.z - obj.transform.localScale.z / 2;
+                    float maxZ = obj.transform.position.z + obj.transform.localScale.z / 2;
+
+                    if (transform.position.x >= minX && transform.position.x <= maxX &&
+                        transform.position.z >= minZ && transform.position.z <= maxZ)
+                    {
+                        withinBoundaries = true;
+                        break; // Exit the loop if the character is within the boundaries of any activated object
+                    }
                 }
             }
-        }
 
-        if (!withinBoundaries)
-        {
-            transform.position = previousPosition; // Reset character position to previous position
-        }
+            if (!withinBoundaries)
+            {
+                transform.position = previousPosition; // Reset character position to previous position
+            }
 
-        // Update previousPosition for next frame
-        previousPosition = transform.position;
+            // Update previousPosition for next frame
+            previousPosition = transform.position;
+        }
     }
 }
