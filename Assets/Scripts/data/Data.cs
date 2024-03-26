@@ -176,6 +176,7 @@ namespace data
             public float Height; //The height of the character
             public float DistancePickup; //The min distance of the pickup to the character
             public bool FirstPerson; // The camera perspective of the character
+            public bool SafeMode; // The invisible wall activation of the character
         }
 
         // This is a pillar object.
