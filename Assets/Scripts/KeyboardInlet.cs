@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using LSL;
 using UnityEngine;
 
+// Before running an object with this script, make sure to open Keyboard.exe in MarkerOutlet in the Gambit folder.
+// Check if the LSL stream is a marker.
 public class KeyboardInlet : MonoBehaviour
 {
-    
+        
         ContinuousResolver resolver;
 
         // We need to keep track of the inlet once it is resolved.
