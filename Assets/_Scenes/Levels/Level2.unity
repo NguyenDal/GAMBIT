@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8032951, g: 0.70765287, b: 0.6226886, a: 1}
+  m_IndirectSpecularColor: {r: 0.8010147, g: 0.70763886, b: 0.6230902, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6558,7 +6558,7 @@ GameObject:
   - component: {fileID: 662435616}
   m_Layer: 0
   m_Name: Connector2
-  m_TagString: Untagged
+  m_TagString: Connector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6571,8 +6571,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 662435615}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.669682, y: 0.71719027, z: -4.6292796}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -421.74835, y: -265.1953, z: -4.6292796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6582,7 +6582,7 @@ Transform:
   - {fileID: 1153821810}
   - {fileID: 2144771868}
   - {fileID: 520749824}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1630161051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &667518505
 PrefabInstance:
@@ -10125,7 +10125,7 @@ GameObject:
   - component: {fileID: 1076901540}
   m_Layer: 0
   m_Name: Connector3
-  m_TagString: Untagged
+  m_TagString: Connector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10138,15 +10138,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076901539}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.669682, y: 0.71719027, z: -4.6292796}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -421.74835, y: -265.1953, z: -4.6292796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1227781498}
   - {fileID: 1750828484}
   - {fileID: 1578892997}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1630161051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1085189587
 PrefabInstance:
@@ -10535,7 +10535,7 @@ GameObject:
   - component: {fileID: 1138263588}
   m_Layer: 0
   m_Name: Connector1
-  m_TagString: Untagged
+  m_TagString: Connector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10548,8 +10548,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138263587}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.669682, y: 0.71719027, z: -4.6292796}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -421.74835, y: -265.1953, z: -4.6292796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10560,7 +10560,7 @@ Transform:
   - {fileID: 920352950}
   - {fileID: 1477527170}
   - {fileID: 2143613520}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1630161051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1141065415
 PrefabInstance:
@@ -10667,7 +10667,7 @@ GameObject:
   - component: {fileID: 1148778682}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10680,8 +10680,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148778681}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1248419, y: -1.7694712, z: 1.6650956}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -412.95383, y: -267.68198, z: 1.6650956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10840,7 +10840,7 @@ Transform:
   - {fileID: 1907850240}
   - {fileID: 46300503}
   - {fileID: 1796575749}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1630161051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1153821809
 PrefabInstance:
@@ -16765,6 +16765,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1623492109}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1630161050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1630161051}
+  m_Layer: 0
+  m_Name: FloorAndConnectors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1630161051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630161050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 414.07867, y: 265.9125, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1148778682}
+  - {fileID: 1138263588}
+  - {fileID: 662435616}
+  - {fileID: 1076901540}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1633306104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17609,6 +17644,11 @@ PrefabInstance:
       propertyPath: sendInput.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4772643592700063175, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: floorAndConnectorObject
+      value: 
+      objectReference: {fileID: 1630161050}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -21118,10 +21158,6 @@ SceneRoots:
   - {fileID: 962690654}
   - {fileID: 50403339}
   - {fileID: 1296514826}
-  - {fileID: 1148778682}
-  - {fileID: 1138263588}
-  - {fileID: 662435616}
-  - {fileID: 1076901540}
   - {fileID: 1473391801}
   - {fileID: 217643492}
   - {fileID: 924094923}
@@ -21130,3 +21166,4 @@ SceneRoots:
   - {fileID: 2913251462846137305}
   - {fileID: 8883765535808889080}
   - {fileID: 1532796912}
+  - {fileID: 1630161051}
