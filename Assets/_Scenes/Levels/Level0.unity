@@ -942,6 +942,11 @@ PrefabInstance:
       propertyPath: sendInput.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4772643592700063175, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: floorAndConnectorObject
+      value: 
+      objectReference: {fileID: 1116482450}
     - target: {fileID: 9065902263243763112, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: m_Enabled
@@ -972,10 +977,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 538288663}
-    - targetCorrespondingSourceObject: {fileID: 3280264944427126249, guid: f7f900347947c3a4fb40f4a6b35a4206,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 538288665}
     - targetCorrespondingSourceObject: {fileID: 101422488385282140, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       insertIndex: -1
@@ -1485,19 +1486,6 @@ CharacterController:
     type: 3}
   m_PrefabInstance: {fileID: 538288642}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &538288665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538288652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70b3fc72321c64952a722437c3f22488, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floorAndConnectorObject: {fileID: 1116482450}
 --- !u!1 &568230528
 GameObject:
   m_ObjectHideFlags: 0
