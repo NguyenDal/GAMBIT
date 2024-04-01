@@ -734,6 +734,11 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3280072547868234469, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: HUDButtons
+      value: 
+      objectReference: {fileID: 538288645}
     - target: {fileID: 3280264943850000150, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: m_TagString
@@ -961,6 +966,12 @@ MonoBehaviour:
 --- !u!4 &538288644 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3280264944427126250, guid: f7f900347947c3a4fb40f4a6b35a4206,
+    type: 3}
+  m_PrefabInstance: {fileID: 538288642}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &538288645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2249969209894686951, guid: f7f900347947c3a4fb40f4a6b35a4206,
     type: 3}
   m_PrefabInstance: {fileID: 538288642}
   m_PrefabAsset: {fileID: 0}

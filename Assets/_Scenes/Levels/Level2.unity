@@ -11751,6 +11751,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1213244577}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1223088286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2249969209894686951, guid: f7f900347947c3a4fb40f4a6b35a4206,
+    type: 3}
+  m_PrefabInstance: {fileID: 1778393360}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1225147727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17476,6 +17482,11 @@ PrefabInstance:
       propertyPath: participant
       value: 
       objectReference: {fileID: 1778393363}
+    - target: {fileID: 3280072547868234469, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: HUDButtons
+      value: 
+      objectReference: {fileID: 1223088286}
     - target: {fileID: 3280072547868234469, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: tileMapObject

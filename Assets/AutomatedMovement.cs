@@ -11,6 +11,7 @@ public class AutomatedMovement : MonoBehaviour
 
     public GameObject tileMapObject; // Reference to the game object containing all tiles
     private PlayerMovementWithKeyboard playerMovementScript; // Script that controlls WASD movement
+    public GameObject HUDButtons; // Reference to the GameObject containing the HUD buttons used for player movement control
     private bool newMovementSystem = true; // Initialized newMovementSystem as true; currently a placeholder until toggle implementation.
 
     void Start()
@@ -34,6 +35,7 @@ public class AutomatedMovement : MonoBehaviour
         if (newMovementSystem) {
             // Disable other types of movement
             playerMovementScript.enabled = false;
+            HUDButtons.SetActive(false);
 
             // Check if left mouse button is clicked and player is not already moving
             if (Input.GetMouseButtonDown(0) && !isMoving)

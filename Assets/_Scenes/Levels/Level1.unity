@@ -1216,6 +1216,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3280072547868234469, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
+      propertyPath: HUDButtons
+      value: 
+      objectReference: {fileID: 2086073960}
+    - target: {fileID: 3280072547868234469, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
       propertyPath: tileMapObject
       value: 
       objectReference: {fileID: 47351802}
@@ -13179,6 +13184,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be34ec9b5f7a4a8469cd27ed119ccce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2086073960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2249969209894686951, guid: f7f900347947c3a4fb40f4a6b35a4206,
+    type: 3}
+  m_PrefabInstance: {fileID: 138946204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2099638970
 PrefabInstance:
   m_ObjectHideFlags: 0
