@@ -10,10 +10,14 @@ public class AutomatedMovement : MonoBehaviour
     private List<Transform> tiles; // List of all tiles on the map
 
     public GameObject tileMapObject; // Reference to the game object containing all tiles
-    private PlayerMovementWithKeyboard playerMovementScript; // Script that controlls WASD movement
-    public GameObject HUDButtons; // Reference to the GameObject containing the HUD buttons used for player movement control
-    private bool newMovementSystem = true; // Initialized newMovementSystem as true; currently a placeholder until toggle implementation.
 
+    private bool newMovementSystem = true; // Initialized newMovementSystem as true; currently a placeholder until toggle implementation
+
+    private PlayerMovementWithKeyboard keyboardMovementScript; // Script that controlls WASD movement
+    private GamepadController gamepadMovementScript; // Script that controlls Gamepad movement
+    public GameObject HUDButtons; // Reference to the GameObject containing the HUD buttons used for player movement control
+    public GameObject PS4Controller; // Reference to the GameObject containing the PS4ControllerMovement script (with hertz values)
+    public GameObject HertzValues; // Reference to the GameObject displaying hertz values used for PS4 controller movement
     void Start()
     {
         // Retrieve movement speed from PlayerPrefs, default to a value if not found
@@ -26,16 +30,16 @@ public class AutomatedMovement : MonoBehaviour
             tiles.Add(child);
         }
 
-        // Get the PlayerMovementWithKeyboard script component
-        playerMovementScript = gameObject.GetComponent<PlayerMovementWithKeyboard>();
+        // Get the PlayerMovementWithKeyboard and GamepadController script components
+        keyboardMovementScript = gameObject.GetComponent<PlayerMovementWithKeyboard>();
+        gamepadMovementScript = gameObject.GetComponent<GamepadController>();
+        
     }
 
     void Update()
     {
         if (newMovementSystem) {
-            // Disable other types of movement
-            playerMovementScript.enabled = false;
-            HUDButtons.SetActive(false);
+            disableOtherMovementSystems();
 
             // Check if left mouse button is clicked and player is not already moving
             if (Input.GetMouseButtonDown(0) && !isMoving)
@@ -56,6 +60,14 @@ public class AutomatedMovement : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void disableOtherMovementSystems() {
+        keyboardMovementScript.enabled = false;
+        gamepadMovementScript.enabled = false;
+        HUDButtons.SetActive(false);
+        PS4Controller.SetActive(false);
+        HertzValues.SetActive(false);
     }
 
     // Find the nearest tile to a given position

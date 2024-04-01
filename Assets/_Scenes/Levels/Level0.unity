@@ -739,6 +739,16 @@ PrefabInstance:
       propertyPath: HUDButtons
       value: 
       objectReference: {fileID: 538288645}
+    - target: {fileID: 3280072547868234469, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: HertzValues
+      value: 
+      objectReference: {fileID: 1821124993}
+    - target: {fileID: 3280072547868234469, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: PS4Controller
+      value: 
+      objectReference: {fileID: 1584112044}
     - target: {fileID: 3280264943850000150, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: m_TagString
@@ -2282,6 +2292,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8883765534843145375, guid: 8e45c13867715554880dd7f8c7757247,
         type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 1821124992}
+    - target: {fileID: 8883765534843145375, guid: 8e45c13867715554880dd7f8c7757247,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 538288652}
@@ -2290,6 +2305,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e45c13867715554880dd7f8c7757247, type: 3}
+--- !u!1 &1584112044 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8883765534843145374, guid: 8e45c13867715554880dd7f8c7757247,
+    type: 3}
+  m_PrefabInstance: {fileID: 1584112043}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1821124991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2438,6 +2459,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 160ea80bd09e51040977fd0822769fd9, type: 3}
+--- !u!114 &1821124992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2945193436359506772, guid: 160ea80bd09e51040977fd0822769fd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1821124991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821124993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1821124993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2945193436359506773, guid: 160ea80bd09e51040977fd0822769fd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1821124991}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1882165690
 GameObject:
   m_ObjectHideFlags: 0

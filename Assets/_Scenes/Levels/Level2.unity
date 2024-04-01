@@ -12945,6 +12945,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 160ea80bd09e51040977fd0822769fd9, type: 3}
+--- !u!114 &1296514827 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2945193436359506772, guid: 160ea80bd09e51040977fd0822769fd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1296514826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296514828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1296514828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2945193436359506773, guid: 160ea80bd09e51040977fd0822769fd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1296514826}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1313427117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17489,6 +17507,16 @@ PrefabInstance:
       objectReference: {fileID: 1223088286}
     - target: {fileID: 3280072547868234469, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
+      propertyPath: HertzValues
+      value: 
+      objectReference: {fileID: 1296514828}
+    - target: {fileID: 3280072547868234469, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      propertyPath: PS4Controller
+      value: 
+      objectReference: {fileID: 8883765535808889081}
+    - target: {fileID: 3280072547868234469, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
       propertyPath: tileMapObject
       value: 
       objectReference: {fileID: 1532796911}
@@ -21090,6 +21118,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8883765534843145375, guid: 8e45c13867715554880dd7f8c7757247,
         type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 1296514827}
+    - target: {fileID: 8883765534843145375, guid: 8e45c13867715554880dd7f8c7757247,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1778393363}
@@ -21098,6 +21131,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e45c13867715554880dd7f8c7757247, type: 3}
+--- !u!1 &8883765535808889081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8883765534843145374, guid: 8e45c13867715554880dd7f8c7757247,
+    type: 3}
+  m_PrefabInstance: {fileID: 8883765535808889080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
