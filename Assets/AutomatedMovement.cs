@@ -10,6 +10,8 @@ public class AutomatedMovement : MonoBehaviour
     private List<Transform> tiles; // List of all tiles on the map
 
     public GameObject tileMapObject; // Reference to the game object containing all tiles
+    private PlayerMovementWithKeyboard playerMovementScript; // Script that controlls WASD movement
+    private bool newMovementSystem = true; // Initialized newMovementSystem as true; currently a placeholder until toggle implementation.
 
     void Start()
     {
@@ -22,25 +24,33 @@ public class AutomatedMovement : MonoBehaviour
         {
             tiles.Add(child);
         }
+
+        // Get the PlayerMovementWithKeyboard script component
+        playerMovementScript = gameObject.GetComponent<PlayerMovementWithKeyboard>();
     }
 
     void Update()
     {
-        // Check if left mouse button is clicked and player is not already moving
-        if (Input.GetMouseButtonDown(0) && !isMoving)
-        {
-            // Cast a ray from the mouse position into the game world
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        if (newMovementSystem) {
+            // Disable other types of movement
+            playerMovementScript.enabled = false;
 
-            // Move toward clicked tile
-            if (Physics.Raycast(ray, out hit))
+            // Check if left mouse button is clicked and player is not already moving
+            if (Input.GetMouseButtonDown(0) && !isMoving)
             {
-                if (hit.collider.CompareTag("Tile"))
+                // Cast a ray from the mouse position into the game world
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                // Move toward clicked tile
+                if (Physics.Raycast(ray, out hit))
                 {
-                    Vector3 clickedTilePosition = hit.collider.transform.position;
-                    Transform nearestTile = GetNearestTile(clickedTilePosition);
-                    StartCoroutine(MoveToTarget(nearestTile.position));
+                    if (hit.collider.CompareTag("Tile"))
+                    {
+                        Vector3 clickedTilePosition = hit.collider.transform.position;
+                        Transform nearestTile = GetNearestTile(clickedTilePosition);
+                        StartCoroutine(MoveToTarget(nearestTile.position));
+                    }
                 }
             }
         }
