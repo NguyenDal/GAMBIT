@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DS = data.DataSingleton;
 
 public class AutomatedMovement : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class AutomatedMovement : MonoBehaviour
 
     public GameObject tileMapObject; // Reference to the game object containing all tiles
 
-    private bool newMovementSystem = true; // Initialized newMovementSystem as true; currently a placeholder until toggle implementation
+    private bool newMovementSystem = false; // Assume false. Change later if toggle for 'Move with tiles' is selected before starting game
 
     private PlayerMovementWithKeyboard keyboardMovementScript; // Script that controlls WASD movement
     private GamepadController gamepadMovementScript; // Script that controlls Gamepad movement
@@ -33,7 +34,15 @@ public class AutomatedMovement : MonoBehaviour
         // Get the PlayerMovementWithKeyboard and GamepadController script components
         keyboardMovementScript = gameObject.GetComponent<PlayerMovementWithKeyboard>();
         gamepadMovementScript = gameObject.GetComponent<GamepadController>();
-        
+
+        //If game is started with tile movement selected, set newMovementSystem true
+        if (DS.GetData() != null && DS.GetData().CharacterData != null)
+        {
+            if ((PlayerPrefs.GetInt("MoveWithTiles" + "Enabled") == 1))
+            {
+                newMovementSystem = true;
+            }
+        }
     }
 
     void Update()
