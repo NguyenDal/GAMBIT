@@ -34,7 +34,19 @@ public class ToggleController : MonoBehaviour
         if (DS.GetData() != null && DS.GetData().CharacterData != null)
         {
             // Set the initial value of the toggle based on the data
-            bool toggleState = dataKey == "FirstPerson" ? DS.GetData().CharacterData.FirstPerson : DS.GetData().CharacterData.SafeMode;
+            bool toggleState;
+            switch (dataKey)
+            {
+                case "FirstPerson":
+                    toggleState = DS.GetData().CharacterData.FirstPerson;
+                    break;
+                case "SafeMode":
+                    toggleState = DS.GetData().CharacterData.SafeMode;
+                    break;
+                default://Default to MoveWithTiles, shouldn't land here without reason though
+                    toggleState = DS.GetData().CharacterData.MoveWithTiles;
+                    break;
+            }
 
             // Load the initial value from PlayerPrefs
             bool isEnabled = PlayerPrefs.GetInt(dataKey + "Enabled", toggleState ? 1 : 0) == 1;

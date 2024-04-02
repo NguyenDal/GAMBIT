@@ -177,6 +177,7 @@ namespace data
             public float DistancePickup; //The min distance of the pickup to the character
             public bool FirstPerson; // The camera perspective of the character
             public bool SafeMode; // The invisible wall activation of the character
+            public bool MoveWithTiles; // The tiles that can be used to move around the level (level 1 and 2 only)
         }
 
         // This is a pillar object.
