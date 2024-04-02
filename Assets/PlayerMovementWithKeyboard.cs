@@ -9,6 +9,8 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
 
     void Start()
     {
+        GameSettings.LoadSettings();
+
         // Retrieve movement speed from PlayerPrefs, default to defaultMovementSpeed if not found
         float movementSpeed = PlayerPrefs.GetFloat("MovementSpeed", defaultMovementSpeed);
         // Retrieve rotation speed from PlayerPrefs, default to defaultRotationSpeed if not found
@@ -21,6 +23,9 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
 
     void Update()
     {
+        float movementSpeed = GameSettings.movementSpeed;
+        float rotationSpeed = GameSettings.rotationSpeed;
+        
         // Calculate movement direction based on W and S key input
         Vector3 movementDirection = Vector3.zero;
         if (Keyboard.current.wKey.isPressed)

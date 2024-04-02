@@ -18,6 +18,8 @@ public class MoveForwardButton : MonoBehaviour, IPointerDownHandler, IPointerUpH
 
     void Start()
     {
+        GameSettings.LoadSettings();
+
         // Retrieve movement speed from PlayerPrefs, default to defaultMovementSpeed if not found
         float movementSpeed = PlayerPrefs.GetFloat("MovementSpeed", moveSpeed);
 
@@ -41,6 +43,7 @@ public class MoveForwardButton : MonoBehaviour, IPointerDownHandler, IPointerUpH
     // Coroutine to continuously move the participant forward while the button is held down
     private IEnumerator MoveParticipantCoroutine()
     {
+        float movementSpeed = GameSettings.movementSpeed;
         while (isMoving)
         {
             // Move the participant forward

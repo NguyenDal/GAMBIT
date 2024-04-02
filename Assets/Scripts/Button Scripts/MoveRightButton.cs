@@ -18,6 +18,8 @@ public class MoveRightButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     void Start()
     {
+        GameSettings.LoadSettings();
+
         // Retrieve rotation speed from PlayerPrefs, default to defaultRotationSpeed if not found
         float rotateSpeed = PlayerPrefs.GetFloat("RotationSpeed", rotationSpeed);
 
@@ -40,6 +42,7 @@ public class MoveRightButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     // Update is called once per frame
     void Update()
     {
+        float rotationSpeed = GameSettings.rotationSpeed;
         if (isRotating)
         {
             // Rotate the participant to the right
