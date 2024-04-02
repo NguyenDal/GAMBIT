@@ -81,7 +81,7 @@
         {
             "Trial 5" : "End",
             "TrialTime" : 600,
-            "Scene": 5,
+            "Scene": 6,
             "TrialEndKey": "Space"
         }
     ],
