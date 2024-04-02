@@ -43,6 +43,7 @@ public class MoveLeftButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     void Update()
     {
         float rotationSpeed = GameSettings.rotationSpeed;
+        
         if (isRotating)
         {
             // Rotate the participant to the left

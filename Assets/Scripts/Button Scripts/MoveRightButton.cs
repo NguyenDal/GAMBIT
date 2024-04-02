@@ -43,6 +43,7 @@ public class MoveRightButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     void Update()
     {
         float rotationSpeed = GameSettings.rotationSpeed;
+        
         if (isRotating)
         {
             // Rotate the participant to the right

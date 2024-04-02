@@ -44,6 +44,7 @@ public class MoveForwardButton : MonoBehaviour, IPointerDownHandler, IPointerUpH
     private IEnumerator MoveParticipantCoroutine()
     {
         float movementSpeed = GameSettings.movementSpeed;
+        
         while (isMoving)
         {
             // Move the participant forward
