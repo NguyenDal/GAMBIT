@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DS = data.DataSingleton;
 
 public class TileManager
 {
@@ -47,6 +48,16 @@ public class TileManager
         {
             t.getGameTile().gameObject.SetActive(false);
         }
-        allTiles[0].getGameTile().gameObject.SetActive(true);
+
+        //If game was started with "Move with tiles" selected, show the first tile
+        if (DS.GetData() != null && DS.GetData().CharacterData != null)
+        {
+            if ((PlayerPrefs.GetInt("MoveWithTiles" + "Enabled") == 1))
+            {
+                allTiles[0].getGameTile().gameObject.SetActive(true);
+            }
+            //No else. If we are are not moving with tiles, do not show first tile
+            //No first tile = no tile can be selected = no tiles in the game
+        }
     }
 }
