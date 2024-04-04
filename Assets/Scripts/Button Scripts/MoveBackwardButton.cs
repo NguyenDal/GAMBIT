@@ -43,13 +43,15 @@ public class MoveBackwardButton : MonoBehaviour, IPointerDownHandler, IPointerUp
     // Coroutine to continuously move the participant backward while the button is held down
     private IEnumerator MoveParticipantCoroutine()
     {
-        float movementSpeed = GameSettings.movementSpeed;
-        
+        Vector3 movementDirection = Vector3.zero;
+        movementDirection -= transform.forward;
+ 
+       
         while (isMoving)
         {
             // Move the participant backward
-            participant.transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
-
+            participant.transform.Translate(movementDirection * GetMovementSpeed() * Time.deltaTime);
+ 
             // Wait for the next frame
             yield return null;
         }

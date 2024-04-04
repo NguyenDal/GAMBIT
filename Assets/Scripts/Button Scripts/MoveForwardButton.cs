@@ -43,13 +43,15 @@ public class MoveForwardButton : MonoBehaviour, IPointerDownHandler, IPointerUpH
     // Coroutine to continuously move the participant forward while the button is held down
     private IEnumerator MoveParticipantCoroutine()
     {
-        float movementSpeed = GameSettings.movementSpeed;
-        
+
+        Vector3 movementDirection = Vector3.zero;
+        movementDirection += transform.forward;
+       
         while (isMoving)
         {
             // Move the participant forward
-            participant.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-
+            participant.transform.Translate(movementDirection * GetMovementSpeed() * Time.deltaTime);
+ 
             // Wait for the next frame
             yield return null;
         }
