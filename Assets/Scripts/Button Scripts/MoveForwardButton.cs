@@ -16,6 +16,17 @@ public class MoveForwardButton : MonoBehaviour, IPointerDownHandler, IPointerUpH
     // Flags to track button press state
     private bool isMoving = false;
 
+    void Start()
+    {
+        GameSettings.LoadSettings();
+
+        // Retrieve movement speed from PlayerPrefs, default to defaultMovementSpeed if not found
+        float movementSpeed = PlayerPrefs.GetFloat("MovementSpeed", moveSpeed);
+
+        // Apply retrieved speeds
+        SetMovementSpeed(movementSpeed);
+    }
+
     // Start moving the participant forward when the button is pressed
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -32,13 +43,30 @@ public class MoveForwardButton : MonoBehaviour, IPointerDownHandler, IPointerUpH
     // Coroutine to continuously move the participant forward while the button is held down
     private IEnumerator MoveParticipantCoroutine()
     {
+
+        Vector3 movementDirection = Vector3.zero;
+        movementDirection += transform.forward;
+       
         while (isMoving)
         {
             // Move the participant forward
-            participant.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-
+            participant.transform.Translate(movementDirection * GetMovementSpeed() * Time.deltaTime);
+ 
             // Wait for the next frame
             yield return null;
         }
+    }
+
+    // Method to set movement speed
+    private void SetMovementSpeed(float speed)
+    {
+        PlayerPrefs.SetFloat("MovementSpeed", speed);
+        PlayerPrefs.Save();
+    }
+
+    // Method to get movement speed
+    private float GetMovementSpeed()
+    {
+        return PlayerPrefs.GetFloat("MovementSpeed", moveSpeed);
     }
 }
