@@ -24,7 +24,7 @@ public class MoveLeftButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         float rotateSpeed = PlayerPrefs.GetFloat("RotationSpeed", rotationSpeed);
 
         // Apply retrieved speeds
-        SetRotationSpeed(rotationSpeed);
+        SetRotationSpeed(rotateSpeed);
     }
 
     // Start rotating left when the button is pressed

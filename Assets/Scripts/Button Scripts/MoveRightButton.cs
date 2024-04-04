@@ -24,7 +24,7 @@ public class MoveRightButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         float rotateSpeed = PlayerPrefs.GetFloat("RotationSpeed", rotationSpeed);
 
         // Apply retrieved speeds
-        SetRotationSpeed(rotationSpeed);
+        SetRotationSpeed(rotateSpeed);
     }
 
     // Start rotating right when the button is pressed
