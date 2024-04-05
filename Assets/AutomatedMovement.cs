@@ -5,6 +5,8 @@ using DS = data.DataSingleton;
 
 public class AutomatedMovement : MonoBehaviour
 {
+    private Transform player;
+    public float mouseSensitivity = 2f;
     private float movementSpeed; // Movement speed
     private bool isMoving = false; // Flag to track if player is currently moving
     private Vector3 targetPosition; // Target position to move towards
@@ -21,6 +23,7 @@ public class AutomatedMovement : MonoBehaviour
     public GameObject HertzValues; // Reference to the GameObject displaying hertz values used for PS4 controller movement
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         // Retrieve movement speed from PlayerPrefs, default to a value if not found
         movementSpeed = PlayerPrefs.GetFloat("MovementSpeed", 5f);
 
@@ -47,8 +50,14 @@ public class AutomatedMovement : MonoBehaviour
 
     void Update()
     {
+        float inputX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        if(Input.GetMouseButton(1)){
+            // rotate the camera for the X axis
+            player.Rotate(Vector3.up * inputX);
+        }
         if (newMovementSystem) {
             disableOtherMovementSystems();
+            
 
             // Check if left mouse button is clicked and player is not already moving
             if (Input.GetMouseButtonDown(0) && !isMoving)
