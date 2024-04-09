@@ -11,7 +11,7 @@ public class MoveBackwardButton : MonoBehaviour, IPointerDownHandler, IPointerUp
     public GameObject participant;
 
     // Speed of movement
-    public float moveSpeed = 5f;
+    public float moveSpeed = 4f;
 
     // Flags to track button press state
     private bool isMoving = false;
@@ -22,6 +22,9 @@ public class MoveBackwardButton : MonoBehaviour, IPointerDownHandler, IPointerUp
 
         // Retrieve movement speed from PlayerPrefs, default to defaultMovementSpeed if not found
         float movementSpeed = PlayerPrefs.GetFloat("MovementSpeed", moveSpeed);
+
+        if (movementSpeed > 4)
+            movementSpeed = 4f;
 
         // Apply retrieved speeds
         SetMovementSpeed(movementSpeed);

@@ -25,7 +25,10 @@ public class AutomatedMovement : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         // Retrieve movement speed from PlayerPrefs, default to a value if not found
-        movementSpeed = PlayerPrefs.GetFloat("MovementSpeed", 5f);
+        movementSpeed = PlayerPrefs.GetFloat("MovementSpeed", 4f);
+
+        if (movementSpeed > 4)
+            movementSpeed = 4f;
 
         tiles = new List<Transform>();
         // Get all children of the tile map object and add them to list

@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovementWithKeyboard : MonoBehaviour
 {
     // Default movement and rotation speeds (will be overwritten by PlayerPrefs)
-    public float defaultMovementSpeed = 5f;
-    public float defaultRotationSpeed = 180f;
+    public float defaultMovementSpeed = 4f;
+    public float defaultRotationSpeed = 100f;
 
     void Start()
     {
@@ -14,6 +14,11 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
         // Retrieve rotation speed from PlayerPrefs, default to defaultRotationSpeed if not found
         float rotationSpeed = PlayerPrefs.GetFloat("RotationSpeed", defaultRotationSpeed);
 
+        if (movementSpeed > 4)
+            movementSpeed = 4f;
+        if (rotationSpeed > 100) 
+            rotationSpeed = 100f;
+        
         // Apply retrieved speeds
         SetMovementSpeed(movementSpeed);
         SetRotationSpeed(rotationSpeed);
