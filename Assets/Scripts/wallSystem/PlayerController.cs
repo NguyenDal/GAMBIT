@@ -42,11 +42,14 @@ namespace wallSystem
         private bool _reset;
         private int localQuota;
 
-        public bool firstperson = false;
+        public bool firstperson;
 	    private GameObject particpent;
         public respawn respawn;
         private void Start()
         {
+            // Load the value of the toggle from PlayerPrefs
+            firstperson = PlayerPrefs.GetInt("FirstPersonEnabled", 0) == 1;
+
 	        particpent = this.gameObject;
             // if first person is true, start the experiment in first person.
             if(firstperson){
@@ -150,11 +153,13 @@ namespace wallSystem
                     var mag = Vector3.Distance(v, new Vector2(pickX, pickY));
                     if (mag > DS.GetData().CharacterData.DistancePickup)
                     {
-                        transform.position = new Vector3(v.x, 0.5f, v.y);
-                        var camPos = Cam.transform.position;
-                        camPos.y = DS.GetData().CharacterData.Height;
-                        Cam.transform.position = camPos;
-                        return;
+                        if(!firstperson){
+                            transform.position = new Vector3(v.x, 0.5f, v.y);
+                            var camPos = Cam.transform.position;
+                            camPos.y = DS.GetData().CharacterData.Height;
+                            Cam.transform.position = camPos;
+                            return;
+                        }
                     }
                 }
                 Debug.LogError("Could not randomly place player. Probably due to" +
@@ -169,10 +174,12 @@ namespace wallSystem
                     p = new List<float>() { pickX, pickY };
                 }
 
-                transform.position = new Vector3(p[0], 0.5f, p[1]);
-                var camPos = Cam.transform.position;
-                camPos.y = DS.GetData().CharacterData.Height;
-                Cam.transform.position = camPos;
+                if(!firstperson){
+                    transform.position = new Vector3(p[0], 0.5f, p[1]);
+                    var camPos = Cam.transform.position;
+                    camPos.y = DS.GetData().CharacterData.Height;
+                    Cam.transform.position = camPos;
+                }
             }
         }
 

@@ -7,6 +7,17 @@ TagManager:
   - Wall
   - Pickup
   - plyrBody
+  - FlickerCube1
+  - FlickerCube2
+  - FlickerCube3
+  - FlickerCube4
+  - Cube
+  - Ground
+  - LV1tiles
+  - LV2tiles
+  - Tile
+  - Floor
+  - Connector
   layers:
   - Default
   - TransparentFX

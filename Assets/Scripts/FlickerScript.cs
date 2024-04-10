@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +9,11 @@ using UnityEngine;
  */
 public class FlickerScript : MonoBehaviour
 {
+    public Boolean flicker;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(FlickerObject(FrequencyCheck.frequency));
+        
     }
     IEnumerator FlickerObject(float frequency)
     {
@@ -24,11 +26,16 @@ public class FlickerScript : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
             gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             yield return new WaitForSeconds(waitTime);
+            if(!flicker){
+                break;
+            }
         }
     }
     // Update is called once per frame
     void Update()
     {
-        
+        if(flicker){
+            StartCoroutine(FlickerObject(FrequencyCheck.frequency));
+        }
     }
 }
