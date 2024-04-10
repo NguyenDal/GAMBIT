@@ -11,7 +11,7 @@ public class MoveLeftButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     public GameObject participant;
 
     // Speed of rotation
-    public float rotationSpeed = 180f;
+    public float rotationSpeed = 100f;
 
     // Flags to track button press state
     private bool isRotating = false;
@@ -22,6 +22,9 @@ public class MoveLeftButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
         // Retrieve rotation speed from PlayerPrefs, default to defaultRotationSpeed if not found
         float rotateSpeed = PlayerPrefs.GetFloat("RotationSpeed", rotationSpeed);
+
+        if (rotateSpeed > 100)
+            rotateSpeed = 100f;
 
         // Apply retrieved speeds
         SetRotationSpeed(rotateSpeed);

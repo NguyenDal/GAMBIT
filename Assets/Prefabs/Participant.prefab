@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed749057c5c9a49d5b03bb8195e74e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSensitivity: 4
   tileMapObject: {fileID: 0}
   HUDButtons: {fileID: 0}
   PS4Controller: {fileID: 0}
