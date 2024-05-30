@@ -1,6 +1,9 @@
 using UnityEngine;
 using TMPro;
 using System.IO;
+using data;
+using trial;
+using main;
 
 /**
  * This class represents the script to handle the timer functionality, in which the a timer object is dragged into the timeText object, and this script
@@ -17,9 +20,12 @@ public class TimerScript : MonoBehaviour
 
     // This is where the text object is dragged into in Unity
     public TMP_Text timeText;
-
+    public AbstractTrial prevTrial;
+    public AbstractTrial currentTrial;
     void Update()
     {
+        prevTrial = currentTrial;
+        currentTrial = Loader.Get().CurrTrial;
 
         // Time is checked if it is running on every frame
         if (timeIsRunning)
@@ -33,22 +39,12 @@ public class TimerScript : MonoBehaviour
         }
 
         /*
-         * This detects user input every frame, ensuring that it activates the right branch of an if statement with respect
-         * to the level, it knows which file to save the time on depending on the button pressed to start a new level.
+         * This saves trial time information if a trial is finished, or if a trial is halted with it's endkey
          */
-        if (Input.GetKeyDown(KeyCode.X))
+        if (prevTrial != null && (prevTrial.TrialID != currentTrial.TrialID))
         {
-            outputJSON(1, timeElapsed);
+            outputJSON(prevTrial.TrialID, timeElapsed);
         }
-        else if (Input.GetKeyDown(KeyCode.Y))
-        {
-            outputJSON(2, timeElapsed);
-        }
-        else if (Input.GetKeyDown(KeyCode.Z))
-        {    
-            outputJSON(3, timeElapsed);
-        }
-        
     }
 
     // This method's functionality is to output the time by instantiating a TimerData object which contains the level and time
