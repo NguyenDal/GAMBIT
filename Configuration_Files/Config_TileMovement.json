@@ -33,7 +33,7 @@
             "Trial 1" : "Welcome",
             "Instructional": 1,
             "FileLocation": "Tutorial_Instructions/Welcome.png",
-            "TrialTime": -1,
+            "TrialTime": 2,
             "TrialEndKey": "Space"
         },
         {
