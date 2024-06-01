@@ -121,9 +121,13 @@ namespace wallSystem
                 obj.transform.Rotate(goalItem.RotationVector);
                 obj.transform.localScale = goalItem.ScaleVector;
                 obj.transform.position = new Vector3(p.X, p.Y, p.Z);
-
-                obj.AddComponent<PickupSound>();
-                obj.GetComponent<PickupSound>().Sound = Resources.Load<AudioClip>("Sounds/" + goalItem.Sound);
+               
+                obj.AddComponent<AudioSource>();
+                AudioClip clip = Resources.Load<AudioClip>("Assets/Resources/Audio/FX/Coin_Collect");
+                AudioSource audioSource = obj.GetComponent<AudioSource>();
+                audioSource.playOnAwake = false;
+                audioSource.clip = clip;
+                audioSource.volume = 0.1f;
 
                 if (!string.IsNullOrEmpty(spriteName))
                 {
