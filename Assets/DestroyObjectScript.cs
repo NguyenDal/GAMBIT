@@ -11,13 +11,16 @@ public class DestroyObjectScript : MonoBehaviour
     private Transform wallPos;
     private double differenceX;
     private double differenceZ;
-    
+    AudioSource audioSource;
+    bool isPlaying = false;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         wall = gameObject;
         wallPos =  wall.transform;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,7 +28,8 @@ public class DestroyObjectScript : MonoBehaviour
         playerPos = player.transform;
         differenceZ = wallPos.position.z - playerPos.position.z;
         differenceX = wallPos.position.x - playerPos.position.x;
-        if (wall != null) {
+        if (wall != null)
+        {
             //In order for code to work, make sure walls have box colliders and that player char controller skin width is
             //0.0099. Wall1 should have box coll size of 0.63, and wall2 & 3 should have box coll sizes of 0.7 (for l1).
             //For L2, sizes are 0.85 for walls 1 & 2 and 0.8 for wall3. For l3, wall1 size is 0.95 while walls 2, 3, & 4 0.85. 
@@ -40,12 +44,21 @@ public class DestroyObjectScript : MonoBehaviour
             //So as to best simulate someone slamming into a wall. The tradeoff is that this means there will never be collisions.
             //If you for some reason decide to add collisions with the wall that we'd destroy, simply change the values to the those
             //listed in the comment section above this.
-            if (differenceX < 1 && differenceX > -1 && differenceZ > -1 && differenceZ < 1 && Input.GetKey("p")) {
+            if (differenceX < 1 && differenceX > -1 && differenceZ > -1 && differenceZ < 1 && Input.GetKey("p"))
+            {
+                // When the Flicker cube is destroyed, play the explosion sound FX if not already playing
+                if (!isPlaying){
+                    audioSource.Play();
+                    isPlaying = true;
+                }
+            }
+
+            // Check if the audio has finished playing
+            if (isPlaying && !audioSource.isPlaying){
                 wall.SetActive(false);
                 GetComponent<CharacterController>().enabled = true;
-
+                isPlaying = false; // Reset the flag for future use
             }
         }
-        
     }
 }
