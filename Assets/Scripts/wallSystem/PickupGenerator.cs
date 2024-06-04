@@ -121,10 +121,13 @@ namespace wallSystem
                 obj.transform.Rotate(goalItem.RotationVector);
                 obj.transform.localScale = goalItem.ScaleVector;
                 obj.transform.position = new Vector3(p.X, p.Y, p.Z);
-               
+                
+                //Adds the pickup sound FX to the pickup objects
                 obj.AddComponent<AudioSource>();
-                AudioClip clip = Resources.Load<AudioClip>("Assets/Resources/Audio/FX/Coin_Collect");
+                AudioClip clip = Resources.Load<AudioClip>("Audio/FX/Coin_Collect");
                 AudioSource audioSource = obj.GetComponent<AudioSource>();
+
+                //Sets the default volume values
                 audioSource.playOnAwake = false;
                 audioSource.clip = clip;
                 audioSource.volume = 0.1f;
