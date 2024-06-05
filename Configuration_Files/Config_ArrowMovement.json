@@ -94,127 +94,117 @@
         {
             "Goal 1" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Cube",
-            "Color": "0000ff",
-            "Position": [0.994, 0.45, -6.993],
+            "Object": "Coin",
+            "Position": [0.994, 0.6, -6.993],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         },
             
         {
             "Goal 2" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Cube",
-            "Color": "ff0000",
-            "Position": [-4.49, 0.45, 1.018],
+            "Object": "Coin",
+            "Position": [-4.49, 0.6, 1.018],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         },
 
         {
             "Goal 3" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Cube",
-            "Color": "00ff00",
-            "Position": [-12.048, 0.45, -8.515],
+            "Object": "Coin",
+            "Position": [-12.048, 0.6, -8.515],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         },
 
         {
             "Goal 4" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Cube",
-            "Color": "0000ff",
-            "Position": [-1.5, 0.45, -10.48],
+            "Object": "Coin",
+            "Position": [-1.5, 0.6, -10.48],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         },
 
         {
             "Goal 5" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Cube",
-            "Color": "ff0000",
-            "Position": [-5.52, 0.45, 2.512],
+            "Object": "Coin",
+            "Position": [-5.52, 0.6, 2.512],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         },
 
         {
             "Goal 6" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Cube",
-            "Color": "00ff00",
-            "Position": [-7.275, 0.45, -11.995],
+            "Object": "Coin",
+            "Position": [-7.275, 0.6, -11.995],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         },
 
         {
             "Goal 7" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Cube",
-            "Color": "0000ff",
-            "Position": [-1.5, 0.45, -10.48],
+            "Object": "Coin",
+            "Position": [-1.5, 0.6, -10.48],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         },
 
         {
             "Goal 8" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Cube",
-            "Color": "ff0000",
-            "Position": [-5.52, 0.45, 2.512],
+            "Object": "Coin",
+            "Position": [-5.52, 0.6, 2.512],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         },
 
         {
             "Goal 9" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Cube",
-            "Color": "00ff00",
-            "Position": [-7.275, 0.45, -11.995],
+            "Object": "Coin",
+            "Position": [-7.275, 0.6, -11.995],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         },
         {
             "Goal 10" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Cube",
-            "Color": "00ffff",
-            "Position": [-2.992, 0.45, -17.45],
+            "Object": "Coin",
+            "Position": [-2.992, 0.6, -17.45],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         },
         {
             "Goal 11" : "3D Object Goal",
             "Type": "3D",
             "Object": "Sphere",
             "Color": "ffff00",
-            "Position": [-5.518, 0.45, -10.473],
+            "Position": [-5.518, 0.6, -10.473],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         },
         {
             "Goal 12" : "3D Object Goal",
             "Type": "3D",
             "Object": "Sphere",
             "Color": "ffff00",
-            "Position": [-5.008, 0.45, -13.468],
+            "Position": [-5.008, 0.6, -13.468],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         },
         {
             "Goal 13" : "3D Object Goal",
             "Type": "3D",
             "Object": "Sphere",
             "Color": "ffff00",
-            "Position": [-0.304, 0.45, -13.246],
+            "Position": [-0.304, 0.6, -13.246],
             "Rotation": [0,0,0],
-            "Scale": [0.25, 0.25, 0.25]
+            "Scale": [0.15, 0.15, 0.15]
         }
 
     ],
