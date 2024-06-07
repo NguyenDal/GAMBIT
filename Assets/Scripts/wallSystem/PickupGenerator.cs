@@ -60,8 +60,11 @@ namespace wallSystem
         // Use this for initialization
         private void Start()
         {
-            var gen = GameObject.Find("WallCreator").GetComponent<GenerateGenerateWall>();
+            AudioSource audio = GameObject.Find("Level Start Sound").GetComponent<AudioSource>();
+            audio.Play();
 
+            var gen = GameObject.Find("WallCreator").GetComponent<GenerateGenerateWall>();
+             
             _destroy = new List<GameObject>(); //This initializes the food object destroy list
 
             var activeGoals = E.Get().CurrTrial.trialData.ActiveGoals;
