@@ -108,7 +108,10 @@ namespace wallSystem
                 {
                     prefab = (GameObject)Resources.Load("3D_Objects/" + goalItem.Object, typeof(GameObject));
                     obj = Instantiate(prefab);
-                    obj.AddComponent<RotateBlock>();
+                    if (obj.GetComponent<RotateBlock>() == null)
+                    {
+                        obj.AddComponent<RotateBlock>();
+                    }
                 }
                 else
                 {
@@ -135,7 +138,8 @@ namespace wallSystem
                     obj.GetComponent<SpriteRenderer>().sprite = pic;
                 }
 
-                var color = Data.GetColour(goalItem.Color);
+                // If color is not specified, use prefab's color
+                var color = string.IsNullOrEmpty(goalItem.Color) ? obj.GetComponent<Renderer>().material.color : Data.GetColour(goalItem.Color);
 
                 try
                 {
