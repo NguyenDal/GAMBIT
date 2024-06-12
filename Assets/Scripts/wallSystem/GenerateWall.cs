@@ -44,7 +44,7 @@ namespace wallSystem
 
             if (E.Get().CurrTrial.enclosure.GroundColor == null)
             {
-                GameObject.Find("Ground").GetComponent<Renderer>().enabled = false;
+                Debug.LogWarning("GroundColor is null, skipping ground color setup.");
             }
             else if (E.Get().CurrTrial.enclosure.GroundTileSides > 2)
             {
@@ -53,7 +53,7 @@ namespace wallSystem
             else
             {
                 var col = Data.GetColour(E.Get().CurrTrial.enclosure.GroundColor);
-                GameObject.Find("Ground").GetComponent<Renderer>().material.color = col;
+                var floorObject = GameObject.Find("Floor");
             }
 
             GenerateLandmarks();

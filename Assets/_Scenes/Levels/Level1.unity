@@ -556,7 +556,7 @@ MonoBehaviour:
     type: 3}
   Cam: {fileID: 0}
   Timer: {fileID: 0}
-  Player: {fileID: 0}
+  Player: {fileID: 138946206}
   currBlockId: 0
   currTrialId: 0
 --- !u!4 &50403339
