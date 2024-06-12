@@ -552,7 +552,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Create: {fileID: 1056830652493150, guid: 524226f6697247f48a8bf5e6cd4e0331, type: 3}
-  GenerateEnclosureFromFile: {fileID: 0}
+  GenerateEnclosureFromFile: {fileID: 1991038372672413687, guid: 7f55fad5796fe43ca92a507ff2cc4abb,
+    type: 3}
   Cam: {fileID: 0}
   Timer: {fileID: 0}
   Player: {fileID: 0}

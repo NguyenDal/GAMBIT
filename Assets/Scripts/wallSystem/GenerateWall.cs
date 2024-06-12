@@ -26,6 +26,11 @@ namespace wallSystem
         // In start, we call the three initialize functions defined below.
         private void Start()
         {
+            if (Generator == null)
+            {
+                Debug.LogError("Generator is not assigned!");
+                return;
+            }
             var obj = Instantiate(Generator, new Vector3(transform.position.x, 0, transform.position.z), Quaternion.identity);
             _created = new List<GameObject>
             {
