@@ -95,9 +95,38 @@ namespace wallSystem
         // Generates the landmarks, pretty similar to the data in pickup.
         private void GenerateLandmarks()
         {
+            Debug.Log("GenerateLandmarks called");
+
+            if (E.Get().CurrTrial == null)
+            {
+                Debug.LogError("CurrTrial is null");
+                return;
+            }
+
+            if (E.Get().CurrTrial.trialData == null)
+            {
+                Debug.LogError("trialData is null");
+                return;
+            }
+
+            if (E.Get().CurrTrial.trialData.LandMarks == null)
+            {
+                Debug.LogError("LandMarks is null");
+                return;
+            }
             foreach (var p in E.Get().CurrTrial.trialData.LandMarks)
             {
-                var d = DS.GetData().Landmarks[p - 1];
+                Debug.Log("Processing landmark with p value: " + p);
+
+                //ensure index is within bounds
+                int index =p-1;
+                if (index<0||index>=DS.GetData().Landmarks.Count)
+                {
+                    Debug.LogError("Landmark index out of bounds: " + index + ". Total landmarks: " + DS.GetData().Landmarks.Count);
+                    continue; // Skip this iteration if the index is out of bounds
+                }
+                var d = DS.GetData().Landmarks[index];
+                Debug.Log("Processing landmark at index: " + index);
                 GameObject prefab;
                 GameObject landmark;
                 if (d.Type.ToLower().Equals("3d"))
@@ -141,6 +170,7 @@ namespace wallSystem
 
                 _created.Add(landmark);
             }
+            Debug.Log("GenerateLandmarks completed");
         }
 
         // This function generates the tile floor. We can modify the size of this later.
