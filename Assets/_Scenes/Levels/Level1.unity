@@ -2464,44 +2464,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1991038372672413687, guid: 7f55fad5796fe43ca92a507ff2cc4abb,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 286105335}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f55fad5796fe43ca92a507ff2cc4abb, type: 3}
---- !u!1 &286105334 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1991038372672413687, guid: 7f55fad5796fe43ca92a507ff2cc4abb,
-    type: 3}
-  m_PrefabInstance: {fileID: 286105333}
-  m_PrefabAsset: {fileID: 0}
---- !u!143 &286105335
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286105334}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &295496112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10393,44 +10357,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1991038372672413687, guid: 7f55fad5796fe43ca92a507ff2cc4abb,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1548373995}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f55fad5796fe43ca92a507ff2cc4abb, type: 3}
---- !u!1 &1548373994 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1991038372672413687, guid: 7f55fad5796fe43ca92a507ff2cc4abb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1548373993}
-  m_PrefabAsset: {fileID: 0}
---- !u!143 &1548373995
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548373994}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1566392982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13794,44 +13722,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1991038372672413687, guid: 7f55fad5796fe43ca92a507ff2cc4abb,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1991038371866454572}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f55fad5796fe43ca92a507ff2cc4abb, type: 3}
---- !u!1 &1991038371866454571 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1991038372672413687, guid: 7f55fad5796fe43ca92a507ff2cc4abb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1991038371866454570}
-  m_PrefabAsset: {fileID: 0}
---- !u!143 &1991038371866454572
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991038371866454571}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2945193436259685909
 PrefabInstance:
   m_ObjectHideFlags: 0
