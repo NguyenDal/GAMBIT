@@ -85,6 +85,10 @@ You can also document commands to lint the code or run tests. These steps help t
 ## Authors and acknowledgment
 Coin Asset: https://assetstore.unity.com/packages/3d/props/pirate-coin-207743
 
+SoundEffects:
+Explosion SFX: https://www.youtube.com/watch?v=9FMquJzgDGQ&ab_channel=SoundEffects
+Menu click, Expirement finish, Expirement start - Cymatics Omega Sample Pack
+
 ## License
 For open source projects, say how it is licensed.
 
