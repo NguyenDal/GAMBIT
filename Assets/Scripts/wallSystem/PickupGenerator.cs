@@ -57,8 +57,6 @@ namespace wallSystem
 
         private void Start()
         {
-            AudioSource audio = GameObject.Find("Level Start Sound").GetComponent<AudioSource>();
-            audio.Play();
 
             var gen = GameObject.Find("WallCreator").GetComponent<GenerateGenerateWall>();
              
