@@ -9,60 +9,41 @@ using DS = data.DataSingleton;
 using E = main.Loader;
 using Random = UnityEngine.Random;
 
-// This class is the primary player script, it allows the participant to move around.
 namespace wallSystem
 {
     public class PlayerController : MonoBehaviour
     {
         public Camera Cam;
         private GenerateGenerateWall _gen;
-
-        // The stream writer that writes data out to an output file.
         private readonly string _outDir;
-
-        // This is the character controller system used for collision
-
-        //original code in line below
-        //private CharacterController _controller;
         public CharacterController _controller;
-
-        // The initial move direction is static zero.
         private Vector3 _moveDirection = Vector3.zero;
-
         private float _currDelay;
-
         private float _iniRotation;
-
         private float _waitTime;
-
         private bool _playingSound;
-
         private bool _isStarted = false;
-
         private bool _reset;
         private int localQuota;
-
         public bool firstperson;
-	    private GameObject particpent;
+        private GameObject particpent;
         public respawn respawn;
+
         private void Start()
         {
-            // Load the value of the toggle from PlayerPrefs
             firstperson = PlayerPrefs.GetInt("FirstPersonEnabled", 0) == 1;
-
-	        particpent = this.gameObject;
-            // if first person is true, start the experiment in first person.
-            if(firstperson){
+            particpent = this.gameObject;
+            if (firstperson)
+            {
                 Cam = this.transform.Find("FirstPerson Camera").gameObject.GetComponent<Camera>();
                 transform.Find("FirstPerson Camera").gameObject.SetActive(true);
             }
-            
+
             try
             {
                 var trialText = GameObject.Find("TrialText").GetComponent<Text>();
                 var blockText = GameObject.Find("BlockText").GetComponent<Text>();
                 var currBlockId = E.Get().CurrTrial.BlockID;
-                // This section sets the text
                 trialText.text = E.Get().CurrTrial.trialData.DisplayText;
                 blockText.text = DS.GetData().Blocks[currBlockId].DisplayText;
 
@@ -77,14 +58,12 @@ namespace wallSystem
             }
             catch (NullReferenceException e)
             {
-                Debug.LogWarning("Goal object not set: running an instructional trial");
+                UnityEngine.Debug.LogWarning("Goal object not set: running an instructional trial");
             }
 
             Random.InitState(DateTime.Now.Millisecond);
-
             _currDelay = 0;
 
-            // Choose a random starting angle if the value is not set in config
             if (E.Get().CurrTrial.trialData.StartFacing == -1)
             {
                 _iniRotation = Random.Range(0, 360);
@@ -93,9 +72,6 @@ namespace wallSystem
             {
                 _iniRotation = E.Get().CurrTrial.trialData.StartFacing;
             }
-
-
-
 
             transform.Rotate(0, _iniRotation, 0);
 
@@ -107,13 +83,12 @@ namespace wallSystem
             }
             catch (NullReferenceException e)
             {
-                Debug.LogWarning("Can't set controller object: running an instructional trial");
+                UnityEngine.Debug.LogWarning("Can't set controller object: running an instructional trial");
             }
             _waitTime = E.Get().CurrTrial.trialData.Rotate;
             _reset = false;
             localQuota = E.Get().CurrTrial.trialData.Quota;
 
-            // This has to happen here for output to be aligned properly
             TrialProgress.GetCurrTrial().TrialProgress.TrialNumber++;
             TrialProgress.GetCurrTrial().TrialProgress.Instructional = TrialProgress.GetCurrTrial().trialData.Instructional;
             TrialProgress.GetCurrTrial().TrialProgress.EnvironmentType = TrialProgress.GetCurrTrial().trialData.Scene;
@@ -129,7 +104,6 @@ namespace wallSystem
             _isStarted = true;
         }
 
-        // Start the character. If init from enclosure, this allows "s" to determine the start position
         public void ExternalStart(float pickX, float pickY, bool useEnclosure = false)
         {
             while (!_isStarted)
@@ -137,14 +111,14 @@ namespace wallSystem
                 Thread.Sleep(20);
             }
 
+            UnityEngine.Debug.Log($"ExternalStart called with pickX={pickX}, pickY={pickY}, useEnclosure={useEnclosure}");
+            UnityEngine.Debug.Log($"StartPosition count: {E.Get().CurrTrial.trialData.StartPosition.Count}");
+
             TrialProgress.GetCurrTrial().TrialProgress.TargetX = pickX;
             TrialProgress.GetCurrTrial().TrialProgress.TargetY = pickY;
 
-            // No start pos specified so make it random.
             if (E.Get().CurrTrial.trialData.StartPosition.Count == 0)
             {
-                // Try to randomly place the character, checking for proximity
-                // to the pickup location
                 var i = 0;
                 while (i++ < 100)
                 {
@@ -153,7 +127,8 @@ namespace wallSystem
                     var mag = Vector3.Distance(v, new Vector2(pickX, pickY));
                     if (mag > DS.GetData().CharacterData.DistancePickup)
                     {
-                        if(!firstperson){
+                        if (!firstperson)
+                        {
                             transform.position = new Vector3(v.x, 0.5f, v.y);
                             var camPos = Cam.transform.position;
                             camPos.y = DS.GetData().CharacterData.Height;
@@ -162,7 +137,7 @@ namespace wallSystem
                         }
                     }
                 }
-                Debug.LogError("Could not randomly place player. Probably due to" +
+                UnityEngine.Debug.LogError("Could not randomly place player. Probably due to" +
                                " a pick up location setting");
             }
             else
@@ -174,16 +149,25 @@ namespace wallSystem
                     p = new List<float>() { pickX, pickY };
                 }
 
-                if(!firstperson){
-                    transform.position = new Vector3(p[0], 0.5f, p[1]);
-                    var camPos = Cam.transform.position;
-                    camPos.y = DS.GetData().CharacterData.Height;
-                    Cam.transform.position = camPos;
+                UnityEngine.Debug.Log($"StartPosition values: {string.Join(", ", p)}");
+
+                if (p.Count >= 2)
+                {
+                    if (!firstperson)
+                    {
+                        transform.position = new Vector3(p[0], 0.5f, p[1]);
+                        var camPos = Cam.transform.position;
+                        camPos.y = DS.GetData().CharacterData.Height;
+                        Cam.transform.position = camPos;
+                    }
+                }
+                else
+                {
+                    UnityEngine.Debug.LogError("StartPosition does not contain enough elements.");
                 }
             }
         }
 
-        // This is the collision system.
         private void OnTriggerEnter(Collider other)
         {
             if (!other.gameObject.CompareTag("Pickup")) return;
@@ -191,9 +175,16 @@ namespace wallSystem
             GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
             Destroy(other.gameObject);
 
-            // Tally the number collected per current block
             int BlockID = TrialProgress.GetCurrTrial().BlockID;
-            TrialProgress.GetCurrTrial().TrialProgress.NumCollectedPerBlock[BlockID]++;
+
+            if (BlockID < TrialProgress.GetCurrTrial().TrialProgress.NumCollectedPerBlock.Length)
+            {
+                TrialProgress.GetCurrTrial().TrialProgress.NumCollectedPerBlock[BlockID]++;
+            }
+            else
+            {
+                UnityEngine.Debug.LogError("BlockID is out of range of NumCollectedPerBlock.");
+            }
 
             TrialProgress.GetCurrTrial().NumCollected++;
             E.LogData(
@@ -206,34 +197,20 @@ namespace wallSystem
             if (--localQuota > 0) return;
 
             E.Get().CurrTrial.Notify();
-
             _playingSound = true;
         }
 
         public void ComputeMovement(float rotationInput, float movementInput, String keyImput)
         {
-            //compute movement is never actually called. Comment says its called in inputHandler.cs, but it is not.
-            // Dont move if the quota has been reached
-            if (localQuota <= 0 & E.Get().CurrTrial.trialData.Quota !=0)
+            if (localQuota <= 0 && E.Get().CurrTrial.trialData.Quota != 0)
             {
                 return;
             }
 
-            // This calculates the current amount of rotation frame rate independent
             var rotation = rotationInput * DS.GetData().CharacterData.RotationSpeed * Time.deltaTime;
-
-            // This calculates the forward speed frame rate independent
-            // sheikh's recc. -> _moveDirection = new Vector3(0, -1, movementInput);
-            //lines below seems to be the problem lines.
-            /*_moveDirection = new Vector3(0, 0, movementInput);
-            _moveDirection = transform.TransformDirection(_moveDirection);
-            _moveDirection *= DS.GetData().CharacterData.MovementSpeed;*/
             _moveDirection = transform.forward * movementInput * DS.GetData().CharacterData.MovementSpeed;
-
-            // Here is the movement system
             const double tolerance = 0.0001;
 
-            // We move iff rotation is 0
             if (Math.Abs(Mathf.Abs(rotation)) < tolerance)
                 _controller.Move(_moveDirection * Time.deltaTime);
 
@@ -242,13 +219,13 @@ namespace wallSystem
 
         private void Update()
         {
-            Debug.Log(particpent.transform.position.y);
-            if(particpent.transform.position.y < -1){
+            UnityEngine.Debug.Log(particpent.transform.position.y);
+            if (particpent.transform.position.y < -1)
+            {
                 respawn.Respawn();
             }
             E.LogData(TrialProgress.GetCurrTrial().TrialProgress, TrialProgress.GetCurrTrial().TrialStartTime, transform);
 
-            // Wait for the sound to finish playing before ending the trial
             if (_playingSound)
             {
                 if (!GetComponent<AudioSource>().isPlaying)
@@ -258,7 +235,6 @@ namespace wallSystem
                 }
             }
 
-            // This first block is for the initial rotation of the character
             if (_currDelay < _waitTime)
             {
                 var angle = 360f * _currDelay / _waitTime + _iniRotation - transform.rotation.eulerAngles.y;
@@ -266,7 +242,6 @@ namespace wallSystem
             }
             else
             {
-                // This section rotates the camera (potentiall up 15 degrees), basically deprecated code.
                 if (!_reset)
                 {
                     Cam.transform.Rotate(0, 0, 0);
@@ -274,20 +249,18 @@ namespace wallSystem
                     TrialProgress.GetCurrTrial().ResetTime();
                 }
 
-                // Move the character.
                 try
                 {
-                    //is now called from inputHandler
-                    //Original code below
-                    //ComputeMovement();
-                 
-//There is no call from inside inputHandler. Need to figure out correct combination of inputs to make this work, below is not it.
-// left in so that code can be ran to view impact.
-                    //ComputeMovement(0, -1, "down");
+                    // ComputeMovement is now called from inputHandler
+                    // Original code below
+                    // ComputeMovement();
+                    // There is no call from inside inputHandler. Need to figure out the correct combination of inputs to make this work, below is not it.
+                    // left in so that code can be run to view the impact.
+                    // ComputeMovement(0, -1, "down");
                 }
                 catch (MissingComponentException e)
                 {
-                    Debug.LogWarning("Skipping movement calc: instructional trial");
+                    UnityEngine.Debug.LogWarning("Skipping movement calc: instructional trial");
                 }
             }
 
