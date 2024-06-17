@@ -26,32 +26,62 @@ namespace wallSystem
         // In start, we call the three initialize functions defined below.
         private void Start()
         {
-            var obj = Instantiate(Generator, new Vector3(transform.position.x, 0, transform.position.z), Quaternion.identity);
-            _created = new List<GameObject>
+            try
             {
-                obj
-            }; // The generator is immediately added to the list for destroyed objects
+                if (Generator == null)
+                {
+                    Debug.LogError("Generator is not assigned!");
+                    return;
+                }
+                
+                var obj = Instantiate(Generator, new Vector3(transform.position.x, 0, transform.position.z), Quaternion.identity);
+                _created = new List<GameObject> { obj }; // The generator is immediately added to the list for destroyed objects
 
-            SetupColours();
-            GenerateWalls();
+                Debug.Log("Generator instantiated and added to _created list.");
 
-            if (E.Get().CurrTrial.enclosure.GroundTileSides == 2) throw new Exception("Can't have floor tiles with 2 sides!");
+                SetupColours();
+                Debug.Log("Colours setup completed.");
 
-            if (E.Get().CurrTrial.enclosure.GroundColor == null)
-            {
-                GameObject.Find("Ground").GetComponent<Renderer>().enabled = false;
+                GenerateWalls();
+                Debug.Log("Walls generated.");
+
+                if (E.Get().CurrTrial.enclosure.GroundTileSides == 2) throw new Exception("Can't have floor tiles with 2 sides!");
+
+                if (E.Get().CurrTrial.enclosure.GroundColor == null)
+                {
+                    Debug.LogWarning("GroundColor is null, skipping ground color setup.");
+                }
+                else if (E.Get().CurrTrial.enclosure.GroundTileSides > 2)
+                {
+                    GenerateTileFloor();
+                    Debug.Log("Tile floor generated.");
+                }
+                else
+                {
+                    var col = Data.GetColour(E.Get().CurrTrial.enclosure.GroundColor);
+                    var floorObject = GameObject.Find("Ground");
+                    if (floorObject == null)
+                    {
+                        Debug.LogError("Ground object not found in the scene!");
+                    }
+                    else
+                    {
+                        floorObject.GetComponent<Renderer>().material.color = col;
+                        Debug.Log("Ground color set.");
+                    }
+                }
+
+                GenerateLandmarks();
+                Debug.Log("Landmarks generated.");
             }
-            else if (E.Get().CurrTrial.enclosure.GroundTileSides > 2)
+            catch (ArgumentOutOfRangeException ex)
             {
-                GenerateTileFloor();
+                Debug.LogError("ArgumentOutOfRangeException in Start: " + ex.Message);
             }
-            else
+            catch (Exception ex)
             {
-                var col = Data.GetColour(E.Get().CurrTrial.enclosure.GroundColor);
-                GameObject.Find("Ground").GetComponent<Renderer>().material.color = col;
+                Debug.LogError("Exception in Start: " + ex.Message);
             }
-
-            GenerateLandmarks();
         }
 
         // This is called when the object is destroyed by Generate Generate Wall. Here we destroy
@@ -90,9 +120,38 @@ namespace wallSystem
         // Generates the landmarks, pretty similar to the data in pickup.
         private void GenerateLandmarks()
         {
+            Debug.Log("GenerateLandmarks called");
+
+            if (E.Get().CurrTrial == null)
+            {
+                Debug.LogError("CurrTrial is null");
+                return;
+            }
+
+            if (E.Get().CurrTrial.trialData == null)
+            {
+                Debug.LogError("trialData is null");
+                return;
+            }
+
+            if (E.Get().CurrTrial.trialData.LandMarks == null)
+            {
+                Debug.LogError("LandMarks is null");
+                return;
+            }
             foreach (var p in E.Get().CurrTrial.trialData.LandMarks)
             {
-                var d = DS.GetData().Landmarks[p - 1];
+                Debug.Log("Processing landmark with p value: " + p);
+
+                //ensure index is within bounds
+                int index =p-1;
+                if (index<0||index>=DS.GetData().Landmarks.Count)
+                {
+                    Debug.LogError("Landmark index out of bounds: " + index + ". Total landmarks: " + DS.GetData().Landmarks.Count);
+                    continue; // Skip this iteration if the index is out of bounds
+                }
+                var d = DS.GetData().Landmarks[index];
+                Debug.Log("Processing landmark at index: " + index);
                 GameObject prefab;
                 GameObject landmark;
                 if (d.Type.ToLower().Equals("3d"))
@@ -136,41 +195,52 @@ namespace wallSystem
 
                 _created.Add(landmark);
             }
+            Debug.Log("GenerateLandmarks completed");
         }
 
         // This function generates the tile floor. We can modify the size of this later.
         private void GenerateTileFloor()
         {
-            if (MakeFloor == true)
+            try
             {
-                var val = E.Get().CurrTrial.enclosure.Radius * 2;
-
-                // Setup the polygon mesh (using sensible defaults).
-                int numSides = E.Get().CurrTrial.enclosure.GroundTileSides == 0 ? 4 : E.Get().CurrTrial.enclosure.GroundTileSides;
-                double tileSize = E.Get().CurrTrial.enclosure.GroundTileSize == 0.0 ? 1.0 : E.Get().CurrTrial.enclosure.GroundTileSize;
-                var col = Data.GetColour(E.Get().CurrTrial.enclosure.GroundColor);
-                Mesh mesh = ConstructTileMesh(numSides, tileSize);
-
-
-                // Generate a grid of tiles
-                var xStart = E.Get().CurrTrial.enclosure.Position[0] - val;
-                var yStart = E.Get().CurrTrial.enclosure.Position[1] - val;
-                var xEnd = xStart + (val * 2);
-                var yEnd = yStart + (val * 2);
-                for (float i = xStart; i <= xEnd; i += 2)
+                if (MakeFloor)
                 {
-                    for (float j = yStart; j <= yEnd; j += 2)
+                    var val = E.Get().CurrTrial.enclosure.Radius * 2;
+
+                    // Setup the polygon mesh (using sensible defaults).
+                    int numSides = E.Get().CurrTrial.enclosure.GroundTileSides == 0 ? 4 : E.Get().CurrTrial.enclosure.GroundTileSides;
+                    double tileSize = E.Get().CurrTrial.enclosure.GroundTileSize == 0.0 ? 1.0 : E.Get().CurrTrial.enclosure.GroundTileSize;
+                    var col = Data.GetColour(E.Get().CurrTrial.enclosure.GroundColor);
+                    Mesh mesh = ConstructTileMesh(numSides, tileSize);
+
+                    // Generate a grid of tiles
+                    var xStart = E.Get().CurrTrial.enclosure.Position[0] - val;
+                    var yStart = E.Get().CurrTrial.enclosure.Position[1] - val;
+                    var xEnd = xStart + (val * 2);
+                    var yEnd = yStart + (val * 2);
+                    for (float i = xStart; i <= xEnd; i += 2)
                     {
-                        var tile = Instantiate(Wall, new Vector3(i, 0.001f, j), Quaternion.identity);
-                        tile.GetComponent<MeshFilter>().mesh = mesh;
-                        tile.GetComponent<Renderer>().material.color = col;
-                        tile.transform.localScale = new Vector3(1, 0.001f, 1);
-                        // Use the rotate if the pattern looks off
-                        //tile.transform.Rotate(0, -45, 0);
-                        _created.Add(tile);
+                        for (float j = yStart; j <= yEnd; j += 2)
+                        {
+                            var tile = Instantiate(Wall, new Vector3(i, 0.001f, j), Quaternion.identity);
+                            tile.GetComponent<MeshFilter>().mesh = mesh;
+                            tile.GetComponent<Renderer>().material.color = col;
+                            tile.transform.localScale = new Vector3(1, 0.001f, 1);
+                            // Use the rotate if the pattern looks off
+                            //tile.transform.Rotate(0, -45, 0);
+                            _created.Add(tile);
+                        }
                     }
                 }
-            }      
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Debug.LogError("ArgumentOutOfRangeException in GenerateTileFloor: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Exception in GenerateTileFloor: " + ex.Message);
+            }
         }
 
         private static Mesh ConstructTileMesh(int numSides, double tileSize)
@@ -208,49 +278,65 @@ namespace wallSystem
 
         private void GenerateWalls()
         {
-            if ((int)E.Get().CurrTrial.enclosure.WallHeight == 0) return;
-
-            //This computes the current interior angle of the given side.
-            var interiorAngle = 360f / E.Get().CurrTrial.enclosure.Sides; //This is, of course, given as 360 / num sides
-
-            //This sets the initial angle to the one given in the preset
-            float currentAngle = 0;
-
-            GameObject.Find("Ground").transform.localScale *= E.Get().CurrTrial.enclosure.Radius / 20f;
-            GameObject.Find("Ground").transform.position = new Vector3(E.Get().CurrTrial.enclosure.Position[0], 0, E.Get().CurrTrial.enclosure.Position[1]);
-
-            //Here we interate through all the sides
-            for (var i = 0; i < E.Get().CurrTrial.enclosure.Sides; i++)
+            try
             {
-                //We compute the sin and cos of the current angle (essentially plotting points on a circle
-                var x = Cos(currentAngle) * E.Get().CurrTrial.enclosure.Radius + E.Get().CurrTrial.enclosure.Position[0];
-                var y = Sin(currentAngle) * E.Get().CurrTrial.enclosure.Radius + E.Get().CurrTrial.enclosure.Position[1];
+                if ((int)E.Get().CurrTrial.enclosure.WallHeight == 0) return;
 
-                //This is theoreticially the perfect length of the wall. However, this causes a multitude of problems
-                //Such as:
-                //Gaps appearing in large wall numbers
-                //Desealing some stuff. so, bad.
-                var length = 2 * E.Get().CurrTrial.enclosure.Radius * Tan(180f / E.Get().CurrTrial.enclosure.Sides);
+                // This computes the current interior angle of the given side.
+                var interiorAngle = 360f / E.Get().CurrTrial.enclosure.Sides; // This is, of course, given as 360 / num sides
 
-                //Here we create the wall
-                var obj = Instantiate(Wall,
-                    new Vector3(x, E.Get().CurrTrial.enclosure.WallHeight / 2 - .1f, y),
-                    Quaternion.identity
-                );
+                // This sets the initial angle to the one given in the preset
+                float currentAngle = 0;
 
-                // So we add 10 because the end user won't be able to notice it anyways
-                obj.transform.localScale = new Vector3(length + 10, E.Get().CurrTrial.enclosure.WallHeight, 0.5f);
+                var groundObject = GameObject.Find("Ground");
+                if (groundObject == null)
+                {
+                    Debug.LogError("Ground object not found in the scene!");
+                    return;
+                }
 
-                // This rotates the walls by the current angle + 90
-                obj.transform.Rotate(Quaternion.Euler(0, -currentAngle - 90, 0).eulerAngles);
+                groundObject.transform.localScale *= E.Get().CurrTrial.enclosure.Radius / 20f;
+                groundObject.transform.position = new Vector3(E.Get().CurrTrial.enclosure.Position[0], 0, E.Get().CurrTrial.enclosure.Position[1]);
 
-                // And we add the wall to the created list as to remove it later
-                _created.Add(obj);
+                // Here we iterate through all the sides
+                for (var i = 0; i < E.Get().CurrTrial.enclosure.Sides; i++)
+                {
+                    // We compute the sin and cos of the current angle (essentially plotting points on a circle)
+                    var x = Cos(currentAngle) * E.Get().CurrTrial.enclosure.Radius + E.Get().CurrTrial.enclosure.Position[0];
+                    var y = Sin(currentAngle) * E.Get().CurrTrial.enclosure.Radius + E.Get().CurrTrial.enclosure.Position[1];
 
-                // And of course we increment the interior angle.
-                currentAngle += interiorAngle;
+                    // This is theoretically the perfect length of the wall. However, this causes a multitude of problems
+                    // Such as:
+                    // Gaps appearing in large wall numbers
+                    // Desealing some stuff. so, bad.
+                    var length = 2 * E.Get().CurrTrial.enclosure.Radius * Tan(180f / E.Get().CurrTrial.enclosure.Sides);
+
+                    // Here we create the wall
+                    var obj = Instantiate(Wall, new Vector3(x, E.Get().CurrTrial.enclosure.WallHeight / 2 - .1f, y), Quaternion.identity);
+
+                    // So we add 10 because the end user won't be able to notice it anyways
+                    obj.transform.localScale = new Vector3(length + 10, E.Get().CurrTrial.enclosure.WallHeight, 0.5f);
+
+                    // This rotates the walls by the current angle + 90
+                    obj.transform.Rotate(Quaternion.Euler(0, -currentAngle - 90, 0).eulerAngles);
+
+                    // And we add the wall to the created list as to remove it later
+                    _created.Add(obj);
+
+                    // And of course we increment the interior angle.
+                    currentAngle += interiorAngle;
+                }
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Debug.LogError("ArgumentOutOfRangeException in GenerateWalls: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Exception in GenerateWalls: " + ex.Message);
             }
         }
+
 
         // Cosine in degrees, using the current cos in radians used by the unity math library
         public static float Cos(float degrees)

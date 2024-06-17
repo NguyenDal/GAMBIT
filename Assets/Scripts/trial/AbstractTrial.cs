@@ -142,7 +142,7 @@ namespace trial
         public virtual void Progress()
         {
             Debug.Log("Progressing...");
-
+            
             // Exiting current trial
             TrialProgress.PreviousTrial = this;
             

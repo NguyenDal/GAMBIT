@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using data;
 using UnityEngine;
-
 using DS = data.DataSingleton;
 using E = main.Loader;
 
@@ -38,7 +37,6 @@ namespace wallSystem
             {
                 var outputLine = p.StandardError.ReadLine();
                 UnityEngine.Debug.LogError(outputLine);
-
             }
 
             if (line == null)
@@ -57,11 +55,13 @@ namespace wallSystem
             };
         }
 
-        // Use this for initialization
         private void Start()
         {
-            var gen = GameObject.Find("WallCreator").GetComponent<GenerateGenerateWall>();
+            AudioSource audio = GameObject.Find("Level Start Sound").GetComponent<AudioSource>();
+            audio.Play();
 
+            var gen = GameObject.Find("WallCreator").GetComponent<GenerateGenerateWall>();
+             
             _destroy = new List<GameObject>(); //This initializes the food object destroy list
 
             var activeGoals = E.Get().CurrTrial.trialData.ActiveGoals;
@@ -79,10 +79,16 @@ namespace wallSystem
             Data.Point p = new Data.Point { X = 0, Y = 0, Z = 0 };
             foreach (var val in merged)
             {
-                var goalItem = DS.GetData().Goals[Mathf.Abs(val) - 1];
-                UnityEngine.Debug.Log(goalItem);
+                int goalIndex = Mathf.Abs(val) - 1;
+                if (goalIndex >= DS.GetData().Goals.Count || goalIndex < 0)
+                {
+                    UnityEngine.Debug.LogError("Goal index out of bounds: " + goalIndex);
+                    continue;
+                }
 
-                // Position is not set in the config file
+                var goalItem = DS.GetData().Goals[goalIndex];
+                UnityEngine.Debug.Log("Processing goal: " + goalItem);
+
                 if (goalItem.Position.Count == 0)
                 {
                     p = ReadFromExternal(goalItem.PythonFile);
@@ -96,7 +102,6 @@ namespace wallSystem
                     catch (Exception _)
                     {
                         p = new Data.Point { X = goalItem.PositionVector.x, Y = 0.5f, Z = goalItem.PositionVector.z };
-
                     }
                 }
 
@@ -115,7 +120,6 @@ namespace wallSystem
                 }
                 else
                 {
-                    // Load the "2D" prefab here, so we have the required components
                     prefab = (GameObject)Resources.Load("3D_Objects/" + goalItem.Type.ToUpper(), typeof(GameObject));
                     obj = Instantiate(prefab);
                     spriteName = goalItem.Object;
@@ -124,10 +128,13 @@ namespace wallSystem
                 obj.transform.Rotate(goalItem.RotationVector);
                 obj.transform.localScale = goalItem.ScaleVector;
                 obj.transform.position = new Vector3(p.X, p.Y, p.Z);
-               
+                
+                //Adds the pickup sound FX to the pickup objects
                 obj.AddComponent<AudioSource>();
-                AudioClip clip = Resources.Load<AudioClip>("Assets/Resources/Audio/FX/Coin_Collect");
+                AudioClip clip = Resources.Load<AudioClip>("Audio/FX/Coin_Collect");
                 AudioSource audioSource = obj.GetComponent<AudioSource>();
+
+                //Sets the default volume values
                 audioSource.playOnAwake = false;
                 audioSource.clip = clip;
                 audioSource.volume = 0.1f;
@@ -155,16 +162,16 @@ namespace wallSystem
                 }
                 catch (Exception _)
                 {
-                    print("Visibility not working");
+                    UnityEngine.Debug.Log("Visibility not working");
                 }
 
                 _destroy.Add(obj);
             }
 
+            UnityEngine.Debug.Log($"ExternalStart called with p.X={p.X}, p.Z={p.Z}");
             GameObject.Find("Participant").GetComponent<PlayerController>().ExternalStart(p.X, p.Z);
         }
 
-        //And here we destroy all the food.
         private void OnDestroy()
         {
             foreach (var t in _destroy)
