@@ -84,6 +84,10 @@ You can also document commands to lint the code or run tests. These steps help t
 
 ## Authors and acknowledgment
 Coin Asset: https://assetstore.unity.com/packages/3d/props/pirate-coin-207743
+Skyboxes: https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353
+Flag: https://assetstore.unity.com/packages/3d/props/exterior/cloth-animation-based-flag-65842
+Treasure Chest: https://assetstore.unity.com/packages/3d/props/interior/treasure-set-free-chest-72345
+Clouds: https://assetstore.unity.com/packages/3d/3le-low-poly-cloud-pack-65911
 
 ## License
 For open source projects, say how it is licensed.

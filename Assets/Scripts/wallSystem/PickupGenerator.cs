@@ -140,8 +140,12 @@ namespace wallSystem
 
                 try
                 {
-                    obj.GetComponent<Renderer>().material.color = color;
-                    obj.GetComponent<Renderer>().enabled = !invisibleSet.Contains(val);
+                    if (obj.GetComponent <Renderer>() != null) 
+                    {
+                        obj.GetComponent<Renderer>().material.color = color;
+                        obj.GetComponent<Renderer>().enabled = !invisibleSet.Contains(val);
+                    }
+
                     obj.GetComponent<Collider>().enabled = !inactiveSet.Contains(val);
 
                     if (activeSet.Contains(val) || invisibleSet.Contains(val))
