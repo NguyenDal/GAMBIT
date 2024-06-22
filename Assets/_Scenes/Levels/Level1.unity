@@ -552,10 +552,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Create: {fileID: 1056830652493150, guid: 524226f6697247f48a8bf5e6cd4e0331, type: 3}
-  GenerateEnclosureFromFile: {fileID: 0}
+  GenerateEnclosureFromFile: {fileID: 1991038372672413687, guid: 7f55fad5796fe43ca92a507ff2cc4abb,
+    type: 3}
   Cam: {fileID: 0}
   Timer: {fileID: 0}
-  Player: {fileID: 0}
+  Player: {fileID: 138946206}
   currBlockId: 0
   currTrialId: 0
 --- !u!4 &50403339
@@ -1233,7 +1234,8 @@ PrefabInstance:
         type: 3}
       propertyPath: tileMapObject
       value: 
-      objectReference: {fileID: 47351802}
+      objectReference: {fileID: 216038481896101064, guid: 5a93486b0ca349045897dfdfbf1e9827,
+        type: 3}
     - target: {fileID: 3280264943850000150, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: m_TagString
