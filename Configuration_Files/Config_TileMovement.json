@@ -182,29 +182,29 @@
         {
             "Goal 11" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Sphere",
+            "Object": "FlagGoal",
             "Color": "ffff00",
-            "Position": [-5.518, 0.6, -10.473],
+            "Position": [-5.518, 0.3, -10.55],
             "Rotation": [0,0,0],
-            "Scale": [0.15, 0.15, 0.15]
+            "Scale": [0.3, 0.3, 0.3]
         },
         {
             "Goal 12" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Sphere",
+            "Object": "FlagGoal",
             "Color": "ffff00",
-            "Position": [-5.008, 0.6, -13.468],
+            "Position": [-5.008, 0.3, -13.468],
             "Rotation": [0,0,0],
-            "Scale": [0.15, 0.15, 0.15]
+            "Scale": [0.3, 0.3, 0.3]
         },
         {
             "Goal 13" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Sphere",
+            "Object": "FlagGoal",
             "Color": "ffff00",
-            "Position": [-0.304, 0.6, -13.246],
+            "Position": [-0.304, 0.3, -13.246],
             "Rotation": [0,0,0],
-            "Scale": [0.15, 0.15, 0.15]
+            "Scale": [0.3, 0.3, 0.3]
         }
 
     ],
