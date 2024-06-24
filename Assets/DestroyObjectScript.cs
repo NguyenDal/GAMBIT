@@ -56,7 +56,6 @@ public class DestroyObjectScript : MonoBehaviour
             // Check if the audio has finished playing
             if (isPlaying && !audioSource.isPlaying){
                 wall.SetActive(false);
-                //GetComponent<CharacterController>().enabled = true;
                 isPlaying = false; // Reset the flag for future use
             }
         }
