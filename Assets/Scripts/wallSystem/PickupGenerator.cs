@@ -57,9 +57,10 @@ namespace wallSystem
 
         private void Start()
         {
-            var gen = GameObject.Find("WallCreator").GetComponent<GenerateGenerateWall>();
 
-            _destroy = new List<GameObject>();
+            var gen = GameObject.Find("WallCreator").GetComponent<GenerateGenerateWall>();
+             
+            _destroy = new List<GameObject>(); //This initializes the food object destroy list
 
             var activeGoals = E.Get().CurrTrial.trialData.ActiveGoals;
             var inactiveGoals = E.Get().CurrTrial.trialData.InactiveGoals;
@@ -125,9 +126,16 @@ namespace wallSystem
                 obj.transform.Rotate(goalItem.RotationVector);
                 obj.transform.localScale = goalItem.ScaleVector;
                 obj.transform.position = new Vector3(p.X, p.Y, p.Z);
+                
+                //Adds the pickup sound FX to the pickup objects
+                obj.AddComponent<AudioSource>();
+                AudioClip clip = Resources.Load<AudioClip>("Audio/FX/Coin_Collect");
+                AudioSource audioSource = obj.GetComponent<AudioSource>();
 
-                obj.AddComponent<PickupSound>();
-                obj.GetComponent<PickupSound>().Sound = Resources.Load<AudioClip>("Sounds/" + goalItem.Sound);
+                //Sets the default volume values
+                audioSource.playOnAwake = false;
+                audioSource.clip = clip;
+                audioSource.volume = 0.1f;
 
                 if (!string.IsNullOrEmpty(spriteName))
                 {

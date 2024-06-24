@@ -89,6 +89,10 @@ Flag: https://assetstore.unity.com/packages/3d/props/exterior/cloth-animation-ba
 Treasure Chest: https://assetstore.unity.com/packages/3d/props/interior/treasure-set-free-chest-72345
 Clouds: https://assetstore.unity.com/packages/3d/3le-low-poly-cloud-pack-65911
 
+SoundEffects:
+Explosion SFX: https://www.youtube.com/watch?v=9FMquJzgDGQ&ab_channel=SoundEffects
+Menu click, Expirement finish, Expirement start - Cymatics Omega Sample Pack
+
 ## License
 For open source projects, say how it is licensed.
 
