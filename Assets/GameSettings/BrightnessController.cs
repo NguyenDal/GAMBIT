@@ -8,8 +8,15 @@ public class BrightnessController : MonoBehaviour
 
     public void Start()
     {
-        // Retrieve the saved brightness value, defaulting to 1 if not found
-        float savedBrightness = PlayerPrefs.GetFloat("Brightness", 1f);
+        float defaultBrightness = 2f;
+
+        // Save the default brightness value to PlayerPrefs if it hasn't been set before
+        if (!PlayerPrefs.HasKey("Brightness"))
+        {
+            PlayerPrefs.SetFloat("Brightness", defaultBrightness);
+        }
+
+        float savedBrightness = PlayerPrefs.GetFloat("Brightness", defaultBrightness);
         brightnessSlider.value = savedBrightness;
         DirectionalLight.intensity = Mathf.PingPong(Time.time, savedBrightness);
         brightnessSlider.onValueChanged.AddListener(OnBrightnessChange);
