@@ -11960,22 +11960,22 @@ PrefabInstance:
     - target: {fileID: 3040371445586260369, guid: 9f2a138b5df2fd74ebf5292f4a2ca3fd,
         type: 3}
       propertyPath: m_Size.x
-      value: 4.495655
+      value: 6.8536906
       objectReference: {fileID: 0}
     - target: {fileID: 3040371445586260369, guid: 9f2a138b5df2fd74ebf5292f4a2ca3fd,
         type: 3}
       propertyPath: m_Size.z
-      value: 6.782832
+      value: 7.867303
       objectReference: {fileID: 0}
     - target: {fileID: 3040371445586260369, guid: 9f2a138b5df2fd74ebf5292f4a2ca3fd,
         type: 3}
       propertyPath: m_Center.x
-      value: 0.28084373
+      value: 0.46820426
       objectReference: {fileID: 0}
     - target: {fileID: 3040371445586260369, guid: 9f2a138b5df2fd74ebf5292f4a2ca3fd,
         type: 3}
       propertyPath: m_Center.z
-      value: 1.2419238
+      value: 1.7841592
       objectReference: {fileID: 0}
     - target: {fileID: 6216757360610811411, guid: 9f2a138b5df2fd74ebf5292f4a2ca3fd,
         type: 3}
@@ -12032,6 +12032,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shooter Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8905068704662274473, guid: 9f2a138b5df2fd74ebf5292f4a2ca3fd,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2052204120}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
