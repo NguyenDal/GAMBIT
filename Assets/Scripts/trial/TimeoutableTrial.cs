@@ -18,7 +18,8 @@ namespace trial
 
             if (_runningTime > _threshHold)
             {
-                Debug.Log(_runningTime);
+                PlayerPrefs.SetInt("LevelCompleted", 0);
+                PlayerPrefs.Save();
                 Progress();
             }
         }

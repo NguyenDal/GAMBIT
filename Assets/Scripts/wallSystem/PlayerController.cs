@@ -8,6 +8,7 @@ using data;
 using DS = data.DataSingleton;
 using E = main.Loader;
 using Random = UnityEngine.Random;
+using UnityEngine.Analytics;
 
 namespace wallSystem
 {
@@ -31,8 +32,16 @@ namespace wallSystem
 
         private void Start()
         {
+            
             firstperson = PlayerPrefs.GetInt("FirstPersonEnabled", 0) == 1;
             particpent = this.gameObject;
+            //For the 3 star system, start by assumming the player will complete level successfully. TimeouttableTrial will take care
+            //of the rest
+            PlayerPrefs.SetInt("LevelCompleted", 1);
+            PlayerPrefs.SetInt("PlayerCollecdtedAllPickUps", 0);
+            PlayerPrefs.Save();
+            string log = "Started with level completed: " + PlayerPrefs.GetInt("LevelCompleted");
+            Debug.Log(log);
             if (firstperson)
             {
                 Cam = this.transform.Find("FirstPerson Camera").gameObject.GetComponent<Camera>();
@@ -88,6 +97,7 @@ namespace wallSystem
             _waitTime = E.Get().CurrTrial.trialData.Rotate;
             _reset = false;
             localQuota = E.Get().CurrTrial.trialData.Quota;
+            Debug.Log("localQuota: " + localQuota);
 
             TrialProgress.GetCurrTrial().TrialProgress.TrialNumber++;
             TrialProgress.GetCurrTrial().TrialProgress.Instructional = TrialProgress.GetCurrTrial().trialData.Instructional;
@@ -170,9 +180,13 @@ namespace wallSystem
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.gameObject.CompareTag("Pickup")) return;
+            if (!other.gameObject.CompareTag("Pickup"))
+            {
+           
+                return;
+            }
 
-            GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
+                GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
             Destroy(other.gameObject);
 
             int BlockID = TrialProgress.GetCurrTrial().BlockID;
@@ -194,9 +208,16 @@ namespace wallSystem
                 1
             );
 
-            if (--localQuota > 0) return;
+            if (--localQuota > 0)
+            {
+
+                return;
+            }
 
             E.Get().CurrTrial.Notify();
+            PlayerPrefs.SetInt("PlayerCollecdtedAllPickUps", 1);
+            Debug.Log("Collected everything for the level!");
+            PlayerPrefs.Save();
             _playingSound = true;
         }
 
