@@ -6,4 +6,4 @@ Turtle and Slime enemies:
 Shooter:
 
 1. Add the "Paricipant" to the the "Player" input on the Pea Shooter script. 
-2. Position it with enough area 
+2. Position it with enough area, you can change it's agro range, by adjusting the box collider
