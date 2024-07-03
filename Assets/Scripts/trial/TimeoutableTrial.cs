@@ -20,7 +20,6 @@ namespace trial
             {
                 PlayerPrefs.SetInt("LevelCompleted", 0);
                 PlayerPrefs.Save();
-                Progress();
             }
         }
     }

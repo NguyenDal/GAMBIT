@@ -86,6 +86,12 @@ public class LevelCompleteDisplay : MonoBehaviour
             starsToAward++;
             Debug.Log("Stars: " + starsToAward);
         }
+
+        if (PlayerPrefs.GetInt("CurrentBestTime") < PlayerPrefs.GetFloat("BestTime")){
+            starsToAward++;
+            Debug.Log("Stars: " + starsToAward);
+            PlayerPrefs.SetFloat("BestTime", PlayerPrefs.GetFloat("CurrentBestTime"));
+        }
         DisplayStars(starsToAward);
         ShowStars(starsToAward);
     }

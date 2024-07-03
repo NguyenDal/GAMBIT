@@ -39,6 +39,8 @@ namespace wallSystem
             //of the rest
             PlayerPrefs.SetInt("LevelCompleted", 1);
             PlayerPrefs.SetInt("PlayerCollecdtedAllPickUps", 0);
+            PlayerPrefs.SetFloat("BestTime", 1000);
+            PlayerPrefs.SetFloat("CurrentBestTime", 1000);
             PlayerPrefs.Save();
             string log = "Started with level completed: " + PlayerPrefs.GetInt("LevelCompleted");
             Debug.Log(log);
@@ -217,6 +219,7 @@ namespace wallSystem
             E.Get().CurrTrial.Notify();
             PlayerPrefs.SetInt("PlayerCollecdtedAllPickUps", 1);
             Debug.Log("Collected everything for the level!");
+            
             PlayerPrefs.Save();
             _playingSound = true;
         }
@@ -286,6 +289,9 @@ namespace wallSystem
             }
 
             _currDelay += Time.deltaTime;
+            PlayerPrefs.SetFloat("CurrentBestTime", _currDelay);
+            PlayerPrefs.Save();
+            Debug.Log("Timer: " + _currDelay);
         }
     }
 }
