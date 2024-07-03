@@ -26,13 +26,13 @@ namespace wallSystem
         private bool _reset;
         private int localQuota;
         public bool firstperson;
-        private GameObject particpent;
+        private GameObject participant; // Corrected variable name
         public respawn respawn;
 
         private void Start()
         {
             firstperson = PlayerPrefs.GetInt("FirstPersonEnabled", 0) == 1;
-            particpent = this.gameObject;
+            participant = this.gameObject;
             if (firstperson)
             {
                 Cam = this.transform.Find("FirstPerson Camera").gameObject.GetComponent<Camera>();
@@ -175,6 +175,9 @@ namespace wallSystem
             GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
             Destroy(other.gameObject);
 
+            // Set the checkpoint at the coin's position
+            respawn.SetCheckpoint(other.transform.position);
+
             int BlockID = TrialProgress.GetCurrTrial().BlockID;
 
             if (BlockID < TrialProgress.GetCurrTrial().TrialProgress.NumCollectedPerBlock.Length)
@@ -219,8 +222,8 @@ namespace wallSystem
 
         private void Update()
         {
-            UnityEngine.Debug.Log(particpent.transform.position.y);
-            if (particpent.transform.position.y < -1)
+            UnityEngine.Debug.Log(participant.transform.position.y); // Corrected variable name
+            if (participant.transform.position.y < -1) // Corrected variable name
             {
                 respawn.Respawn();
             }
