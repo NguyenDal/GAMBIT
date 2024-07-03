@@ -37,7 +37,7 @@
             "StartPosition": [-0.96, 0.4285],
             "StartFacing": 0,
             "Rotate": 0,
-            "ActiveGoals": [1, 2, 3, 4],
+            "ActiveGoals": [1, 2, 3, 4, 5],
             "InactiveGoals": [],
             "InvisibleGoals": [],
             "Quota": 4,
@@ -82,6 +82,7 @@
             "Rotation": [0,0,0],
             "Scale": [0.15, 0.15, 0.15]
         },
+        
         {
             "Goal 4" : "3D Object Goal",
             "Type": "3D",
@@ -90,9 +91,8 @@
             "Rotation": [0,0,0],
             "Scale": [0.15, 0.15, 0.15]
         },
-        
         {
-            "Goal 4" : "3D Object Goal",
+            "Goal 5" : "3D Object Goal",
             "Type": "3D",
             "Object": "FlagGoal",
             "Color": "ffff00",
