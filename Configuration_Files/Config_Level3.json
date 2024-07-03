@@ -60,7 +60,7 @@
             "Goal 1" : "3D Object Goal",
             "Type": "3D",
             "Object": "Coin",
-            "Position": [-5.52, 0.6, 2.512],
+            "Position": [-1.5, 0.6, -10.48],
             "Rotation": [0,0,0],
             "Scale": [0.15, 0.15, 0.15]
         },
@@ -69,12 +69,21 @@
             "Goal 2" : "3D Object Goal",
             "Type": "3D",
             "Object": "Coin",
+            "Position": [-5.52, 0.6, 2.512],
+            "Rotation": [0,0,0],
+            "Scale": [0.15, 0.15, 0.15]
+        },
+
+        {
+            "Goal 3" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Coin",
             "Position": [-7.275, 0.6, -11.995],
             "Rotation": [0,0,0],
             "Scale": [0.15, 0.15, 0.15]
         },
         {
-            "Goal 3" : "3D Object Goal",
+            "Goal 4" : "3D Object Goal",
             "Type": "3D",
             "Object": "Coin",
             "Position": [-2.992, 0.6, -17.45],
