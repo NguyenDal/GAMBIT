@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class BrightnessController : MonoBehaviour
 {
-    public Slider brightnessSlider;  
-    public Light DirectionalLight;         
+    public Slider brightnessSlider;
+    public Light DirectionalLight;
 
     public void Start()
     {

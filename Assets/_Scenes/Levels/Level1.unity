@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5494606, g: 0.8546849, b: 0.9216459, a: 1}
+  m_IndirectSpecularColor: {r: 0.5487032, g: 0.85469365, b: 0.92202777, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2882,7 +2882,8 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 0.63
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5239825320360590301, guid: 7f55fad5796fe43ca92a507ff2cc4abb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -12243,7 +12244,8 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 0.0001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5239825320360590301, guid: 7f55fad5796fe43ca92a507ff2cc4abb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -17092,7 +17094,8 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 0.63
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5239825320360590301, guid: 7f55fad5796fe43ca92a507ff2cc4abb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -17429,5 +17432,6 @@ SceneRoots:
   - {fileID: 47351803}
   - {fileID: 1182706312}
   - {fileID: 156355786}
-  - {fileID: 1994737326}
+  - {fileID: 576699214}
+  - {fileID: 84544838}
   - {fileID: 4896069806165201130}
