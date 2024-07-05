@@ -11,7 +11,6 @@ public class Brightness : MonoBehaviour
 
     void Start()
     {
-        // Try to get AutoExposure settings from the PostProcessProfile
         brightness.TryGetSettings(out exposure);
 
         // Load the saved brightness value from PlayerPrefs
