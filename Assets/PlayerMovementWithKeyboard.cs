@@ -7,6 +7,7 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
     public float defaultMovementSpeed = 4f;
     public float defaultRotationSpeed = 100f;
 
+    public Animator charaterAnimator;
     void Start()
     {
         // Retrieve movement speed from PlayerPrefs, default to defaultMovementSpeed if not found
@@ -27,11 +28,21 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
     void Update()
     {
         // Calculate movement direction based on W and S key input
+        //Update the player animation to correlate with the movement
         Vector3 movementDirection = Vector3.zero;
-        if (Keyboard.current.wKey.isPressed)
+        bool isWalking = false;
+
+        if (Keyboard.current.wKey.isPressed){
             movementDirection += transform.forward;
-        if (Keyboard.current.sKey.isPressed)
+            isWalking = true;
+        }
+        if (Keyboard.current.sKey.isPressed){
             movementDirection -= transform.forward;
+            isWalking = true;
+        }
+
+        // Update the animator based on whether the character is walking
+        charaterAnimator.SetBool("IsWalking", isWalking);
 
         // Normalize movement direction to prevent diagonal movement being faster
         movementDirection.Normalize();
