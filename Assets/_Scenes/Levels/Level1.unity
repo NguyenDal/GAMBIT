@@ -3551,6 +3551,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2082868815727068016, guid: cc64f74dc410c1e4fa6ab32cc4ff1f9b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3001981545631164074, guid: cc64f74dc410c1e4fa6ab32cc4ff1f9b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14522,6 +14527,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turtle Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3552952338010011312, guid: 9f69e05496351e341a3cd40e0dc4667c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7164536306795343646, guid: 9f69e05496351e341a3cd40e0dc4667c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14641,6 +14651,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slime Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082868815727068016, guid: cc64f74dc410c1e4fa6ab32cc4ff1f9b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 9185013536881958464, guid: cc64f74dc410c1e4fa6ab32cc4ff1f9b,
         type: 3}

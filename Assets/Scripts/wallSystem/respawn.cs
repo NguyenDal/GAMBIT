@@ -30,7 +30,7 @@ public class respawn : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if (other.tag != "EnemyAggroRange"){
+        if (other.tag != "EnemyAggroRange" && other.tag != "Pickup"){
             StartCoroutine(WaitForDeathAnimation());
         }
     }

@@ -20,6 +20,7 @@ TagManager:
   - Connector
   - EnemyAggroRange
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
