@@ -87,11 +87,21 @@ public class LevelCompleteDisplay : MonoBehaviour
             Debug.Log("Stars: " + starsToAward);
         }
 
-        if (PlayerPrefs.GetInt("CurrentBestTime") < PlayerPrefs.GetFloat("BestTime")){
+        //if currentLevel's best time < Best Time of level, BestTime = CurrentBestTime
+        float currentBestTime = PlayerPrefs.GetFloat("CurrentBestTime" + PlayerPrefs.GetString("previousLevelName"));
+        float BestLevelTime = PlayerPrefs.GetFloat("BestTime" + PlayerPrefs.GetString("previousLevelName"));
+
+        if (currentBestTime < BestLevelTime)
+        {
             starsToAward++;
             Debug.Log("Stars: " + starsToAward);
-            PlayerPrefs.SetFloat("BestTime", PlayerPrefs.GetFloat("CurrentBestTime"));
+            PlayerPrefs.SetFloat("BestTime" + PlayerPrefs.GetString("previousLevelName"),
+                PlayerPrefs.GetFloat("CurrentBestTime" + PlayerPrefs.GetString("previousLevelName")));
+
+            PlayerPrefs.Save();
+            
         }
+        Debug.Log("Previous Level's Best time: " + PlayerPrefs.GetFloat("BestTime" + PlayerPrefs.GetString("previousLevelName")));
         DisplayStars(starsToAward);
         ShowStars(starsToAward);
     }
