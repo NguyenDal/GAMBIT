@@ -1,0 +1,110 @@
+{
+    "OutputTimesPerSecond": 30,
+    "IgnoreUserInputDelay": 0.5,
+    "TimingVerification": false,
+    "CHARACTER DATA": "CHARACTER DATA----------*********-------------------CHARACTER DATA",
+    "CharacterData": {
+        "Height": 2,
+        "MovementSpeed": 5.0,
+        "RotationSpeed": 75.0,
+        "FirstPerson": false,
+        "SafeMode": false,
+        "DistancePickup": 2,
+        "GoalRotationSpeed": 0,
+        "MoveWithTiles": false
+    },
+
+    "BLOCK DATA": "BLOCK DATA---------------------*********--------------------BLOCK DATA",   
+   
+    "BlockOrder": [1],
+    
+    "Blocks": [
+        {
+            "Block 1": "Find objects Visible",
+            "Notes": "Trials will be presented in order from TrialOrder list",
+            "TrialOrder": [1, 2]
+        }
+    ],
+
+    "TRIAL DATA": "TRIAL DATA--------------------*********------------------TRIAL DATA",
+    
+    "Trials": [
+        {
+            "Trial 1": "Level 3",
+            "DisplayText": "Collect The Goals!",
+            "TrialTime": 600,
+            "Scene": 4,  
+            "StartPosition": [-0.96, 0.4285],
+            "StartFacing": 0,
+            "Rotate": 0,
+            "ActiveGoals": [1, 2, 3, 4, 5],
+            "InactiveGoals": [],
+            "InvisibleGoals": [],
+            "Quota": 4,
+            "LandMarks": [],
+            "TrialEndKey": "x"
+        },
+        {
+            "Trial 2": "End",
+            "Instructional": 1,
+            "FileLocation": "Tutorial_Instructions/End.png",
+            "TrialTime": -1,
+            "TrialEndKey": "Space"
+        }
+    ],
+
+    "GOAL DATA": "GOAL DATA--------------------*********------------------GOAL DATA",
+
+    "Goals": [
+        {
+            "Goal 1" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Coin",
+            "Position": [-1.5, 0.6, -10.48],
+            "Rotation": [0,0,0],
+            "Scale": [0.15, 0.15, 0.15]
+        },
+
+        {
+            "Goal 2" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Coin",
+            "Position": [-5.52, 0.6, 2.512],
+            "Rotation": [0,0,0],
+            "Scale": [0.15, 0.15, 0.15]
+        },
+
+        {
+            "Goal 3" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Coin",
+            "Position": [-7.275, 0.6, -11.995],
+            "Rotation": [0,0,0],
+            "Scale": [0.15, 0.15, 0.15]
+        },
+        
+        {
+            "Goal 4" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Coin",
+            "Position": [-2.992, 0.6, -17.45],
+            "Rotation": [0,0,0],
+            "Scale": [0.15, 0.15, 0.15]
+        },
+        {
+            "Goal 5" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "FlagGoal",
+            "Color": "ffff00",
+            "Position": [-0.304, 0.3, -13.246],
+            "Rotation": [0,0,0],
+            "Scale": [0.3, 0.3, 0.3]
+        }
+    ],
+
+    "LANDMARK DATA": "LANDMARK DATA----------*********------------------LANDMARK DATA",
+    "Landmarks": [],
+
+    "Enclosure DATA": "Enclosure DATA--------------------*********------------------Enclosure DATA",
+    "Enclosures": []
+}
