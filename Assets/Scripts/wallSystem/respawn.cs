@@ -17,17 +17,16 @@ public class respawn : MonoBehaviour
     }
     public void Respawn(){
         participent = GameObject.FindGameObjectWithTag("Player");
+        participent.SetActive(false);
         trans = GameObject.FindGameObjectWithTag("Respawn");
         respawnLocation = trans.transform;
         participent.transform.position = respawnLocation.position;
+        participent.SetActive(true);
     }
 
     void OnCollisionEnter(Collision collision){
         if(collision.gameObject.name.Equals("Participant")){
-            participent = GameObject.FindGameObjectWithTag("Player");
-            trans = GameObject.FindGameObjectWithTag("Respawn");
-            respawnLocation = trans.transform;
-            participent.transform.position = respawnLocation.position;
+            Respawn();
         }
     }
     
