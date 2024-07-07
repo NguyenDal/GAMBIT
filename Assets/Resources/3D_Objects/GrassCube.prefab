@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 787558606440989703}
   - component: {fileID: 8892297337623865354}
   - component: {fileID: 5472756853309440409}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GrassCube
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 1898838549788936266}
   - component: {fileID: 6057364630599446287}
   - component: {fileID: 2576204236721208309}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GrassTop
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 9021513108943233953}
   - component: {fileID: 7538527837305309740}
   - component: {fileID: 1215708887160382159}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GrassUnder
   m_TagString: Wall
   m_Icon: {fileID: 0}
