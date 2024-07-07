@@ -9,6 +9,12 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
 
     void Start()
     {
+        // Disable keyboard player movement if frequency movement is enabled
+        if (gameObject.GetComponent<FrequencyMovement>() != null && gameObject.GetComponent<FrequencyMovement>().frequencyMovementEnabled)
+        {
+            this.enabled = false;
+        }
+
         // Retrieve movement speed from PlayerPrefs, default to defaultMovementSpeed if not found
         float movementSpeed = PlayerPrefs.GetFloat("MovementSpeed", defaultMovementSpeed);
         // Retrieve rotation speed from PlayerPrefs, default to defaultRotationSpeed if not found
