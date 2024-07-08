@@ -15,7 +15,6 @@ namespace wallSystem
     {
         public Camera Cam;
         private GenerateGenerateWall _gen;
-        private readonly string _outDir;
         public CharacterController _controller;
         private Vector3 _moveDirection = Vector3.zero;
         private float _currDelay;
@@ -28,11 +27,14 @@ namespace wallSystem
         public bool firstperson;
         private GameObject participant; // Corrected variable name
         public respawn respawn;
+        private PlayerMovementWithKeyboard movementScript;
 
         private void Start()
         {
             firstperson = PlayerPrefs.GetInt("FirstPersonEnabled", 0) == 1;
             participant = this.gameObject;
+            movementScript = participant.GetComponent<PlayerMovementWithKeyboard>();
+
             if (firstperson)
             {
                 Cam = this.transform.Find("FirstPerson Camera").gameObject.GetComponent<Camera>();
@@ -225,7 +227,11 @@ namespace wallSystem
             UnityEngine.Debug.Log(participant.transform.position.y); // Corrected variable name
             if (participant.transform.position.y < -1) // Corrected variable name
             {
+                // Stop player movement
+                movementScript.StopMovement();
                 respawn.Respawn();
+                // Reset player movement
+                movementScript.ResetMovement();
             }
             E.LogData(TrialProgress.GetCurrTrial().TrialProgress, TrialProgress.GetCurrTrial().TrialStartTime, transform);
 
