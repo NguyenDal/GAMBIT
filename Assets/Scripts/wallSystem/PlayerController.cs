@@ -15,7 +15,6 @@ namespace wallSystem
     {
         public Camera Cam;
         private GenerateGenerateWall _gen;
-        private readonly string _outDir;
         public CharacterController _controller;
         private Vector3 _moveDirection = Vector3.zero;
         private float _currDelay;
@@ -26,13 +25,16 @@ namespace wallSystem
         private bool _reset;
         private int localQuota;
         public bool firstperson;
-        private GameObject particpent;
+        private GameObject participant; // Corrected variable name
         public respawn respawn;
+        private PlayerMovementWithKeyboard movementScript;
 
         private void Start()
         {
             firstperson = PlayerPrefs.GetInt("FirstPersonEnabled", 0) == 1;
-            particpent = this.gameObject;
+            participant = this.gameObject;
+            movementScript = participant.GetComponent<PlayerMovementWithKeyboard>();
+
             if (firstperson)
             {
                 Cam = this.transform.Find("FirstPerson Camera").gameObject.GetComponent<Camera>();
@@ -175,6 +177,9 @@ namespace wallSystem
             GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
             Destroy(other.gameObject);
 
+            // Set the checkpoint at the coin's position
+            respawn.SetCheckpoint(other.transform.position);
+
             int BlockID = TrialProgress.GetCurrTrial().BlockID;
 
             if (BlockID < TrialProgress.GetCurrTrial().TrialProgress.NumCollectedPerBlock.Length)
@@ -219,10 +224,14 @@ namespace wallSystem
 
         private void Update()
         {
-            UnityEngine.Debug.Log(particpent.transform.position.y);
-            if (particpent.transform.position.y < -1)
+            UnityEngine.Debug.Log(participant.transform.position.y); // Corrected variable name
+            if (participant.transform.position.y < -1) // Corrected variable name
             {
+                // Stop player movement
+                movementScript.StopMovement();
                 respawn.Respawn();
+                // Reset player movement
+                movementScript.ResetMovement();
             }
             E.LogData(TrialProgress.GetCurrTrial().TrialProgress, TrialProgress.GetCurrTrial().TrialStartTime, transform);
 
