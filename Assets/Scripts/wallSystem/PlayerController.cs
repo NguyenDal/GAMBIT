@@ -36,7 +36,6 @@ namespace wallSystem
         {
             
             firstperson = PlayerPrefs.GetInt("FirstPersonEnabled", 0) == 1;
-            particpent = this.gameObject;
             //For the 3 star system, start by assumming the player will complete level successfully within time limit. TimeouttableTrial will change the LevelCompleted
             //PlayerPref to 0 if the opposite case
             if (PlayerPrefs.GetFloat("BestTime" + SceneManager.GetActiveScene().name) != 0)

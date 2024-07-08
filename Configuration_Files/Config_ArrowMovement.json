@@ -46,7 +46,7 @@
             "ActiveGoals" : [1,2,3,11],
             "InactiveGoals" : [],
             "InvisibleGoals" : [],
-            "Quota": 1,
+            "Quota": 4,
             "LandMarks" :[],
             "TrialEndKey": "x"
         },
