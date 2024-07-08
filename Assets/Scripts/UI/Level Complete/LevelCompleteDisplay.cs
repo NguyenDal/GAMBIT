@@ -104,6 +104,9 @@ public class LevelCompleteDisplay : MonoBehaviour
         Debug.Log("Previous Level's Best time: " + PlayerPrefs.GetFloat("BestTime" + PlayerPrefs.GetString("previousLevelName")));
         DisplayStars(starsToAward);
         ShowStars(starsToAward);
+        PlayerPrefs.SetInt("StarsAwardedForPreviousLevel", starsToAward);
+        PlayerPrefs.Save();
+        
     }
 
 

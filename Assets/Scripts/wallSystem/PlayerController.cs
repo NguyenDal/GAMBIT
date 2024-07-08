@@ -55,6 +55,9 @@ namespace wallSystem
                     );
                 Debug.Log("Current Level Best Time Created: " + PlayerPrefs.GetFloat("BestTime" + SceneManager.GetActiveScene().name));
             }
+            if (PlayerPrefs.GetInt("StarsAwardedForPreviousLevel") != 0) {
+                Debug.Log("Stars awarded for previous level: " + PlayerPrefs.GetInt("StarsAwardedForPreviousLevel"));
+            }
 
             //storing level name to make use of it in LevelCompleteDisplayScene
             PlayerPrefs.SetString("previousLevelName", SceneManager.GetActiveScene().name);
