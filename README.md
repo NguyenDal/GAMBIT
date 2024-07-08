@@ -93,6 +93,7 @@ SoundEffects:
 Explosion SFX: https://www.youtube.com/watch?v=9FMquJzgDGQ&ab_channel=SoundEffects
 Menu click, Expirement finish, Expirement start - Cymatics Omega Sample Pack
 Colorblindness Asset- https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/colorblind-effect-76360
+Brightness - https://docs.unity3d.com/Manual/PostProcessingOverview.html 
 
 ## License
 For open source projects, say how it is licensed.
