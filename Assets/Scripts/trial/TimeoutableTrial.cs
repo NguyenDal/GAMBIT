@@ -18,8 +18,9 @@ namespace trial
 
             if (_runningTime > _threshHold)
             {
-                Debug.Log(_runningTime);
-                Progress();
+            //if timer runs out, player will not achieve a star for the 3 star system
+                PlayerPrefs.SetInt("LevelCompleted", 0);
+                PlayerPrefs.Save();
             }
         }
     }

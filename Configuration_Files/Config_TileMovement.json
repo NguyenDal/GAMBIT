@@ -22,7 +22,7 @@
         {
             "Block 1" : "Find objects Visible",
               "Notes" : "Trials will be presented in order from TrialOrder list",
-              "TrialOrder": [1,2,3,5]
+              "TrialOrder": [1,2,6, 3, 6 ,5]
         }
     ],
 
@@ -82,6 +82,12 @@
             "Trial 5" : "End",
             "TrialTime" : 600,
             "Scene": 6,
+            "TrialEndKey": "Space"
+        },
+        {
+            "Trial 6" : "Stars Display",
+            "TrialTime" : 600,
+            "Scene": 7,
             "TrialEndKey": "Space"
         }
     ],

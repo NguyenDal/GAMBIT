@@ -26,7 +26,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/EndingScene.unity
     guid: a4e0f5f07dc154834a417f90e2ed9917
-  - enabled: 1
-    path: Assets/_Scenes/Levels/LevelCompleteDisplay.unity
-    guid: d44f70fd7e03f40459f2f76f32bc9503
   m_configObjects: {}
