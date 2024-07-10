@@ -1,0 +1,26 @@
+image: gableroux/unity3d:2022.3.20f1
+
+stages:
+  - build
+  - verify
+
+variables:
+  UNITY_EDITOR_PATH: "/opt/unity/Editor/Unity"
+  PROJECT_PATH: "$(pwd)"
+
+before_script:
+  - echo "Using Unity version $UNITY_VERSION"
+  - mkdir -p $CI_PROJECT_DIR/Builds
+
+build_project:
+  stage: build
+  script:
+    - $UNITY_EDITOR_PATH -batchmode -nographics -quit -projectPath $PROJECT_PATH -buildTarget Win64 -buildWindows64Player $PROJECT_PATH/Builds/Windows/Build.exe
+  artifacts:
+    paths:
+      - Builds
+
+verify_scenes:
+  stage: verify
+  script:
+    - $UNITY_EDITOR_PATH -batchmode -nographics -quit -projectPath $PROJECT_PATH -executeMethod SceneVerifier.VerifyScenes
