@@ -22,7 +22,7 @@
         {
             "Block 1": "Find objects Visible",
             "Notes": "Trials will be presented in order from TrialOrder list",
-            "TrialOrder": [1, 2]
+            "TrialOrder": [1, 2, 3]
         }
     ],
 
@@ -45,7 +45,13 @@
             "TrialEndKey": "x"
         },
         {
-            "Trial 2": "End",
+            "Trial 2" : "Stars Display",
+            "TrialTime" : 600,
+            "Scene": 7,
+            "TrialEndKey": "Space"
+        },
+        {
+            "Trial 3": "End",
             "Instructional": 1,
             "FileLocation": "Tutorial_Instructions/End.png",
             "TrialTime": -1,
