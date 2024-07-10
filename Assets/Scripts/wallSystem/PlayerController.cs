@@ -8,6 +8,7 @@ using data;
 using DS = data.DataSingleton;
 using E = main.Loader;
 using Random = UnityEngine.Random;
+using System.Collections;
 
 namespace wallSystem
 {
@@ -28,6 +29,7 @@ namespace wallSystem
         public bool firstperson;
         private GameObject particpent;
         public respawn respawn;
+        public Animator animator;
 
         private void Start()
         {
@@ -171,6 +173,7 @@ namespace wallSystem
         private void OnTriggerEnter(Collider other)
         {
             if (!other.gameObject.CompareTag("Pickup")) return;
+            
 
             GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<PickupSound>().Sound, 10);
             Destroy(other.gameObject);
@@ -230,7 +233,7 @@ namespace wallSystem
             {
                 if (!GetComponent<AudioSource>().isPlaying)
                 {
-                    TrialProgress.GetCurrTrial().Progress();
+                    StartCoroutine(WaitForVictoryAnimation());
                     _playingSound = false;
                 }
             }
@@ -265,6 +268,21 @@ namespace wallSystem
             }
 
             _currDelay += Time.deltaTime;
+        }
+
+        public IEnumerator WaitForVictoryAnimation(){
+            animator.SetBool("IsAtGoal",true);
+            
+            // Wait for the death animation to finish
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            while (!(stateInfo.IsName("Jump") && stateInfo.normalizedTime >= 1.0f)){
+                yield return null;
+                stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            }
+            animator.SetBool("IsAtGoal",false);
+            TrialProgress.GetCurrTrial().Progress();
+            
+            yield break;
         }
     }
 }
