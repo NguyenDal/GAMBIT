@@ -23,6 +23,7 @@ public class FrequencyMovement : MonoBehaviour
     private bool isMoving = false;
     private bool isTurning = false;
     private bool isInblock = false;
+    private Vector3 lastLocation;
 
     // Default movement speeds (will be overwritten by PlayerPrefs)
     [SerializeField] float defaultMovementSpeed = 4f;
@@ -58,6 +59,7 @@ public class FrequencyMovement : MonoBehaviour
 
         if (IsGrounded() && !isMoving && !isTurning && !isInblock)
         {
+            lastLocation = transform.position;
             switch (frequency - baselineFreq)
             {
                 // Forward
@@ -195,9 +197,13 @@ public class FrequencyMovement : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         Debug.Log("Collided with " + other.gameObject.tag);
-        if (other.gameObject.tag.Equals("Cube"))
+        
+        // The !isInBlock is there to make sure we dont change the last location after it is changed once. This is to prevent
+        // The player from being stuck in the block by having the lastLocation being inside the block. 
+        if (other.gameObject.tag.Equals("Cube") && !isInblock)
         {
             isInblock = true;
+            transform.position = lastLocation;
         }
     }
 
