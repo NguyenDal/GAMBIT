@@ -6,9 +6,17 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
     // Default movement and rotation speeds (will be overwritten by PlayerPrefs)
     public float defaultMovementSpeed = 4f;
     public float defaultRotationSpeed = 100f;
+    private Vector3 movementDirection = Vector3.zero;
+    private bool stopMovement = false;
 
     void Start()
     {
+        // Disable keyboard player movement if frequency movement is enabled
+        if (gameObject.GetComponent<FrequencyMovement>() != null && gameObject.GetComponent<FrequencyMovement>().frequencyMovementEnabled)
+        {
+            this.enabled = false;
+        }
+
         // Retrieve movement speed from PlayerPrefs, default to defaultMovementSpeed if not found
         float movementSpeed = PlayerPrefs.GetFloat("MovementSpeed", defaultMovementSpeed);
         // Retrieve rotation speed from PlayerPrefs, default to defaultRotationSpeed if not found
@@ -16,9 +24,9 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
 
         if (movementSpeed > 4)
             movementSpeed = 4f;
-        if (rotationSpeed > 100) 
+        if (rotationSpeed > 100)
             rotationSpeed = 100f;
-        
+
         // Apply retrieved speeds
         SetMovementSpeed(movementSpeed);
         SetRotationSpeed(rotationSpeed);
@@ -26,8 +34,14 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
 
     void Update()
     {
+        if (stopMovement)
+        {
+            // Stop all movement
+            return;
+        }
+
         // Calculate movement direction based on W and S key input
-        Vector3 movementDirection = Vector3.zero;
+        movementDirection = Vector3.zero;
         if (Keyboard.current.wKey.isPressed)
             movementDirection += transform.forward;
         if (Keyboard.current.sKey.isPressed)
@@ -75,5 +89,18 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
     private float GetRotationSpeed()
     {
         return PlayerPrefs.GetFloat("RotationSpeed", defaultRotationSpeed);
+    }
+
+    // Method to stop movement
+    public void StopMovement()
+    {
+        stopMovement = true;
+        movementDirection = Vector3.zero;
+    }
+
+    // Method to reset movement
+    public void ResetMovement()
+    {
+        stopMovement = false;
     }
 }

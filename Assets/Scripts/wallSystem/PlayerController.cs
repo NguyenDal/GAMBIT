@@ -8,6 +8,9 @@ using data;
 using DS = data.DataSingleton;
 using E = main.Loader;
 using Random = UnityEngine.Random;
+using UnityEngine.Analytics;
+using UnityEditor;
+using UnityEngine.SceneManagement;
 
 namespace wallSystem
 {
@@ -15,7 +18,6 @@ namespace wallSystem
     {
         public Camera Cam;
         private GenerateGenerateWall _gen;
-        private readonly string _outDir;
         public CharacterController _controller;
         private Vector3 _moveDirection = Vector3.zero;
         private float _currDelay;
@@ -26,13 +28,48 @@ namespace wallSystem
         private bool _reset;
         private int localQuota;
         public bool firstperson;
-        private GameObject particpent;
+        private GameObject participant; // Corrected variable name
         public respawn respawn;
+        private PlayerMovementWithKeyboard movementScript;
 
         private void Start()
         {
+            
             firstperson = PlayerPrefs.GetInt("FirstPersonEnabled", 0) == 1;
-            particpent = this.gameObject;
+            //For the 3 star system, start by assumming the player will complete level successfully within time limit. TimeouttableTrial will change the LevelCompleted
+            //PlayerPref to 0 if the opposite case
+            if (PlayerPrefs.GetFloat("BestTime" + SceneManager.GetActiveScene().name) != 0)
+            {
+                //Print Current Level's best time
+                Debug.Log("Current Level Best Time: " + PlayerPrefs.GetFloat("BestTime" + SceneManager.GetActiveScene().name));
+            }
+            else if(PlayerPrefs.GetFloat("BestTime" + SceneManager.GetActiveScene().name) == 0)
+            {
+                //Create best time and set it as current level's best time
+                Debug.Log("The Current level does not have a best time! creating one .....");
+                PlayerPrefs.SetFloat("BestTime" + SceneManager.GetActiveScene().name, 400000);
+                PlayerPrefs.SetFloat(
+                    "CurrentBestTime" + SceneManager.GetActiveScene().name,
+                    PlayerPrefs.GetFloat("BestTime" + SceneManager.GetActiveScene().name, 200000)
+                    );
+                Debug.Log("Current Level Best Time Created: " + PlayerPrefs.GetFloat("BestTime" + SceneManager.GetActiveScene().name));
+            }
+            if (PlayerPrefs.GetInt("StarsAwardedForPreviousLevel") != 0) {
+                Debug.Log("Stars awarded for previous level: " + PlayerPrefs.GetInt("StarsAwardedForPreviousLevel"));
+            }
+
+            //storing level name to make use of it in LevelCompleteDisplayScene
+            PlayerPrefs.SetString("previousLevelName", SceneManager.GetActiveScene().name);
+
+            PlayerPrefs.SetInt("LevelCompleted", 1);
+            PlayerPrefs.SetInt("PlayerCollecdtedAllPickUps", 0);
+            PlayerPrefs.Save();
+            string log = "Started with level completed: " + PlayerPrefs.GetInt("LevelCompleted");
+            Debug.Log(log);
+
+            participant = this.gameObject;
+            movementScript = participant.GetComponent<PlayerMovementWithKeyboard>();
+
             if (firstperson)
             {
                 Cam = this.transform.Find("FirstPerson Camera").gameObject.GetComponent<Camera>();
@@ -88,6 +125,7 @@ namespace wallSystem
             _waitTime = E.Get().CurrTrial.trialData.Rotate;
             _reset = false;
             localQuota = E.Get().CurrTrial.trialData.Quota;
+            Debug.Log("localQuota: " + localQuota);
 
             TrialProgress.GetCurrTrial().TrialProgress.TrialNumber++;
             TrialProgress.GetCurrTrial().TrialProgress.Instructional = TrialProgress.GetCurrTrial().trialData.Instructional;
@@ -170,10 +208,17 @@ namespace wallSystem
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.gameObject.CompareTag("Pickup")) return;
+            if (!other.gameObject.CompareTag("Pickup"))
+            {
+           
+                return;
+            }
 
-            GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
+                GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
             Destroy(other.gameObject);
+
+            // Set the checkpoint at the coin's position
+            respawn.SetCheckpoint(other.transform.position);
 
             int BlockID = TrialProgress.GetCurrTrial().BlockID;
 
@@ -194,9 +239,17 @@ namespace wallSystem
                 1
             );
 
-            if (--localQuota > 0) return;
+            if (--localQuota > 0)
+            {
+
+                return;
+            }
 
             E.Get().CurrTrial.Notify();
+            PlayerPrefs.SetInt("PlayerCollecdtedAllPickUps", 1);
+            Debug.Log("Collected everything for the level!");
+            
+            PlayerPrefs.Save();
             _playingSound = true;
         }
 
@@ -219,10 +272,14 @@ namespace wallSystem
 
         private void Update()
         {
-            UnityEngine.Debug.Log(particpent.transform.position.y);
-            if (particpent.transform.position.y < -1)
+            UnityEngine.Debug.Log(participant.transform.position.y); // Corrected variable name
+            if (participant.transform.position.y < -1) // Corrected variable name
             {
+                // Stop player movement
+                movementScript.StopMovement();
                 respawn.Respawn();
+                // Reset player movement
+                movementScript.ResetMovement();
             }
             E.LogData(TrialProgress.GetCurrTrial().TrialProgress, TrialProgress.GetCurrTrial().TrialStartTime, transform);
 
@@ -263,8 +320,11 @@ namespace wallSystem
                     UnityEngine.Debug.LogWarning("Skipping movement calc: instructional trial");
                 }
             }
-
+            //keeps track of current level time
             _currDelay += Time.deltaTime;
+            PlayerPrefs.SetFloat("CurrentBestTime" + SceneManager.GetActiveScene().name, _currDelay);
+            PlayerPrefs.Save();
+            Debug.Log("Timer: " + _currDelay);
         }
     }
 }
