@@ -43,7 +43,5 @@ public class PS4Controller : MonoBehaviour
                 }
             }
         }
-
-        text.SetText(hertz.ToString() + " hertz");
     }
 }

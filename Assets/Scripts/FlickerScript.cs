@@ -9,14 +9,19 @@ using UnityEngine;
  */
 public class FlickerScript : MonoBehaviour
 {
-    public Boolean flicker;
+    public bool flicker;
+    private bool isFlickering = false;
+    private float flickerFrequency;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        flickerFrequency = GameObject.FindGameObjectWithTag("Player").GetComponent<FrequencyMovement>().GetBaselineFrequency() + FrequencyMovement.breakWallOffset;
     }
     IEnumerator FlickerObject(float frequency)
     {
+        isFlickering = true;
+
         //The intervals of time (in seconds) should be 1/Frequency (Hz), e.g. if the frequency is 8hz, the object should be OFF for 
         // 1/16th of a second, and ON 1/16th of a second (1/8th second total time.)
         float waitTime = (1 / frequency) / 2;
@@ -27,6 +32,7 @@ public class FlickerScript : MonoBehaviour
             gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             yield return new WaitForSeconds(waitTime);
             if(!flicker){
+                isFlickering = false;
                 break;
             }
         }
@@ -34,8 +40,8 @@ public class FlickerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(flicker){
-            StartCoroutine(FlickerObject(FrequencyCheck.frequency));
+        if(flicker && !isFlickering){
+            StartCoroutine(FlickerObject(flickerFrequency));
         }
     }
 }
