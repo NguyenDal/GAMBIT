@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
@@ -21,6 +22,7 @@ public class FrequencyMovement : MonoBehaviour
 
     private bool isMoving = false;
     private bool isTurning = false;
+    private bool isInblock = false;
 
     // Default movement speeds (will be overwritten by PlayerPrefs)
     [SerializeField] float defaultMovementSpeed = 4f;
@@ -54,7 +56,7 @@ public class FrequencyMovement : MonoBehaviour
     {
         float baselineFreq = GetBaselineFrequency();
 
-        if (IsGrounded() && !isMoving && !isTurning)
+        if (IsGrounded() && !isMoving && !isTurning && !isInblock)
         {
             switch (frequency - baselineFreq)
             {
@@ -188,5 +190,14 @@ public class FrequencyMovement : MonoBehaviour
     public bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("Collided with " + other.gameObject.tag);
+        if (other.gameObject.tag.Equals("Cube"))
+        {
+            isInblock = true;
+        }
     }
 }
