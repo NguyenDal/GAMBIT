@@ -18,8 +18,10 @@ public class FrequencyCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool isFloat = float.TryParse(GameObject.Find("Input").GetComponent<Text>().text, out frequency);
+        
         //If the entered frequency is not valid (should be a positive float value), we should not let the participant start the experiment.
-        if (!float.TryParse(GameObject.Find("Input").GetComponent<Text>().text, out frequency) || frequency <= 0)
+        if (!isFloat || frequency <= 0)
         {
             //Let the participant know that their input is not valid, and prevent the start button from being clicked. 
             gameObject.GetComponent<Text>().text = "Not a valid frequency value.";
@@ -27,6 +29,10 @@ public class FrequencyCheck : MonoBehaviour
         }
         else
         {
+            // Set the baseline frequency
+            PlayerPrefs.SetFloat("BaselineFrequency", frequency);
+            PlayerPrefs.Save();
+
             gameObject.GetComponent<Text>().text = "";
             startButton.interactable = true;
         }
