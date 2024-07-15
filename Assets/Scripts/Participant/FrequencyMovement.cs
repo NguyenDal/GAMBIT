@@ -200,4 +200,9 @@ public class FrequencyMovement : MonoBehaviour
             isInblock = true;
         }
     }
+
+    public void SetIsInblock(bool value)
+    {
+        this.isInblock = value;
+    }
 }

@@ -51,6 +51,7 @@ public class DestroyObjectScript : MonoBehaviour
                     audioSource.Play();
                     isPlaying = true;
                 }
+                player.GetComponent<FrequencyMovement>().SetIsInblock(false);
             }
 
             // Check if the audio has finished playing
@@ -58,6 +59,8 @@ public class DestroyObjectScript : MonoBehaviour
                 wall.SetActive(false);
                 isPlaying = false; // Reset the flag for future use
             }
+            
+
         }
     }
 }
