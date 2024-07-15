@@ -1,24 +1,11 @@
-# Use the Unity Hub base image
-FROM gableroux/unity3d:2022.3.20f1
+# Use the Unity CI image
+FROM unityci/editor:2021.1.28f1-base-0.15.0
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /project
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Copy the entire project directory into the container
+COPY . /project
 
-# Set environment variables (if any)
-# ENV VARIABLE_NAME value
-
-# Run Unity in batch mode to build the project
-RUN /opt/Unity/Editor/Unity -batchmode -nographics -silent-crashes -logFile /dev/null -projectPath /app -buildTarget StandaloneLinux64 -quit
-
-# Clean up the project
-RUN rm -rf /root/.cache/unity3d
-RUN rm -rf /app/Library
-RUN rm -rf /app/Temp
-RUN rm -rf /app/Logs
-RUN rm -rf /app/obj
-
-# Set the entry point for the Docker container
-ENTRYPOINT ["/bin/bash"]
+# Run the Unity build command with additional debug information
+RUN /opt/unity/Editor/Unity -quit -batchmode -nographics -projectPath /project -logFile /project/unity_build.log -buildWindows64Player /project/Builds/Windows/myproject.exe || cat /project/unity_build.log

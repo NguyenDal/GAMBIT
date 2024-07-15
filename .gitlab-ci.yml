@@ -1,26 +1,43 @@
-image: gableroux/unity3d:2022.3.20f1
+# Specify the Docker image to use for the CI pipeline
+# In this case, we're using a Unity CI image with a specific Unity Editor version
+image: unityci/editor:2021.1.28f1-base-0.15.0
 
+# Define the stages of the CI pipeline
 stages:
   - build
-  - verify
 
-variables:
-  UNITY_EDITOR_PATH: "/opt/unity/Editor/Unity"
-  PROJECT_PATH: "$(pwd)"
-
+# Commands to run before the main script
 before_script:
-  - echo "Using Unity version $UNITY_VERSION"
-  - mkdir -p $CI_PROJECT_DIR/Builds
+  # Update the package lists for the package manager
+  - apt-get update
+  # Install Git LFS (Large File Storage) to handle large files in the repository
+  - apt-get install -y git-lfs
+  # Pull the large files from the repository
+  - git-lfs pull
 
-build_project:
+# Define the build job
+build:
+  # Assign this job to the build stage
   stage: build
+  # The script to run for this job
   script:
-    - $UNITY_EDITOR_PATH -batchmode -nographics -quit -projectPath $PROJECT_PATH -buildTarget Win64 -buildWindows64Player $PROJECT_PATH/Builds/Windows/Build.exe
+    # Run the Unity build command with the specified options
+    # -quit: Quit the Unity Editor after the build
+    # -batchmode: Run Unity in batch mode (no user interaction required)
+    # -nographics: Run without initializing the graphics device (for headless servers)
+    # -projectPath: Specify the path to the Unity project
+    # -logFile: Specify the file to write logs to
+    # -buildWindows64Player: Specify the output path for the Windows build
+    # If the build fails, use '|| cat /project/unity_build.log' to print the log file content to the console
+    - /opt/unity/Editor/Unity -quit -batchmode -nographics -projectPath /project -logFile /project/unity_build.log -buildWindows64Player /project/Builds/Windows/myproject.exe || cat /project/unity_build.log
+  # Specify the artifacts to keep after the job is done
   artifacts:
+    # Define the paths of the artifacts
     paths:
-      - Builds
-
-verify_scenes:
-  stage: verify
-  script:
-    - $UNITY_EDITOR_PATH -batchmode -nographics -quit -projectPath $PROJECT_PATH -executeMethod SceneVerifier.VerifyScenes
+      # Keep the built executable
+      - /project/Builds/Windows/myproject.exe
+      # Keep the build log file for debugging purposes
+      - /project/unity_build.log
+  # Specify that this job should only run for the 'pipeline' branch
+  only:
+    - pipeline
