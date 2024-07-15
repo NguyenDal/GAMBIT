@@ -38,6 +38,4 @@ build:
       - /project/Builds/Windows/myproject.exe
       # Keep the build log file for debugging purposes
       - /project/unity_build.log
-  # Specify that this job should only run for the 'pipeline' branch
-  only:
-    - GavinSharma/pipeline
+
