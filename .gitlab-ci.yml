@@ -40,4 +40,4 @@ build:
       - /project/unity_build.log
   # Specify that this job should only run for the 'pipeline' branch
   only:
-    - pipeline
+    - GavinSharma/pipeline
