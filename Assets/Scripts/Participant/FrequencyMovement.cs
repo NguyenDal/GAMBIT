@@ -59,17 +59,20 @@ public class FrequencyMovement : MonoBehaviour
 
         if (IsGrounded() && !isMoving && !isTurning && !isInblock)
         {
-            lastLocation = transform.position;
             switch (frequency - baselineFreq)
             {
                 // Forward
                 case forwardOffset:
+                    lastLocation = transform.position;
+                    Debug.Log("LASTPOS F: " + lastLocation);
                     isMoving = true;
                     StartCoroutine(MoveDirection(tileSize, transform.forward));
                     break;
 
                 // Backward
                 case backwardOffset:
+                    lastLocation = transform.position;
+                    Debug.Log("LASTPOS B: " + lastLocation);
                     isMoving = true;
                     StartCoroutine(MoveDirection(tileSize, -transform.forward));
                     break;
@@ -109,7 +112,7 @@ public class FrequencyMovement : MonoBehaviour
         float progress = 0;
 
         // Move until given distance has been crossed
-        while (progress < moveDistance)
+        while (progress < moveDistance && !isInblock)
         {
             // Lerp while grounded, else be affected by gravity (keeps player on tile grid)
             if (IsGrounded())
