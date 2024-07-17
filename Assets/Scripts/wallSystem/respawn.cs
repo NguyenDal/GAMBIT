@@ -93,7 +93,7 @@ public class respawn : MonoBehaviour
 
     public void SetCheckpoint(Vector3 position)
     {
-        checkpointPosition = position;
+        checkpointPosition = new Vector3(position.x, (float)0.4, position.z);
         checkpointSet = true;
     }
 
