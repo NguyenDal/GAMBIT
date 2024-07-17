@@ -1,0 +1,41 @@
+# Specify the Docker image to use for the CI pipeline
+# In this case, we're using a Unity CI image with a specific Unity Editor version
+image: unityci/editor:2021.1.28f1-base-0.15.0
+
+# Define the stages of the CI pipeline
+stages:
+  - build
+
+# Commands to run before the main script
+before_script:
+  # Update the package lists for the package manager
+  - apt-get update
+  # Install Git LFS (Large File Storage) to handle large files in the repository
+  - apt-get install -y git-lfs
+  # Pull the large files from the repository
+  - git-lfs pull
+
+# Define the build job
+build:
+  # Assign this job to the build stage
+  stage: build
+  # The script to run for this job
+  script:
+    # Run the Unity build command with the specified options
+    # -quit: Quit the Unity Editor after the build
+    # -batchmode: Run Unity in batch mode (no user interaction required)
+    # -nographics: Run without initializing the graphics device (for headless servers)
+    # -projectPath: Specify the path to the Unity project
+    # -logFile: Specify the file to write logs to
+    # -buildWindows64Player: Specify the output path for the Windows build
+    # If the build fails, use '|| cat /project/unity_build.log' to print the log file content to the console
+    - /opt/unity/Editor/Unity -quit -batchmode -nographics -projectPath /project -logFile /project/unity_build.log -buildWindows64Player /project/Builds/Windows/myproject.exe || cat /project/unity_build.log
+  # Specify the artifacts to keep after the job is done
+  artifacts:
+    # Define the paths of the artifacts
+    paths:
+      # Keep the built executable
+      - /project/Builds/Windows/myproject.exe
+      # Keep the build log file for debugging purposes
+      - /project/unity_build.log
+
