@@ -52,7 +52,7 @@ public class DestroyObjectScript : MonoBehaviour
                     isNear = true;
                     player.GetComponent<InteractionHandler>().AddWall(wall);
                 }
-                player.GetComponent<FrequencyMovement>().SetIsInblock(false);
+                
             }
             else
             {
@@ -60,6 +60,7 @@ public class DestroyObjectScript : MonoBehaviour
                 {
                     isNear = false;
                     player.GetComponent<InteractionHandler>().RemoveWall(wall);
+                    
                 }
             }
             
@@ -70,6 +71,7 @@ public class DestroyObjectScript : MonoBehaviour
     public void BreakObject()
     {
         StartCoroutine(DestroyAfterAudio());
+        player.GetComponent<FrequencyMovement>().SetIsInblock(false);
     }
 
     private IEnumerator DestroyAfterAudio()

@@ -24,7 +24,7 @@ public class FrequencyMovement : MonoBehaviour
 
     private bool isMoving = false;
     private bool isTurning = false;
-    private bool isInblock = false;
+    public bool isInblock = false;
     private Vector3 lastLocation;
 
     // Default movement speeds (will be overwritten by PlayerPrefs)
@@ -73,12 +73,16 @@ public class FrequencyMovement : MonoBehaviour
         text.SetText(string.Format("Previous Frequency: {0:0}", frequency));
         }
 
-        if (IsGrounded() && !isMoving && !isTurning && !isInblock)
+        if (IsGrounded() && !isMoving && !isTurning)
         {
             switch (frequency - baselineFreq)
             {
                 // Forward
                 case forwardOffset:
+                    if (isInblock)
+                    {
+                        break;
+                    }
                     lastLocation = transform.position;
                     Debug.Log("LASTPOS F: " + lastLocation);
                     isMoving = true;
@@ -87,6 +91,10 @@ public class FrequencyMovement : MonoBehaviour
 
                 // Backward
                 case backwardOffset:
+                    if (isInblock)
+                    {
+                        break;
+                    }
                     lastLocation = transform.position;
                     Debug.Log("LASTPOS B: " + lastLocation);
                     isMoving = true;
@@ -95,12 +103,20 @@ public class FrequencyMovement : MonoBehaviour
                 
                 // Left
                 case leftOffset:
+                    if (isInblock)
+                    {
+                        break;
+                    }
                     isTurning = true;
                     StartCoroutine(TurnDirection(-turnAngle, turnTime));
                     break;
                 
                 // Right
                 case rightOffset:
+                    if (isInblock)
+                    {
+                        break;
+                    }
                     isTurning = true;
                     StartCoroutine(TurnDirection(turnAngle, turnTime));
                     break;
@@ -226,6 +242,7 @@ public class FrequencyMovement : MonoBehaviour
         // The player from being stuck in the block by having the lastLocation being inside the block. 
         if (other.gameObject.tag.Equals("Cube") && !isInblock)
         {
+            Debug.Log("IN BLOCK");
             isInblock = true;
             transform.position = lastLocation;
         }
