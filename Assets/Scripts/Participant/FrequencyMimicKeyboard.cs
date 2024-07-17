@@ -44,5 +44,11 @@ public class FrequencyMimicKeyboard : MonoBehaviour
         {
             freqMovement.UpdateFrequency(freqMovement.GetBaselineFrequency() + FrequencyMovement.rightOffset);
         }
+
+        // Interact
+        if (Keyboard.current.pKey.isPressed)
+        {
+            freqMovement.UpdateFrequency(freqMovement.GetBaselineFrequency() + FrequencyMovement.breakWallOffset);
+        }
     }
 }

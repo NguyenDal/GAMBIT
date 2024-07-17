@@ -47,9 +47,6 @@ public class PS4ControllerMovement : MonoBehaviour
             }
         }
 
-        // Displaying the new hertz value
-        text.SetText(hertz.ToString() + " hertz");
-
         // Calculate movement direction based on hertz value
         Vector3 movementDirection = Vector3.zero;
         switch (hertz)

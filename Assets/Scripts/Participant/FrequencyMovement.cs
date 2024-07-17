@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
@@ -7,14 +8,15 @@ public class FrequencyMovement : MonoBehaviour
 {
     public bool frequencyMovementEnabled = false;
 
+    [SerializeField] TextMeshProUGUI text;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
 
     public const float forwardOffset = 0;
-    public const float backwardOffset = 2;
-    public const float leftOffset = 4;
-    public const float rightOffset = 6;
-    public const float breakWallOffset = 8;
+    public const float backwardOffset = 1;
+    public const float leftOffset = 2;
+    public const float rightOffset = 3;
+    public const float breakWallOffset = 4;
 
     [SerializeField] float tileSize = 0.5f;
     [SerializeField] float turnAngle = 45f;
@@ -34,6 +36,9 @@ public class FrequencyMovement : MonoBehaviour
         // If frequency movement is not enabled, this script is disabled!
         if (frequencyMovementEnabled)
         {
+            // Default hertz text
+            text.SetText("Previous Frequency: --");
+
             // Retrieve movement speed from PlayerPrefs, default to defaultMovementSpeed if not found
             float movementSpeed = PlayerPrefs.GetFloat("MovementSpeed", defaultMovementSpeed);
 
@@ -43,6 +48,10 @@ public class FrequencyMovement : MonoBehaviour
             // Apply retrieved speeds
             SetMovementSpeed(movementSpeed);
         }
+        else
+        {
+            OnDisable();
+        }
     }
 
     // Resets values on disable/die
@@ -50,12 +59,19 @@ public class FrequencyMovement : MonoBehaviour
     {
         isMoving = false;
         isTurning = false;
+        text.SetText("");
     }
 
     // Update input based on frequency
     public void UpdateFrequency(float frequency)
     {
         float baselineFreq = GetBaselineFrequency();
+
+        // Update last frequency received text
+        if (text != null)
+        {
+        text.SetText(string.Format("Previous Frequency: {0:0}", frequency));
+        }
 
         if (IsGrounded() && !isMoving && !isTurning && !isInblock)
         {
@@ -87,6 +103,11 @@ public class FrequencyMovement : MonoBehaviour
                 case rightOffset:
                     isTurning = true;
                     StartCoroutine(TurnDirection(turnAngle, turnTime));
+                    break;
+
+                // Break wall / interact
+                case breakWallOffset:
+                    gameObject.GetComponent<InteractionHandler>().BreakWall();
                     break;
 
                 default: 

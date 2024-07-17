@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using DS = data.DataSingleton;
+using UnityEngine.InputSystem;
 
 public class AutomatedMovement : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class AutomatedMovement : MonoBehaviour
     private bool newMovementSystem = false; // Assume false. Change later if toggle for 'Move with tiles' is selected before starting game
 
     private PlayerMovementWithKeyboard keyboardMovementScript; // Script that controlls WASD movement
+    private FrequencyMimicKeyboard frequencyKeyboardScript; // Script that controls frequency WASD movement
     private GamepadController gamepadMovementScript; // Script that controlls Gamepad movement
     public GameObject HUDButtons; // Reference to the GameObject containing the HUD buttons used for player movement control
     public GameObject PS4Controller; // Reference to the GameObject containing the PS4ControllerMovement script (with hertz values)
@@ -39,6 +41,7 @@ public class AutomatedMovement : MonoBehaviour
 
         // Get the PlayerMovementWithKeyboard and GamepadController script components
         keyboardMovementScript = gameObject.GetComponent<PlayerMovementWithKeyboard>();
+        frequencyKeyboardScript = gameObject.GetComponent<FrequencyMimicKeyboard>();
         gamepadMovementScript = gameObject.GetComponent<GamepadController>();
 
         //If game is started with tile movement selected, set newMovementSystem true
@@ -60,7 +63,12 @@ public class AutomatedMovement : MonoBehaviour
         }
         if (newMovementSystem) {
             disableOtherMovementSystems();
-            
+
+            // "p" key to interact during tile movement
+            if (Keyboard.current.pKey.isPressed)
+            {
+                gameObject.GetComponent<InteractionHandler>().BreakWall();
+            }
 
             // Check if left mouse button is clicked and player is not already moving
             if (Input.GetMouseButtonDown(0) && !isMoving)
@@ -76,7 +84,7 @@ public class AutomatedMovement : MonoBehaviour
                     {
                         Vector3 clickedTilePosition = hit.collider.transform.position;
                         Transform nearestTile = GetNearestTile(clickedTilePosition);
-                        StartCoroutine(MoveToTarget(nearestTile.position));
+                        StartCoroutine(MoveToTarget(new Vector3(nearestTile.position.x, player.position.y, nearestTile.position.z)));
                     }
                 }
             }
@@ -85,6 +93,7 @@ public class AutomatedMovement : MonoBehaviour
 
     private void disableOtherMovementSystems() {
         keyboardMovementScript.enabled = false;
+        frequencyKeyboardScript.enabled = false;
         gamepadMovementScript.enabled = false;
         HUDButtons.SetActive(false);
         PS4Controller.SetActive(false);

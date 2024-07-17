@@ -40,6 +40,12 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
             return;
         }
 
+        // Allows interaction using regular keyboard movement
+        if (Keyboard.current.pKey.isPressed)
+        {
+            gameObject.GetComponent<InteractionHandler>().BreakWall();
+        }
+
         // Calculate movement direction based on W and S key input
         movementDirection = Vector3.zero;
         if (Keyboard.current.wKey.isPressed)

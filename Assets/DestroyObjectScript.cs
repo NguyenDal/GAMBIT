@@ -12,7 +12,8 @@ public class DestroyObjectScript : MonoBehaviour
     private double differenceX;
     private double differenceZ;
     AudioSource audioSource;
-    bool isPlaying = false;
+
+    bool isNear = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,23 +45,37 @@ public class DestroyObjectScript : MonoBehaviour
             //So as to best simulate someone slamming into a wall. The tradeoff is that this means there will never be collisions.
             //If you for some reason decide to add collisions with the wall that we'd destroy, simply change the values to the those
             //listed in the comment section above this.
-            if (differenceX < 1 && differenceX > -1 && differenceZ > -1 && differenceZ < 1 && Input.GetKey("p"))
+            if (differenceX < 1 && differenceX > -1 && differenceZ > -1 && differenceZ < 1)
             {
-                // When the Flicker cube is destroyed, play the explosion sound FX if not already playing
-                if (!isPlaying){
-                    audioSource.Play();
-                    isPlaying = true;
+                if (!isNear)
+                {
+                    isNear = true;
+                    player.GetComponent<InteractionHandler>().AddWall(wall);
                 }
                 player.GetComponent<FrequencyMovement>().SetIsInblock(false);
             }
-
-            // Check if the audio has finished playing
-            if (isPlaying && !audioSource.isPlaying){
-                wall.SetActive(false);
-                isPlaying = false; // Reset the flag for future use
+            else
+            {
+                if (isNear)
+                {
+                    isNear = false;
+                    player.GetComponent<InteractionHandler>().RemoveWall(wall);
+                }
             }
             
 
         }
+    }
+
+    public void BreakObject()
+    {
+        StartCoroutine(DestroyAfterAudio());
+    }
+
+    private IEnumerator DestroyAfterAudio()
+    {
+        audioSource.Play();
+        yield return new WaitForSeconds(audioSource.clip.length);
+        wall.SetActive(false);
     }
 }
