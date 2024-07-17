@@ -135,6 +135,9 @@ namespace trial
         // Function for stuff to know that things have happened
         public virtual void Notify()
         {
+                PlayerPrefs.SetInt("PlayerCollecdtedAllPickUps", 1);
+            Debug.Log("Collected everything for the level!");
+                PlayerPrefs.Save();
 
         }
 
@@ -142,7 +145,7 @@ namespace trial
         public virtual void Progress()
         {
             Debug.Log("Progressing...");
-
+            
             // Exiting current trial
             TrialProgress.PreviousTrial = this;
             
