@@ -132,7 +132,7 @@ public class FrequencyMovement : MonoBehaviour
             yield return null;
         }
 
-        if (IsGrounded() )
+        if (IsGrounded() && !isInblock )
         {
             transform.position = finalPos;
         }
