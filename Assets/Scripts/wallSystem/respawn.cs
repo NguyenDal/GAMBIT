@@ -111,42 +111,35 @@ public class respawn : MonoBehaviour
             var playerMovementScript = participant.GetComponent<PlayerMovementWithKeyboard>();
 
             // Stop movement immediately
-            if (playerMovementScript != null)
-            {
+            if (playerMovementScript != null){
                 playerMovementScript.StopMovement();
             }
 
-            if (characterController != null)
-            {
+            if (characterController != null){
                 characterController.enabled = false;
             }
 
-            if (checkpointSet)
-            {
+            if (checkpointSet){
                 participant.transform.position = checkpointPosition;
             }
-            else
-            {
+            else{
                 trans = GameObject.FindGameObjectWithTag("Respawn");
                 respawnLocation = trans.transform;
                 participant.transform.position = respawnLocation.position;
             }
 
             // Reset velocity
-            if (participantRigidbody != null)
-            {
+            if (participantRigidbody != null){
                 participantRigidbody.velocity = Vector3.zero;
                 participantRigidbody.angularVelocity = Vector3.zero;
             }
 
-            if (characterController != null)
-            {
+            if (characterController != null){
                 characterController.enabled = true;
             }
 
             // Resume movement
-            if (playerMovementScript != null)
-            {
+            if (playerMovementScript != null){
                 playerMovementScript.ResetMovement();
             }
         }
