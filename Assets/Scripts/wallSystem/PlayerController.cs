@@ -203,7 +203,7 @@ namespace wallSystem
                 }
                 else
                 {
-                    UnityEngine.Debug.LogError("StartPosition does not contain enough elements.");
+                    Debug.LogError("StartPosition does not contain enough elements.");
                 }
             }
         }

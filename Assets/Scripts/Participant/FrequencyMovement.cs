@@ -98,6 +98,11 @@ public class FrequencyMovement : MonoBehaviour
                     StartCoroutine(TurnDirection(turnAngle, turnTime));
                     break;
 
+                // Break wall / interact
+                case breakWallOffset:
+                    gameObject.GetComponent<InteractionHandler>().BreakWall();
+                    break;
+
                 default: 
                     break;
             }
