@@ -18,10 +18,6 @@ public class AutomatedMovement : MonoBehaviour
     private bool newMovementSystem = false; // Assume false. Change later if toggle for 'Move with tiles' is selected before starting game
 
     private FrequencyMimicKeyboard frequencyKeyboardScript; // Script that controls frequency WASD movement
-    private GamepadController gamepadMovementScript; // Script that controlls Gamepad movement
-    public GameObject HUDButtons; // Reference to the GameObject containing the HUD buttons used for player movement control
-    public GameObject PS4Controller; // Reference to the GameObject containing the PS4ControllerMovement script (with hertz values)
-    public GameObject HertzValues; // Reference to the GameObject displaying hertz values used for PS4 controller movement
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -40,7 +36,6 @@ public class AutomatedMovement : MonoBehaviour
 
         // Get any other movement scripts
         frequencyKeyboardScript = gameObject.GetComponent<FrequencyMimicKeyboard>();
-        gamepadMovementScript = gameObject.GetComponent<GamepadController>();
 
         //If game is started with tile movement selected, set newMovementSystem true
         if (DS.GetData() != null && DS.GetData().CharacterData != null)
@@ -91,10 +86,6 @@ public class AutomatedMovement : MonoBehaviour
 
     private void disableOtherMovementSystems() {
         frequencyKeyboardScript.enabled = false;
-        gamepadMovementScript.enabled = false;
-        HUDButtons.SetActive(false);
-        PS4Controller.SetActive(false);
-        HertzValues.SetActive(false);
     }
 
     // Find the nearest tile to a given position
