@@ -52,6 +52,7 @@ public class DestroyObjectScript : MonoBehaviour
                     isNear = true;
                     player.GetComponent<InteractionHandler>().AddWall(wall);
                 }
+                
             }
             else
             {
@@ -59,14 +60,18 @@ public class DestroyObjectScript : MonoBehaviour
                 {
                     isNear = false;
                     player.GetComponent<InteractionHandler>().RemoveWall(wall);
+                    
                 }
             }
+            
+
         }
     }
 
     public void BreakObject()
     {
         StartCoroutine(DestroyAfterAudio());
+        player.GetComponent<FrequencyMovement>().SetIsInblock(false);
     }
 
     private IEnumerator DestroyAfterAudio()
