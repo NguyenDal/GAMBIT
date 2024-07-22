@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,13 +48,6 @@ public class respawn : MonoBehaviour
         participant = GameObject.FindGameObjectWithTag("Player");
         participantRigidbody = participant.GetComponent<Rigidbody>();
         var characterController = participant.GetComponent<CharacterController>();
-        var playerMovementScript = participant.GetComponent<PlayerMovementWithKeyboard>();
-
-        // Stop movement immediately
-        if (playerMovementScript != null)
-        {
-            playerMovementScript.StopMovement();
-        }
 
         if (characterController != null)
         {
@@ -84,11 +77,6 @@ public class respawn : MonoBehaviour
             characterController.enabled = true;
         }
 
-        // Resume movement
-        if (playerMovementScript != null)
-        {
-            playerMovementScript.ResetMovement();
-        }
     }
 
     public void SetCheckpoint(Vector3 position)
