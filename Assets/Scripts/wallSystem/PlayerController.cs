@@ -271,7 +271,6 @@ namespace wallSystem
 
         private void Update()
         {
-            UnityEngine.Debug.Log(participant.transform.position.y); // Corrected variable name
             if (participant.transform.position.y < -1) // Corrected variable name
             {
                 // Stop player movement
@@ -323,7 +322,6 @@ namespace wallSystem
             _currDelay += Time.deltaTime;
             PlayerPrefs.SetFloat("CurrentBestTime" + SceneManager.GetActiveScene().name, _currDelay);
             PlayerPrefs.Save();
-            Debug.Log("Timer: " + _currDelay);
         }
 
         public IEnumerator WaitForVictoryAnimation(){
