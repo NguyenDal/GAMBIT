@@ -74,8 +74,11 @@ public class respawn : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Equals("Participant"))
+        // TODO: GAMBIT-143 Needs to be removed 
+        if (collision.gameObject.name.Equals("Participant") && false)
         {
+            
+            
             participant = GameObject.FindGameObjectWithTag("Player");
             participantRigidbody = participant.GetComponent<Rigidbody>();
             var characterController = participant.GetComponent<CharacterController>();

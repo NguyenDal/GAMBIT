@@ -226,6 +226,8 @@ GameObject:
   - component: {fileID: 1750587315930426372}
   - component: {fileID: 7165188665621417306}
   - component: {fileID: 4608268719876334420}
+  - component: {fileID: 7773755472192648707}
+  - component: {fileID: 2248774871397057573}
   - component: {fileID: 4772643592700063175}
   - component: {fileID: 3280072547868234469}
   - component: {fileID: 1142192746472554490}
@@ -492,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frequencyMovementEnabled: 1
+  text: {fileID: 0}
   groundCheck: {fileID: 9215662932247843417}
   groundLayer:
     serializedVersion: 2
@@ -513,6 +516,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 141b20227316d17479306105cbfdf2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7773755472192648707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280264944427126249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7f21ee495e7094dae18c91e38c3a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2248774871397057573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280264944427126249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ccb3de917cedf94f9c835ad43ab545a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenPort: 7000
 --- !u!114 &4772643592700063175
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -23,6 +24,8 @@ public class FrequencyMovement : MonoBehaviour
 
     private bool isMoving = false;
     private bool isTurning = false;
+    public bool isInblock = false;
+    private Vector3 lastLocation;
 
     // Default movement speeds (will be overwritten by PlayerPrefs)
     [SerializeField] float defaultMovementSpeed = 4f;
@@ -76,26 +79,51 @@ public class FrequencyMovement : MonoBehaviour
             {
                 // Forward
                 case forwardOffset:
+                    if (isInblock)
+                    {
+                        break;
+                    }
+                    lastLocation = transform.position;
+                    Debug.Log("LASTPOS F: " + lastLocation);
                     isMoving = true;
                     StartCoroutine(MoveDirection(tileSize, transform.forward));
                     break;
 
                 // Backward
                 case backwardOffset:
+                    if (isInblock)
+                    {
+                        break;
+                    }
+                    lastLocation = transform.position;
+                    Debug.Log("LASTPOS B: " + lastLocation);
                     isMoving = true;
                     StartCoroutine(MoveDirection(tileSize, -transform.forward));
                     break;
                 
                 // Left
                 case leftOffset:
+                    if (isInblock)
+                    {
+                        break;
+                    }
                     isTurning = true;
                     StartCoroutine(TurnDirection(-turnAngle, turnTime));
                     break;
                 
                 // Right
                 case rightOffset:
+                    if (isInblock)
+                    {
+                        break;
+                    }
                     isTurning = true;
                     StartCoroutine(TurnDirection(turnAngle, turnTime));
+                    break;
+
+                // Break wall / interact
+                case breakWallOffset:
+                    gameObject.GetComponent<InteractionHandler>().BreakWall();
                     break;
 
                 default: 
@@ -121,7 +149,7 @@ public class FrequencyMovement : MonoBehaviour
         float progress = 0;
 
         // Move until given distance has been crossed
-        while (progress < moveDistance)
+        while (progress < moveDistance && !isInblock)
         {
             // Lerp while grounded, else be affected by gravity (keeps player on tile grid)
             if (IsGrounded())
@@ -141,7 +169,7 @@ public class FrequencyMovement : MonoBehaviour
             yield return null;
         }
 
-        if (IsGrounded() )
+        if (IsGrounded() && !isInblock )
         {
             transform.position = finalPos;
         }
@@ -204,5 +232,24 @@ public class FrequencyMovement : MonoBehaviour
     public bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("Collided with " + other.gameObject.tag);
+        
+        // The !isInBlock is there to make sure we dont change the last location after it is changed once. This is to prevent
+        // The player from being stuck in the block by having the lastLocation being inside the block. 
+        if (other.gameObject.tag.Equals("Cube") && !isInblock)
+        {
+            Debug.Log("IN BLOCK");
+            isInblock = true;
+            transform.position = lastLocation;
+        }
+    }
+
+    public void SetIsInblock(bool value)
+    {
+        this.isInblock = value;
     }
 }
