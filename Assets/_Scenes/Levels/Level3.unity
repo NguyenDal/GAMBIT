@@ -1205,7 +1205,7 @@ PrefabInstance:
         type: 3}
       propertyPath: PS4Controller
       value: 
-      objectReference: {fileID: 660915905}
+      objectReference: {fileID: 0}
     - target: {fileID: 3280072547868234469, guid: f7f900347947c3a4fb40f4a6b35a4206,
         type: 3}
       propertyPath: tileMapObject
@@ -8076,95 +8076,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2171312758941732294, guid: e90aa0e90d9550e40aa826d904c5b9e3,
     type: 3}
   m_PrefabInstance: {fileID: 645931238}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &660915904
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8883765534843145360, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883765534843145360, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.2399387
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883765534843145360, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.62561655
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883765534843145360, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.087305
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883765534843145360, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883765534843145360, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883765534843145360, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883765534843145360, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883765534843145360, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883765534843145360, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883765534843145360, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883765534843145374, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: m_Name
-      value: PS4Controller
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883765534843145375, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: text
-      value: 
-      objectReference: {fileID: 548991115}
-    - target: {fileID: 8883765534843145375, guid: 8e45c13867715554880dd7f8c7757247,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 56405458}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8e45c13867715554880dd7f8c7757247, type: 3}
---- !u!1 &660915905 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8883765534843145374, guid: 8e45c13867715554880dd7f8c7757247,
-    type: 3}
-  m_PrefabInstance: {fileID: 660915904}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &662435615
 GameObject:
@@ -23720,7 +23631,6 @@ SceneRoots:
   - {fileID: 1504440026}
   - {fileID: 886921155}
   - {fileID: 56405455}
-  - {fileID: 660915904}
   - {fileID: 1506651160}
   - {fileID: 952544512}
   - {fileID: 1321961580}

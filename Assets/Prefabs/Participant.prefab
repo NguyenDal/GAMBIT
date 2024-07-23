@@ -223,14 +223,12 @@ GameObject:
   - component: {fileID: 3280264944427126253}
   - component: {fileID: 3280264944427126254}
   - component: {fileID: 9065902263243763112}
-  - component: {fileID: 1750587315930426372}
   - component: {fileID: 7165188665621417306}
   - component: {fileID: 4608268719876334420}
   - component: {fileID: 7773755472192648707}
   - component: {fileID: 2248774871397057573}
   - component: {fileID: 4772643592700063175}
   - component: {fileID: 3280072547868234469}
-  - component: {fileID: 1142192746472554490}
   m_Layer: 0
   m_Name: Participant
   m_TagString: Player
@@ -467,20 +465,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plyr: {fileID: 1915639831352812518}
---- !u!114 &1750587315930426372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3280264944427126249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02fc6983f88884d5794d6d2169adc771, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultMovementSpeed: 5
-  defaultRotationSpeed: 5
 --- !u!114 &7165188665621417306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +486,7 @@ MonoBehaviour:
   tileSize: 0.5
   turnAngle: 45
   turnTime: 0.2
+  isInblock: 0
   defaultMovementSpeed: 4
   defaultBaselineFrequency: 10
 --- !u!114 &4608268719876334420
@@ -568,23 +553,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 4
   tileMapObject: {fileID: 0}
-  HUDButtons: {fileID: 0}
-  PS4Controller: {fileID: 0}
-  HertzValues: {fileID: 0}
---- !u!114 &1142192746472554490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3280264944427126249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6008ea0137e0c6c46b40d4baefac507f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 3280264944427126249}
-  speed: 1
 --- !u!1 &5247793047130483632
 GameObject:
   m_ObjectHideFlags: 0
