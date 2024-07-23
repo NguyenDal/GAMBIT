@@ -7,13 +7,6 @@
       "dependencies": {},
       "hash": "90fa6db024148d466fe738f58fd4263c7267346b"
     },
-    "com.labstreaminglayer.lsl4unity": {
-      "version": "https://github.com/labstreaminglayer/LSL4Unity.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "75d54ab160edaf02d2173350bbd91f1afbdb66d8"
-    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
