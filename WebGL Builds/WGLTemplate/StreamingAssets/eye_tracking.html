@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://api.gazerecorder.com/GazeCloudAPI.js"></script>
+    <title>Eye Tracking</title>
+</head>
+<body>
+    <script>
+        GazeCloudAPI.StartEyeTracking();
+        
+        GazeCloudAPI.OnResult = function (GazeData) {
+            if (GazeData.state === 0) {
+                // Send the data to Unity
+                SendMessage('EyeTrackingReceiver', 'ReceiveGazeData', JSON.stringify(GazeData));
+            }
+        };
+
+        GazeCloudAPI.OnCalibrationComplete = function() {
+            console.log('gaze Calibration Complete');
+        }
+
+        GazeCloudAPI.OnCamDenied = function() {
+            console.log('camera access denied');
+        }
+
+        GazeCloudAPI.OnError = function(msg) {
+            console.log('err: ' + msg);
+        }
+
+        GazeCloudAPI.UseClickRecalibration = true;
+    </script>
+</body>
+</html>
