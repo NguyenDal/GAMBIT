@@ -10,20 +10,15 @@ using DS = data.DataSingleton;
 
 namespace trial
 {
-    // This is the only trial in which the current data is null. This is so that we have uniform setup
     public class FieldTrial : AbstractTrial
     {
         private readonly InputField[] _fields;
+        private EyeTrackingReciever _eyeTrackingReciever; // Reference to eye tracking receiver
 
-        // Here we construct the entire linked list structure.
         public FieldTrial(InputField[] fields) : base(-1, -1)
         {
             _fields = fields;
 
-            // This block of code will use the default configuration file if
-            // using webGL or Android (can add others in if statement) 
-            // Otherwise calls the directory picker to select the configuration file.
-    
             var AutoRunConfigDir = Application.streamingAssetsPath + "/AutoRun_Config/";
             var files = new string[0];
             if (Directory.Exists(AutoRunConfigDir))
@@ -36,12 +31,10 @@ namespace trial
                 var defaultConfig = AutoRunConfigDir + Path.GetFileName(files[0]);
                 Loader.ExternalActivation(defaultConfig);
             }
-
             else
             {
                 while (true)
                 {
-                    // Here we're using: https://github.com/gkngkc/UnityStandaloneFileBrowser because it was easier than rolling our own
                     string[] paths = StandaloneFileBrowser.OpenFilePanel("Choose configuration file", "Configuration_Files", "", false);
                     string path = paths[0];
                     if (Loader.ExternalActivation(path)) break;
@@ -51,12 +44,17 @@ namespace trial
             TrialProgress = new TrialProgress();
             _fields = fields;
 
+            // Initialize Eye Tracking Receiver
+            _eyeTrackingReciever = GameObject.FindObjectOfType<EyeTrackingReciever>();
+            if (_eyeTrackingReciever == null)
+            {
+                Debug.LogError("EyeTrackingReciever not found in the scene.");
+            }
         }
 
-
-        //We are gonna generate all the trials here.
         private void GenerateTrials()
         {
+            Debug.Log("Generating Trials...");
             AbstractTrial currentTrial = this;
             foreach (var i in DS.GetData().BlockOrder)
             {
@@ -71,8 +69,6 @@ namespace trial
                     var k = j - 1;
                     AbstractTrial t;
 
-                    // Here we decide what each trial is, I guess we could do this with a function map, but later. 
-                    // here we have a picture as a trial.
                     if (k < 0)
                     {
                         t = new RandomTrial(l, k);
@@ -81,7 +77,6 @@ namespace trial
                     {
                         var trialData = DS.GetData().Trials[k];
 
-                        // Control flow here is for deciding what Trial gets spat out from the config
                         if (trialData.FileLocation != null)
                         {
                             Debug.Log("Creating new Instructional Trial");
@@ -104,6 +99,7 @@ namespace trial
                     t.head = currHead;
 
                     currentTrial.next = t;
+                    Debug.Log($"Linking trial {currentTrial} to {t}");
 
                     currentTrial = currentTrial.next;
 
@@ -112,6 +108,7 @@ namespace trial
                 }
 
                 currentTrial.next = new CloseTrial(-1, -1);
+                Debug.Log($"End of block {l}. Closing trial with {currentTrial.next}");
             }
         }
 
@@ -119,9 +116,23 @@ namespace trial
         {
             base.Update(deltaTime);
 
-            if (StartButton.clicked == true)
+            if (Loader.Get().CurrTrial == null)
             {
-                // Sets the output file name as the desired one.
+                Debug.LogError("CurrTrial is null. Check the assignment in FieldTrial.");
+                return;
+            }
+
+            if (_eyeTrackingReciever != null)
+            {
+                // Retrieve gaze data from the eye tracking receiver
+                var gazeData = _eyeTrackingReciever.GetGazeData();
+
+                // Process gaze data to determine player movement or actions
+                ProcessGazeData(gazeData);
+            }
+
+            if (StartButton.clicked)
+            {
                 var Field1Text = _fields[0].transform.GetComponentsInChildren<Text>()[1];
                 TrialProgress.Field1 = Field1Text.text;
 
@@ -135,13 +146,64 @@ namespace trial
 
                 Progress();
             }
-
         }
+
+        private void ProcessGazeData(GazeData gazeData)
+        {
+            if (gazeData == null)
+            {
+                Debug.LogWarning("Gaze data is null.");
+                return;
+            }
+
+            // Example grid boundaries for a 3x3 grid
+            int xIndex = Mathf.Clamp((int)(gazeData.docX * 3), 0, 2);
+            int yIndex = Mathf.Clamp((int)(gazeData.docY * 3), 0, 2);
+
+            switch (xIndex, yIndex)
+            {
+                case (0, 1):
+                    MoveForward();
+                    break;
+                case (1, 0):
+                    MoveLeft();
+                    break;
+                case (1, 2):
+                    MoveRight();
+                    break;
+                case (2, 1):
+                    MoveBackward();
+                    break;
+                case (1, 1):
+                    PerformAction();
+                    break;
+                case (0, 2):
+                    OpenSettingsMenu();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void MoveForward() { /* Implement move forward logic */ }
+        private void MoveLeft() { /* Implement move left logic */ }
+        private void MoveRight() { /* Implement move right logic */ }
+        private void MoveBackward() { /* Implement move backward logic */ }
+        private void PerformAction() { /* Implement action logic */ }
+        private void OpenSettingsMenu() { /* Implement settings menu logic */ }
 
         public override void Progress()
         {
             Loader.Get().CurrTrial = next;
-            next.PreEntry(TrialProgress);
+            if (next != null)
+            {
+                next.PreEntry(TrialProgress);
+            }
+            else
+            {
+                Debug.LogError("Next trial is null. Ensure that 'next' is properly assigned.");
+            }
         }
+
     }
 }

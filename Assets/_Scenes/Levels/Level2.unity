@@ -20709,6 +20709,19 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1729071108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729071106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87cd828e2ac41d4ea699634a3d89358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 5
 --- !u!1001 &1738272691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21234,6 +21247,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1729071107}
+    - targetCorrespondingSourceObject: {fileID: 3280264943743391455, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1729071108}
   m_SourcePrefab: {fileID: 100100000, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
 --- !u!114 &1778393361 stripped
 MonoBehaviour:
