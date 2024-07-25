@@ -1113,6 +1113,30 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &50438652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3280264943850000150, guid: f7f900347947c3a4fb40f4a6b35a4206,
+    type: 3}
+  m_PrefabInstance: {fileID: 56405455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &50438653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50438652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87cd828e2ac41d4ea699634a3d89358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyeTrackingToggle: {fileID: 1257978747}
+  config:
+    screenWidth: 0
+    screenHeight: 0
+  movementSpeed: 5
+  playerCamera: {fileID: 1774735782}
 --- !u!1001 &56405455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1351,6 +1375,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1930317043}
+    - targetCorrespondingSourceObject: {fileID: 3280264943850000150, guid: f7f900347947c3a4fb40f4a6b35a4206,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 50438653}
   m_SourcePrefab: {fileID: 100100000, guid: f7f900347947c3a4fb40f4a6b35a4206, type: 3}
 --- !u!114 &56405456 stripped
 MonoBehaviour:
@@ -15194,6 +15222,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79eb61a4207169f43aaffa088ce27fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1257978747 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1690484734934840068, guid: 893d22f8b186fe742ba344e0a3760f4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1257978742}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1267619732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21367,7 +21407,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87cd828e2ac41d4ea699634a3d89358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eyeTrackingToggle: {fileID: 0}
+  config:
+    screenWidth: 0
+    screenHeight: 0
   movementSpeed: 5
+  playerCamera: {fileID: 0}
 --- !u!1001 &1946015897
 PrefabInstance:
   m_ObjectHideFlags: 0
