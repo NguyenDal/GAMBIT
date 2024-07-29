@@ -7256,7 +7256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 226.44, y: 89.6}
+  m_AnchoredPosition: {x: 225, y: 90}
   m_SizeDelta: {x: 49, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &809375988
@@ -13805,10 +13805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87cd828e2ac41d4ea699634a3d89358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eyeTrackingToggle: {fileID: 0}
-  config:
-    screenWidth: 0
-    screenHeight: 0
   movementSpeed: 5
   playerCamera: {fileID: 0}
 --- !u!1001 &1797692477
@@ -15639,18 +15635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79eb61a4207169f43aaffa088ce27fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1994737329 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1690484734934840068, guid: 893d22f8b186fe742ba344e0a3760f4b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1994737326}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2017396813
 GameObject:
   m_ObjectHideFlags: 0
@@ -16229,10 +16213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87cd828e2ac41d4ea699634a3d89358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eyeTrackingToggle: {fileID: 1994737329}
-  config:
-    screenWidth: 0
-    screenHeight: 0
   movementSpeed: 5
   playerCamera: {fileID: 640374300}
 --- !u!1001 &2051652266

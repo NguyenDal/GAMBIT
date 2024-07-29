@@ -14,7 +14,7 @@ public class EyeTrackingReciever : MonoBehaviour
     private void Start()
     {
         // Path to your Config_ArrowMovement.json file
-        string filePath = Path.Combine(Application.dataPath, "Gambit/Configuration_Files/Config_ArrowMovement.json");
+        string filePath = Path.Combine(Application.dataPath, "../Configuration_Files/Config_ArrowMovement.json");
         config = LoadConfig(filePath);
 
         if (config != null)
