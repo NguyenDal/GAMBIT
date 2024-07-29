@@ -21,13 +21,12 @@ public class RotationSpeedSelect : MonoBehaviour
     {
         if (_dropdown.value == DROPDOWN45)
         {
-            Debug.Log("Dropdown: 45");
-            // Set value to 45.
-            
+            PlayerPrefs.SetInt("PlayerAngle", 45);
+            PlayerPrefs.Save();
         } else if (_dropdown.value == DROPDOWN90)
         {
-            // Set value to 90
-            Debug.Log("Dropdown: 90");
+            PlayerPrefs.SetInt("PlayerAngle", 90);
+            PlayerPrefs.Save();
         }
     }
 }
