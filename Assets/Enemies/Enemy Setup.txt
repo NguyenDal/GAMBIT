@@ -1,0 +1,9 @@
+To setup an enemy in the level:
+Turtle and Slime enemies:
+1. Move the provided way points from A-D in order to the desired shape to create a loop
+2. The enemy will move from D back to A when finished, creating a loop
+
+Shooter:
+
+1. Add the "Paricipant" to the the "Player" input on the Pea Shooter script. 
+2. Position it with enough area, you can change it's agro range, by adjusting the box collider
