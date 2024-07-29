@@ -9,6 +9,7 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
     private Vector3 movementDirection = Vector3.zero;
     private bool stopMovement = false;
 
+    public Animator charaterAnimator;
     void Start()
     {
         // Disable keyboard player movement if frequency movement is enabled
@@ -47,11 +48,21 @@ public class PlayerMovementWithKeyboard : MonoBehaviour
         }
 
         // Calculate movement direction based on W and S key input
-        movementDirection = Vector3.zero;
-        if (Keyboard.current.wKey.isPressed)
+        //Update the player animation to correlate with the movement
+        Vector3 movementDirection = Vector3.zero;
+        bool isWalking = false;
+
+        if (Keyboard.current.wKey.isPressed){
             movementDirection += transform.forward;
-        if (Keyboard.current.sKey.isPressed)
+            isWalking = true;
+        }
+        if (Keyboard.current.sKey.isPressed){
             movementDirection -= transform.forward;
+            isWalking = true;
+        }
+
+        // Update the animator based on whether the character is walking
+        charaterAnimator.SetBool("IsWalking", isWalking);
 
         // Normalize movement direction to prevent diagonal movement being faster
         movementDirection.Normalize();

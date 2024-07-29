@@ -18,6 +18,9 @@ TagManager:
   - Tile
   - Floor
   - Connector
+  - EnemyAggroRange
+  - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
