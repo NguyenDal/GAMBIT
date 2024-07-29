@@ -212,8 +212,11 @@ namespace wallSystem
         {
             if (!other.gameObject.CompareTag("Pickup")) return;
             
+            if(other.name == "FlagGoal(Clone)"){
+                StartCoroutine(WaitForVictoryAnimation());
+            }
 
-                GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
+            GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
             Destroy(other.gameObject);
 
             // Set the checkpoint at the coin's position

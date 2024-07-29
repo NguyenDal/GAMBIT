@@ -408,6 +408,37 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3973349581642911577}
   m_Enabled: 1
+--- !u!1 &5326553047941512149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1508963607230821880}
+  m_Layer: 0
+  m_Name: Ground Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1508963607230821880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5326553047941512149}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.1736482, z: -0, w: 0.9848077}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3673687995119670641}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9151558766134838400
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,6 +461,9 @@ GameObject:
   - component: {fileID: 7451190406309436235}
   - component: {fileID: 7621200882816160404}
   - component: {fileID: 3352956311347006361}
+  - component: {fileID: 2141012642352537034}
+  - component: {fileID: 8476008195415809011}
+  - component: {fileID: 6341097209474432312}
   m_Layer: 0
   m_Name: Participant 1 1
   m_TagString: Player
@@ -450,6 +484,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1508963607230821880}
   - {fileID: 8738954249323745393}
   - {fileID: 6378745910270209333}
   - {fileID: 5301987368697472344}
@@ -675,7 +710,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9151558766134838400}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02fc6983f88884d5794d6d2169adc771, type: 3}
   m_Name: 
@@ -769,6 +804,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3433761903915616779}
+--- !u!114 &2141012642352537034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151558766134838400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6dbdaead27757641a17d82e7351d0e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frequencyMovementEnabled: 1
+  text: {fileID: 0}
+  groundCheck: {fileID: 1508963607230821880}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  tileSize: 0.5
+  turnAngle: 45
+  turnTime: 0.3
+  isInblock: 0
+  defaultMovementSpeed: 4
+  defaultBaselineFrequency: 10
+--- !u!114 &8476008195415809011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151558766134838400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141b20227316d17479306105cbfdf2b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaterAnimator: {fileID: 3433761903915616779}
+--- !u!114 &6341097209474432312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151558766134838400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7f21ee495e7094dae18c91e38c3a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &982526970511074298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -902,10 +986,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 0.2
+  m_Height: 1.351071
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: 0.6494646, z: 0}
 --- !u!4 &8738954249323745393 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8423318466619552651, guid: 9f0b5713b7412ab4eb37110128bbc164,

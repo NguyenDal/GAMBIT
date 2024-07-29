@@ -27,6 +27,8 @@ public class FrequencyMovement : MonoBehaviour
     public bool isInblock = false;
     private Vector3 lastLocation;
 
+    
+
     // Default movement speeds (will be overwritten by PlayerPrefs)
     [SerializeField] float defaultMovementSpeed = 4f;
     [SerializeField] float defaultBaselineFrequency = 10;
