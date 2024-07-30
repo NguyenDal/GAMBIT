@@ -13,6 +13,8 @@ public class DestroyObjectScript : MonoBehaviour
     private double differenceZ;
     AudioSource audioSource;
 
+    public GameObject explosionPrefab; 
+
     bool isNear = false;
 
     // Start is called before the first frame update
@@ -63,21 +65,32 @@ public class DestroyObjectScript : MonoBehaviour
                     
                 }
             }
-            
+            if (isNear && Input.GetKeyDown(KeyCode.P))
+            {
+                BreakObject();
+            }
 
         }
     }
 
     public void BreakObject()
     {
-        StartCoroutine(DestroyAfterAudio());
+        StartCoroutine(BreakWithEffect());
         player.GetComponent<FrequencyMovement>().SetIsInblock(false);
     }
 
-    private IEnumerator DestroyAfterAudio()
+    private IEnumerator BreakWithEffect()
     {
+        // Play the breaking glass animation
+        Instantiate(explosionPrefab, wall.transform.position, wall.transform.rotation);
+
+        // Play the audio
         audioSource.Play();
+
+        // Wait for the audio clip to finish
         yield return new WaitForSeconds(audioSource.clip.length);
+
+        // Optionally, destroy the object or disable it
         wall.SetActive(false);
     }
 }
