@@ -50,6 +50,8 @@ public class FrequencyMovement : MonoBehaviour
 
             // Apply retrieved speeds
             SetMovementSpeed(movementSpeed);
+            turnAngle = (float)PlayerPrefs.GetInt("PlayerAngle", (int)turnAngle);
+
         }
         else
         {

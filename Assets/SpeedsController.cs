@@ -6,7 +6,6 @@ using DS = data.DataSingleton;
 public class SpeedsController : MonoBehaviour
 {
     public Slider movementSpeedSlider;
-    public Slider rotationSpeedSlider;
 
     private float prevMovementSpeed;
     private float prevRotationSpeed;
@@ -34,11 +33,9 @@ public class SpeedsController : MonoBehaviour
         {
             // Set the initial values of sliders based on CharacterData 
             movementSpeedSlider.value = DS.GetData().CharacterData.MovementSpeed;
-            rotationSpeedSlider.value = DS.GetData().CharacterData.RotationSpeed;
 
             // Set the initial values as prevMovementSpeed and prevRotationSpeed
             prevMovementSpeed = movementSpeedSlider.value;
-            prevRotationSpeed = rotationSpeedSlider.value;
         }
         else
         {
@@ -46,15 +43,12 @@ public class SpeedsController : MonoBehaviour
 
             // If CharacterData is not available, set the sliders' values based on PlayerPrefs
             movementSpeedSlider.value = PlayerPrefs.GetFloat("MovementSpeed", 0f);
-            rotationSpeedSlider.value = PlayerPrefs.GetFloat("RotationSpeed", 0f);
 
             // Set the initial values as prevMovementSpeed and prevRotationSpeed
             prevMovementSpeed = movementSpeedSlider.value;
-            prevRotationSpeed = rotationSpeedSlider.value;
         }
 
         UpdatePlayerPrefs("MovementSpeed", movementSpeedSlider.value);
-        UpdatePlayerPrefs("RotationSpeed", rotationSpeedSlider.value);
     }
 
     void Update()
@@ -65,12 +59,7 @@ public class SpeedsController : MonoBehaviour
             UpdatePlayerPrefs("MovementSpeed", movementSpeedSlider.value);
             prevMovementSpeed = movementSpeedSlider.value;
         }
-
-        if (rotationSpeedSlider.value != prevRotationSpeed)
-        {
-            UpdatePlayerPrefs("RotationSpeed", rotationSpeedSlider.value);
-            prevRotationSpeed = rotationSpeedSlider.value;
-        }
+        
     }
 
     // Method to update PlayerPrefs with new slider values
