@@ -1,4 +1,5 @@
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class respawn : MonoBehaviour{
@@ -37,9 +38,6 @@ public class respawn : MonoBehaviour{
         participant = GameObject.FindGameObjectWithTag("Player");
         participantRigidbody = participant.GetComponent<Rigidbody>();
         var characterController = participant.GetComponent<CharacterController>();
-        var playerMovementScript = participant.GetComponent<PlayerMovementWithKeyboard>();
-
-        StopMovement(playerMovementScript, characterController);
 
         if (checkpointSet){
             participant.transform.position = checkpointPosition;
@@ -48,32 +46,10 @@ public class respawn : MonoBehaviour{
             respawnLocation = GameObject.FindGameObjectWithTag("Respawn").transform;
             participant.transform.position = respawnLocation.position;
         }
-        ResetVelocity(participantRigidbody);
 
         if (characterController != null){
             characterController.enabled = true;
         }
-        ResumeMovement(playerMovementScript);
-    }
-
-    //Prevents the player from continuing to move during death
-    private void StopMovement(PlayerMovementWithKeyboard playerMovementScript, CharacterController characterController){
-        playerMovementScript?.StopMovement();
-        if (characterController != null){
-            characterController.enabled = false;
-        }
-    }
-
-    //Prevents the player from continuing to move during death
-    private void ResetVelocity(Rigidbody rigidbody){
-        if (rigidbody != null){
-            rigidbody.velocity = Vector3.zero;
-            rigidbody.angularVelocity = Vector3.zero;
-        }
-    }
-
-    private void ResumeMovement(PlayerMovementWithKeyboard playerMovementScript){
-        playerMovementScript?.ResetMovement();
     }
 
     public void SetCheckpoint(Vector3 position){

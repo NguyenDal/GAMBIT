@@ -32,7 +32,6 @@ namespace wallSystem
         private GameObject participant; // Corrected variable name
         public respawn respawn;
         public Animator animator;
-        private PlayerMovementWithKeyboard movementScript;
 
         private void Start()
         {
@@ -70,7 +69,6 @@ namespace wallSystem
             Debug.Log(log);
 
             participant = this.gameObject;
-            movementScript = participant.GetComponent<PlayerMovementWithKeyboard>();
 
             if (firstperson)
             {
@@ -276,11 +274,7 @@ namespace wallSystem
         {
             if (participant.transform.position.y < -1) // Corrected variable name
             {
-                // Stop player movement
-                movementScript.StopMovement();
                 respawn.Respawn();
-                // Reset player movement
-                movementScript.ResetMovement();
             }
             E.LogData(TrialProgress.GetCurrTrial().TrialProgress, TrialProgress.GetCurrTrial().TrialStartTime, transform);
 

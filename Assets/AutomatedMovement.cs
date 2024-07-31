@@ -13,16 +13,12 @@ public class AutomatedMovement : MonoBehaviour
     private Vector3 targetPosition; // Target position to move towards
     private List<Transform> tiles; // List of all tiles on the map
 
+    [SerializeField] Animator charaterAnimator;
     public GameObject tileMapObject; // Reference to the game object containing all tiles
 
     private bool newMovementSystem = false; // Assume false. Change later if toggle for 'Move with tiles' is selected before starting game
 
-    private PlayerMovementWithKeyboard keyboardMovementScript; // Script that controlls WASD movement
     private FrequencyMimicKeyboard frequencyKeyboardScript; // Script that controls frequency WASD movement
-    private GamepadController gamepadMovementScript; // Script that controlls Gamepad movement
-    public GameObject HUDButtons; // Reference to the GameObject containing the HUD buttons used for player movement control
-    public GameObject PS4Controller; // Reference to the GameObject containing the PS4ControllerMovement script (with hertz values)
-    public GameObject HertzValues; // Reference to the GameObject displaying hertz values used for PS4 controller movement
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -39,10 +35,8 @@ public class AutomatedMovement : MonoBehaviour
             tiles.Add(child);
         }
 
-        // Get the PlayerMovementWithKeyboard and GamepadController script components
-        keyboardMovementScript = gameObject.GetComponent<PlayerMovementWithKeyboard>();
+        // Get any other movement scripts
         frequencyKeyboardScript = gameObject.GetComponent<FrequencyMimicKeyboard>();
-        gamepadMovementScript = gameObject.GetComponent<GamepadController>();
 
         //If game is started with tile movement selected, set newMovementSystem true
         if (DS.GetData() != null && DS.GetData().CharacterData != null)
@@ -92,12 +86,7 @@ public class AutomatedMovement : MonoBehaviour
     }
 
     private void disableOtherMovementSystems() {
-        keyboardMovementScript.enabled = false;
         frequencyKeyboardScript.enabled = false;
-        gamepadMovementScript.enabled = false;
-        HUDButtons.SetActive(false);
-        PS4Controller.SetActive(false);
-        HertzValues.SetActive(false);
     }
 
     // Find the nearest tile to a given position
@@ -122,6 +111,7 @@ public class AutomatedMovement : MonoBehaviour
     IEnumerator MoveToTarget(Vector3 target)
     {
         isMoving = true;
+        charaterAnimator.SetBool("IsWalking", isMoving);
 
         while (Vector3.Distance(transform.position, target) > 0.1f)
         {
@@ -132,6 +122,7 @@ public class AutomatedMovement : MonoBehaviour
             if (transform.position.y < 0.1f)
             {
                 isMoving = false;
+                charaterAnimator.SetBool("IsWalking", isMoving);
                 yield break;
             }
 
@@ -139,5 +130,6 @@ public class AutomatedMovement : MonoBehaviour
         }
 
         isMoving = false;
+        charaterAnimator.SetBool("IsWalking", isMoving);
     }
 }

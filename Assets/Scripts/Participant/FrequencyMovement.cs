@@ -8,6 +8,7 @@ public class FrequencyMovement : MonoBehaviour
 {
     public bool frequencyMovementEnabled = false;
 
+    [SerializeField] Animator charaterAnimator;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
@@ -49,6 +50,8 @@ public class FrequencyMovement : MonoBehaviour
 
             // Apply retrieved speeds
             SetMovementSpeed(movementSpeed);
+            turnAngle = (float)PlayerPrefs.GetInt("PlayerAngle", (int)turnAngle);
+
         }
         else
         {
@@ -60,6 +63,7 @@ public class FrequencyMovement : MonoBehaviour
     private void OnDisable()
     {
         isMoving = false;
+        charaterAnimator.SetBool("IsWalking", isMoving);
         isTurning = false;
         text.SetText("");
     }
@@ -88,6 +92,7 @@ public class FrequencyMovement : MonoBehaviour
                     lastLocation = transform.position;
                     Debug.Log("LASTPOS F: " + lastLocation);
                     isMoving = true;
+                    charaterAnimator.SetBool("IsWalking", isMoving);
                     StartCoroutine(MoveDirection(tileSize, transform.forward));
                     break;
 
@@ -100,6 +105,7 @@ public class FrequencyMovement : MonoBehaviour
                     lastLocation = transform.position;
                     Debug.Log("LASTPOS B: " + lastLocation);
                     isMoving = true;
+                    charaterAnimator.SetBool("IsWalking", isMoving);
                     StartCoroutine(MoveDirection(tileSize, -transform.forward));
                     break;
                 
@@ -177,6 +183,7 @@ public class FrequencyMovement : MonoBehaviour
         }
 
         isMoving = false;
+        charaterAnimator.SetBool("IsWalking", isMoving);
     }
 
     // Turn an amount of degrees in a specified amount of time
