@@ -8,6 +8,7 @@ public class FrequencyMovement : MonoBehaviour
 {
     public bool frequencyMovementEnabled = false;
 
+    [SerializeField] Animator charaterAnimator;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
@@ -60,6 +61,7 @@ public class FrequencyMovement : MonoBehaviour
     private void OnDisable()
     {
         isMoving = false;
+        charaterAnimator.SetBool("IsWalking", isMoving);
         isTurning = false;
         text.SetText("");
     }
@@ -88,6 +90,7 @@ public class FrequencyMovement : MonoBehaviour
                     lastLocation = transform.position;
                     Debug.Log("LASTPOS F: " + lastLocation);
                     isMoving = true;
+                    charaterAnimator.SetBool("IsWalking", isMoving);
                     StartCoroutine(MoveDirection(tileSize, transform.forward));
                     break;
 
@@ -100,6 +103,7 @@ public class FrequencyMovement : MonoBehaviour
                     lastLocation = transform.position;
                     Debug.Log("LASTPOS B: " + lastLocation);
                     isMoving = true;
+                    charaterAnimator.SetBool("IsWalking", isMoving);
                     StartCoroutine(MoveDirection(tileSize, -transform.forward));
                     break;
                 
@@ -177,6 +181,7 @@ public class FrequencyMovement : MonoBehaviour
         }
 
         isMoving = false;
+        charaterAnimator.SetBool("IsWalking", isMoving);
     }
 
     // Turn an amount of degrees in a specified amount of time
@@ -238,7 +243,6 @@ public class FrequencyMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Collided with " + other.gameObject.tag);
         
         // The !isInBlock is there to make sure we dont change the last location after it is changed once. This is to prevent
         // The player from being stuck in the block by having the lastLocation being inside the block. 
