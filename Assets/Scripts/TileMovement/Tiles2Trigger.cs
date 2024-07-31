@@ -9,7 +9,7 @@ public class Tiles2Trigger : MonoBehaviour
     //if tile is is hit by player, tell this to parent script
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Equals("Cylinder"))
+        if (other.gameObject.tag.Equals("plyrBody"))
         {
             var parentScript = this.GetComponentInParent<LV2tiles>();
             parentScript.giveParentTrigger(this.gameObject);

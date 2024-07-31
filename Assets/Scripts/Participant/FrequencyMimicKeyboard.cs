@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 public class FrequencyMimicKeyboard : MonoBehaviour
 {
     FrequencyMovement freqMovement = null;
-
-    public Animator charaterAnimator;
     
     private void Start()
     {
@@ -23,20 +21,16 @@ public class FrequencyMimicKeyboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isWalking = false;
-
         // Forward
         if (Keyboard.current.wKey.isPressed)
         {
             freqMovement.UpdateFrequency(freqMovement.GetBaselineFrequency() + FrequencyMovement.forwardOffset);
-            isWalking = true;
         }
 
         // Backward
         if (Keyboard.current.sKey.isPressed)
         {
             freqMovement.UpdateFrequency(freqMovement.GetBaselineFrequency() + FrequencyMovement.backwardOffset);
-            isWalking = true;
         }
 
         // Left
@@ -59,9 +53,5 @@ public class FrequencyMimicKeyboard : MonoBehaviour
             freqMovement.UpdateFrequency(freqMovement.GetBaselineFrequency() + FrequencyMovement.breakWallOffset);
         
         }
-
-        // Update the animator based on whether the character is walking
-        charaterAnimator.SetBool("IsWalking", isWalking);
-
     }
 }
