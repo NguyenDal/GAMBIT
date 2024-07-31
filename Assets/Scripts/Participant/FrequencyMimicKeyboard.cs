@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class FrequencyMimicKeyboard : MonoBehaviour
 {
     FrequencyMovement freqMovement = null;
-
+    
     private void Start()
     {
         freqMovement = gameObject.GetComponent<FrequencyMovement>();
@@ -37,18 +37,21 @@ public class FrequencyMimicKeyboard : MonoBehaviour
         if (Keyboard.current.aKey.isPressed)
         {
             freqMovement.UpdateFrequency(freqMovement.GetBaselineFrequency() + FrequencyMovement.leftOffset);
+            
         }
 
         // Right
         if (Keyboard.current.dKey.isPressed)
         {
             freqMovement.UpdateFrequency(freqMovement.GetBaselineFrequency() + FrequencyMovement.rightOffset);
+          
         }
 
         // Interact
         if (Keyboard.current.pKey.isPressed)
         {
             freqMovement.UpdateFrequency(freqMovement.GetBaselineFrequency() + FrequencyMovement.breakWallOffset);
+        
         }
     }
 }

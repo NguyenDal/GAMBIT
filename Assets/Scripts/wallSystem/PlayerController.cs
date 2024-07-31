@@ -8,6 +8,7 @@ using data;
 using DS = data.DataSingleton;
 using E = main.Loader;
 using Random = UnityEngine.Random;
+using System.Collections;
 using UnityEngine.Analytics;
 using UnityEditor;
 using UnityEngine.SceneManagement;
@@ -30,7 +31,7 @@ namespace wallSystem
         public bool firstperson;
         private GameObject participant; // Corrected variable name
         public respawn respawn;
-        private PlayerMovementWithKeyboard movementScript;
+        public Animator animator;
 
         private void Start()
         {
@@ -68,7 +69,6 @@ namespace wallSystem
             Debug.Log(log);
 
             participant = this.gameObject;
-            movementScript = participant.GetComponent<PlayerMovementWithKeyboard>();
 
             if (firstperson)
             {
@@ -208,13 +208,13 @@ namespace wallSystem
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.gameObject.CompareTag("Pickup"))
-            {
-           
-                return;
+            if (!other.gameObject.CompareTag("Pickup")) return;
+            
+            if(other.name == "FlagGoal(Clone)"){
+                StartCoroutine(WaitForVictoryAnimation());
             }
 
-                GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
+            GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
             Destroy(other.gameObject);
 
             // Set the checkpoint at the coin's position
@@ -272,14 +272,9 @@ namespace wallSystem
 
         private void Update()
         {
-            UnityEngine.Debug.Log(participant.transform.position.y); // Corrected variable name
             if (participant.transform.position.y < -1) // Corrected variable name
             {
-                // Stop player movement
-                movementScript.StopMovement();
                 respawn.Respawn();
-                // Reset player movement
-                movementScript.ResetMovement();
             }
             E.LogData(TrialProgress.GetCurrTrial().TrialProgress, TrialProgress.GetCurrTrial().TrialStartTime, transform);
 
@@ -287,7 +282,7 @@ namespace wallSystem
             {
                 if (!GetComponent<AudioSource>().isPlaying)
                 {
-                    TrialProgress.GetCurrTrial().Progress();
+                    StartCoroutine(WaitForVictoryAnimation());
                     _playingSound = false;
                 }
             }
@@ -324,7 +319,21 @@ namespace wallSystem
             _currDelay += Time.deltaTime;
             PlayerPrefs.SetFloat("CurrentBestTime" + SceneManager.GetActiveScene().name, _currDelay);
             PlayerPrefs.Save();
-            Debug.Log("Timer: " + _currDelay);
+        }
+
+        public IEnumerator WaitForVictoryAnimation(){
+            animator.SetBool("IsAtGoal",true);
+            
+            // Wait for the death animation to finish
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            while (!(stateInfo.IsName("Jump") && stateInfo.normalizedTime >= 1.0f)){
+                yield return null;
+                stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            }
+            animator.SetBool("IsAtGoal",false);
+            TrialProgress.GetCurrTrial().Progress();
+            
+            yield break;
         }
     }
 }
