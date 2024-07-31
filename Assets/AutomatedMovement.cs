@@ -13,6 +13,7 @@ public class AutomatedMovement : MonoBehaviour
     private Vector3 targetPosition; // Target position to move towards
     private List<Transform> tiles; // List of all tiles on the map
 
+    [SerializeField] Animator charaterAnimator;
     public GameObject tileMapObject; // Reference to the game object containing all tiles
 
     private bool newMovementSystem = false; // Assume false. Change later if toggle for 'Move with tiles' is selected before starting game
@@ -110,6 +111,7 @@ public class AutomatedMovement : MonoBehaviour
     IEnumerator MoveToTarget(Vector3 target)
     {
         isMoving = true;
+        charaterAnimator.SetBool("IsWalking", isMoving);
 
         while (Vector3.Distance(transform.position, target) > 0.1f)
         {
@@ -120,6 +122,7 @@ public class AutomatedMovement : MonoBehaviour
             if (transform.position.y < 0.1f)
             {
                 isMoving = false;
+                charaterAnimator.SetBool("IsWalking", isMoving);
                 yield break;
             }
 
@@ -127,5 +130,6 @@ public class AutomatedMovement : MonoBehaviour
         }
 
         isMoving = false;
+        charaterAnimator.SetBool("IsWalking", isMoving);
     }
 }

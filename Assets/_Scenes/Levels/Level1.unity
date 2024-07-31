@@ -1729,6 +1729,11 @@ PrefabInstance:
       propertyPath: respawn
       value: 
       objectReference: {fileID: 1722700362}
+    - target: {fileID: 4608268719876334420, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+        type: 3}
+      propertyPath: charaterAnimator
+      value: 
+      objectReference: {fileID: 215537359}
     - target: {fileID: 4772643592700063175, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
         type: 3}
       propertyPath: floorAndConnectorObject
@@ -1744,6 +1749,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30ffc61b10ab1dd44aa9d31b910265f9, type: 3}
+--- !u!95 &215537359 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6429349236870681423, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 215537358}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &240325402
 PrefabInstance:
   m_ObjectHideFlags: 0
