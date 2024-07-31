@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5487032, g: 0.85469365, b: 0.92202777, a: 1}
+  m_IndirectSpecularColor: {r: 0.5494606, g: 0.8546849, b: 0.9216459, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2624,6 +2624,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shooter Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8905068704662274473, guid: 9f2a138b5df2fd74ebf5292f4a2ca3fd,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1020961156}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8753,6 +8758,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30ffc61b10ab1dd44aa9d31b910265f9, type: 3}
+--- !u!4 &1020961156 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3280264944427126250, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1020961155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1034680020
 PrefabInstance:
   m_ObjectHideFlags: 0
