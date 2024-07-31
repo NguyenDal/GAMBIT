@@ -32,7 +32,6 @@ namespace wallSystem
         private GameObject participant; // Corrected variable name
         public respawn respawn;
         public Animator animator;
-        private PlayerMovementWithKeyboard movementScript;
 
         private void Start()
         {

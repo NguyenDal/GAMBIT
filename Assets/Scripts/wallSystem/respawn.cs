@@ -97,12 +97,6 @@ public class respawn : MonoBehaviour
             participant = GameObject.FindGameObjectWithTag("Player");
             participantRigidbody = participant.GetComponent<Rigidbody>();
             var characterController = participant.GetComponent<CharacterController>();
-            var playerMovementScript = participant.GetComponent<PlayerMovementWithKeyboard>();
-
-            // Stop movement immediately
-            if (playerMovementScript != null){
-                playerMovementScript.StopMovement();
-            }
 
             if (characterController != null){
                 characterController.enabled = false;
@@ -125,11 +119,6 @@ public class respawn : MonoBehaviour
 
             if (characterController != null){
                 characterController.enabled = true;
-            }
-
-            // Resume movement
-            if (playerMovementScript != null){
-                playerMovementScript.ResetMovement();
             }
         }
     }
