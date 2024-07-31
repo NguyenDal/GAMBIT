@@ -34,13 +34,13 @@
             "DisplayText": "Collect The Goals!",
             "TrialTime": 600,
             "Scene": 3,  
-            "StartPosition": [-0.96, 0.4285],
+            "StartPosition": [-1, 0.6],
             "StartFacing": 0,
             "Rotate": 0,
             "ActiveGoals": [1, 2, 3, 4],
             "InactiveGoals": [],
             "InvisibleGoals": [],
-            "Quota": 1,
+            "Quota": 4,
             "LandMarks": [],
             "TrialEndKey": "x"
         },
@@ -66,7 +66,7 @@
             "Goal 1" : "3D Object Goal",
             "Type": "3D",
             "Object": "Coin",
-            "Position": [-5.52, 0.6, 2.512],
+            "Position": [2.738, 0.6, -4.766],
             "Rotation": [0,0,0],
             "Scale": [0.15, 0.15, 0.15]
         },
@@ -75,7 +75,7 @@
             "Goal 2" : "3D Object Goal",
             "Type": "3D",
             "Object": "Coin",
-            "Position": [-7.275, 0.6, -11.995],
+            "Position": [-4.131, 0.6, -5.62],
             "Rotation": [0,0,0],
             "Scale": [0.15, 0.15, 0.15]
         },
@@ -84,7 +84,7 @@
             "Goal 3" : "3D Object Goal",
             "Type": "3D",
             "Object": "Coin",
-            "Position": [-1.5, 0.6, -10.48],
+            "Position": [1.71, 0.6, -10.63],
             "Rotation": [0,0,0],
             "Scale": [0.15, 0.15, 0.15]
         },
@@ -94,7 +94,7 @@
             "Type": "3D",
             "Object": "FlagGoal",
             "Color": "ffff00",
-            "Position": [-5.008, 0.3, -13.468],
+            "Position": [-0.95, 0.3, -14.42],
             "Rotation": [0,0,0],
             "Scale": [0.3, 0.3, 0.3]
         }

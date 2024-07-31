@@ -17,19 +17,19 @@ public class respawn : MonoBehaviour{
     //If the player hits something that should kill it, kill the player
     void OnTriggerEnter(Collider other){
         if (other.tag != "EnemyAggroRange" && other.tag != "Pickup"){
-            StartCoroutine(WaitForDeathAnimation());
+            StartCoroutine(WaitForDeathAnimation(animator));
         }
     }
 
-    IEnumerator WaitForDeathAnimation(){
-        animator.SetBool("IsDead", true);
+    public IEnumerator WaitForDeathAnimation(Animator playerAnimator){
+        playerAnimator.SetBool("IsDead", true);
 
         // Wait for the death animation to finish
-        while (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Death") && 
-                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)){
+        while (!(playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Death") &&
+                 playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)){
             yield return null;
         }
-        animator.SetBool("IsDead", false);
+        playerAnimator.SetBool("IsDead", false);
         Respawn();
     }
 

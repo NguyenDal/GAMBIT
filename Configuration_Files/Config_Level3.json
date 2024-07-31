@@ -37,10 +37,10 @@
             "StartPosition": [-0.96, 0.4285],
             "StartFacing": 0,
             "Rotate": 0,
-            "ActiveGoals": [1, 2, 3, 4, 5],
+            "ActiveGoals": [1, 2, 3, 4],
             "InactiveGoals": [],
             "InvisibleGoals": [],
-            "Quota": 1,
+            "Quota": 4,
             "LandMarks": [],
             "TrialEndKey": "x"
         },
@@ -66,7 +66,7 @@
             "Goal 1" : "3D Object Goal",
             "Type": "3D",
             "Object": "Coin",
-            "Position": [-1.5, 0.6, -10.48],
+            "Position": [1.262, 0.6, -4.989],
             "Rotation": [0,0,0],
             "Scale": [0.15, 0.15, 0.15]
         },
@@ -75,7 +75,7 @@
             "Goal 2" : "3D Object Goal",
             "Type": "3D",
             "Object": "Coin",
-            "Position": [-5.52, 0.6, 2.512],
+            "Position": [-0.103, 0.6, -10.755],
             "Rotation": [0,0,0],
             "Scale": [0.15, 0.15, 0.15]
         },
@@ -84,7 +84,7 @@
             "Goal 3" : "3D Object Goal",
             "Type": "3D",
             "Object": "Coin",
-            "Position": [-7.275, 0.6, -11.995],
+            "Position": [-3.6, 0.6, -7.49],
             "Rotation": [0,0,0],
             "Scale": [0.15, 0.15, 0.15]
         },
@@ -92,17 +92,9 @@
         {
             "Goal 4" : "3D Object Goal",
             "Type": "3D",
-            "Object": "Coin",
-            "Position": [-2.992, 0.6, -17.45],
-            "Rotation": [0,0,0],
-            "Scale": [0.15, 0.15, 0.15]
-        },
-        {
-            "Goal 5" : "3D Object Goal",
-            "Type": "3D",
             "Object": "FlagGoal",
             "Color": "ffff00",
-            "Position": [-0.304, 0.3, -13.246],
+            "Position": [-3.46, 0.3, -10.31],
             "Rotation": [0,0,0],
             "Scale": [0.3, 0.3, 0.3]
         }

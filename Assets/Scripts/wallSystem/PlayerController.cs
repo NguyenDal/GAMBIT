@@ -208,49 +208,55 @@ namespace wallSystem
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.gameObject.CompareTag("Pickup")) return;
-            
             if(other.name == "FlagGoal(Clone)"){
                 StartCoroutine(WaitForVictoryAnimation());
             }
 
-            GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
-            Destroy(other.gameObject);
-
-            // Set the checkpoint at the coin's position
-            respawn.SetCheckpoint(other.transform.position);
-
-            int BlockID = TrialProgress.GetCurrTrial().BlockID;
-
-            if (BlockID < TrialProgress.GetCurrTrial().TrialProgress.NumCollectedPerBlock.Length)
+            if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Bullet"))
             {
-                TrialProgress.GetCurrTrial().TrialProgress.NumCollectedPerBlock[BlockID]++;
-            }
-            else
-            {
-                UnityEngine.Debug.LogError("BlockID is out of range of NumCollectedPerBlock.");
+                StartCoroutine(respawn.WaitForDeathAnimation(animator));
             }
 
-            TrialProgress.GetCurrTrial().NumCollected++;
-            E.LogData(
-                TrialProgress.GetCurrTrial().TrialProgress,
-                TrialProgress.GetCurrTrial().TrialStartTime,
-                transform,
-                1
-            );
-
-            if (--localQuota > 0)
+            if (other.gameObject.CompareTag("Pickup"))
             {
+                GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
+                Destroy(other.gameObject);
 
-                return;
-            }
+                // Set the checkpoint at the coin's position
+                respawn.SetCheckpoint(other.transform.position);
 
-            E.Get().CurrTrial.Notify();
-            PlayerPrefs.SetInt("PlayerCollecdtedAllPickUps", 1);
-            Debug.Log("Collected everything for the level!");
+                int BlockID = TrialProgress.GetCurrTrial().BlockID;
+
+                if (BlockID < TrialProgress.GetCurrTrial().TrialProgress.NumCollectedPerBlock.Length)
+                {
+                    TrialProgress.GetCurrTrial().TrialProgress.NumCollectedPerBlock[BlockID]++;
+                }
+                else
+                {
+                    UnityEngine.Debug.LogError("BlockID is out of range of NumCollectedPerBlock.");
+                }
+
+                TrialProgress.GetCurrTrial().NumCollected++;
+                E.LogData(
+                    TrialProgress.GetCurrTrial().TrialProgress,
+                    TrialProgress.GetCurrTrial().TrialStartTime,
+                    transform,
+                    1
+                );
+
+                if (--localQuota > 0)
+                {
+
+                    return;
+                }
+
+                E.Get().CurrTrial.Notify();
+                PlayerPrefs.SetInt("PlayerCollecdtedAllPickUps", 1);
+                Debug.Log("Collected everything for the level!");
             
-            PlayerPrefs.Save();
-            _playingSound = true;
+                PlayerPrefs.Save();
+                _playingSound = true;
+            }
         }
 
         public void ComputeMovement(float rotationInput, float movementInput, String keyImput)

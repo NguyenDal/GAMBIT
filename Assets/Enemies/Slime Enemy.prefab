@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 6758003574017344751}
   m_Layer: 0
   m_Name: SlimePolyart
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -452,6 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82fa835664c196a43ac58c253302269e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 0}
 --- !u!114 &6758003574017344751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,8 +468,6 @@ MonoBehaviour:
   waypoints:
   - {fileID: 5625083064340325672}
   - {fileID: 1290736647724978772}
-  - {fileID: 6125384575664160599}
-  - {fileID: 6458273452319460824}
   speed: 0.5
 --- !u!1 &5625083064340325672
 GameObject:
