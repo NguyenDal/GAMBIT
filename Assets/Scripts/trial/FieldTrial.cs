@@ -1,67 +1,90 @@
-﻿using main;
-using SFB;
-using System;
+﻿using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
-
-using Debug = UnityEngine.Debug;
-using DS = data.DataSingleton;
+using SFB;
+using data;
+using main;
 
 namespace trial
 {
-    // This is the only trial in which the current data is null. This is so that we have uniform setup
     public class FieldTrial : AbstractTrial
     {
         private readonly InputField[] _fields;
 
-        // Here we construct the entire linked list structure.
         public FieldTrial(InputField[] fields) : base(-1, -1)
         {
             _fields = fields;
 
-            // This block of code will use the default configuration file if
-            // using webGL or Android (can add others in if statement) 
-            // Otherwise calls the directory picker to select the configuration file.
-    
-            var AutoRunConfigDir = Application.streamingAssetsPath + "/AutoRun_Config/";
-            var files = new string[0];
-            if (Directory.Exists(AutoRunConfigDir))
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
             {
-                files = Directory.GetFiles(AutoRunConfigDir);
-            }
+                // Create a new GameObject and add WebGlFileLoader component to it
+                var loaderObject = new GameObject("WebGlFileLoader");
+                var webGlFileLoader = loaderObject.AddComponent<WebGlFileLoader>();
 
-            if (files.Length > 0)
-            {
-                var defaultConfig = AutoRunConfigDir + Path.GetFileName(files[0]);
-                Loader.ExternalActivation(defaultConfig);
+                webGlFileLoader.StartCoroutine(WebGlFileLoader.LoadFile("Config_ArrowMovement.json",
+                    content =>
+                    {
+                        Debug.Log("File loaded successfully: " + content);
+                        // Handle the file content here
+                        Loader.ExternalActivation(content); // Assuming ExternalActivation can handle the content
+                    },
+                    error =>
+                    {
+                        Debug.LogError("Failed to load file: " + error);
+                    }));
             }
-
             else
             {
-                while (true)
+                var AutoRunConfigDir = Application.streamingAssetsPath + "/AutoRun_Config/";
+                var files = new string[0];
+                if (Directory.Exists(AutoRunConfigDir))
                 {
-                    // Here we're using: https://github.com/gkngkc/UnityStandaloneFileBrowser because it was easier than rolling our own
-                    string[] paths = StandaloneFileBrowser.OpenFilePanel("Choose configuration file", "Configuration_Files", "", false);
-                    string path = paths[0];
-                    if (Loader.ExternalActivation(path)) break;
+                    files = Directory.GetFiles(AutoRunConfigDir);
+                }
+
+                if (files.Length > 0)
+                {
+                    var defaultConfig = AutoRunConfigDir + Path.GetFileName(files[0]);
+                    Loader.ExternalActivation(defaultConfig);
+                }
+                else
+                {
+                    while (true)
+                    {
+                        Debug.Log("Opening file browser...");
+                        string[] paths = StandaloneFileBrowser.OpenFilePanel("Choose configuration file", "Configuration_Files", "", false);
+                        if (paths.Length == 0)
+                        {
+                            Debug.LogError("No file selected.");
+                            continue;
+                        }
+
+                        string path = paths[0];
+                        Debug.Log("Selected file: " + path);
+
+                        if (Loader.ExternalActivation(path))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Debug.LogError("Failed to activate configuration file.");
+                        }
+                    }
                 }
             }
 
             TrialProgress = new TrialProgress();
-            _fields = fields;
-
         }
 
-
-        //We are gonna generate all the trials here.
         private void GenerateTrials()
         {
             AbstractTrial currentTrial = this;
-            foreach (var i in DS.GetData().BlockOrder)
+            foreach (var i in DataSingleton.GetData().BlockOrder)
             {
                 var l = i - 1;
-                var block = DS.GetData().Blocks[l];
+                var block = DataSingleton.GetData().Blocks[l];
                 var newBlock = true;
                 AbstractTrial currHead = null;
 
@@ -71,17 +94,14 @@ namespace trial
                     var k = j - 1;
                     AbstractTrial t;
 
-                    // Here we decide what each trial is, I guess we could do this with a function map, but later. 
-                    // here we have a picture as a trial.
                     if (k < 0)
                     {
                         t = new RandomTrial(l, k);
                     }
                     else
                     {
-                        var trialData = DS.GetData().Trials[k];
+                        var trialData = DataSingleton.GetData().Trials[k];
 
-                        // Control flow here is for deciding what Trial gets spat out from the config
                         if (trialData.FileLocation != null)
                         {
                             Debug.Log("Creating new Instructional Trial");
@@ -119,23 +139,21 @@ namespace trial
         {
             base.Update(deltaTime);
 
-            if (StartButton.clicked == true)
+            if (StartButton.clicked)
             {
-                // Sets the output file name as the desired one.
                 var Field1Text = _fields[0].transform.GetComponentsInChildren<Text>()[1];
                 TrialProgress.Field1 = Field1Text.text;
 
-                DS.GetData().OutputFile = "ExperimentNo_" + ExperimentNumberGenerator.launchCount + "_" +
+                DataSingleton.GetData().OutputFile = "ExperimentNo_" + ExperimentNumberGenerator.launchCount + "_" +
                                           "Frequency_" + TrialProgress.Field1 + "Hz_" +
                                           DateTime.Now.ToString("yyyy-MM-dd-HH.mm.ss") + ".csv";
 
                 GenerateTrials();
 
-                Loader.LogHeaders();
+                Loader.LogHeaders(); // Call static method directly on the class
 
                 Progress();
             }
-
         }
 
         public override void Progress()

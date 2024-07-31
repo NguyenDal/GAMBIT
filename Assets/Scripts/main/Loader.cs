@@ -33,8 +33,23 @@ namespace main
         private void Start()
         {
             DontDestroyOnLoad(this);
+
+            if (Fields == null || Fields.Length == 0)
+            {
+                Debug.LogError("Fields array is not initialized.");
+                return;
+            }
+
             CurrTrial = new FieldTrial(Fields);
-            //Initialize the default field trial, see this later.
+
+            if (CurrTrial == null)
+            {
+                Debug.LogError("CurrTrial initialization failed.");
+            }
+            else
+            {
+                Debug.Log("CurrTrial initialized successfully.");
+            }
         }
 
         //This function initializes the Data.singleton files
@@ -48,7 +63,14 @@ namespace main
 
         private void Update()
         {
-            CurrTrial.Update(Time.deltaTime);
+            if (CurrTrial != null)
+            {
+                CurrTrial.Update(Time.deltaTime);
+            }
+            else
+            {
+                Debug.LogError("CurrTrial is null in Update.");
+            }
         }
 
         public static void LogHeaders()
