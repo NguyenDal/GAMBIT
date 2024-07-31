@@ -19,7 +19,8 @@ public class PeaShooter : MonoBehaviour
 
     //If the player enters the shooters range (box collider), then start shooting
     void OnTriggerEnter(Collider other){
-        if (other.CompareTag("Player")){
+        if (other.CompareTag("Player") || other.CompareTag("plyrBody"))
+        {
             inRange = true;
             if (!isShooting){
                 shootingCoroutine = StartCoroutine(ShootAtPlayer());
@@ -30,7 +31,7 @@ public class PeaShooter : MonoBehaviour
     
     //When the player leaves the shooters range, stop following, and stop shooting
     void OnTriggerExit(Collider other){
-        if (other.CompareTag("Player")){
+        if (other.CompareTag("Player") || other.CompareTag("plyrBody")){
             inRange = false;
             if (isShooting){
                 StopCoroutine(shootingCoroutine);
