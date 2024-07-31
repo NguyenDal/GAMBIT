@@ -31,18 +31,12 @@ public class FallScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Player entering map.");
         //plyr.useGravity = false;
         GetComponent<CharacterController>().enabled = true;
-
-
-
-
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        Debug.Log("Player on map.");
         GetComponent<CharacterController>().enabled = true;
         if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
         {
@@ -71,14 +65,12 @@ public class FallScript : MonoBehaviour
 
         if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
         {
-            Debug.Log("key held.");
             GetComponent<CharacterController>().enabled = false;
 
         }
 
         if (Input.GetKeyUp("w") || Input.GetKeyUp("a") || Input.GetKeyUp("s") || Input.GetKeyUp("d"))
         {
-            Debug.Log("key let go.");
             if (GetComponent<CharacterController>().enabled == false)
             {
                 if (GetComponent<CharacterController>().isGrounded)
@@ -104,7 +96,6 @@ public class FallScript : MonoBehaviour
 
         if (collision.gameObject.tag == "Wall")
         {
-            Debug.Log("Player fell off map.");
             if (GetComponent<CharacterController>().isGrounded)
             {
                 Debug.Log("!- nested it is grounded");
@@ -116,7 +107,6 @@ public class FallScript : MonoBehaviour
             {
                 //GetComponent<CharacterController>().enabled = false;
                 plyr.useGravity = true;
-                Debug.Log("not grounded");
 
                 //line has been commented out and moved outside of nested if. Appears to more consistently give desired result
                 //Remove line below to demonstrate "closest" solution prior to this. Note, 800f appears to be threshold for functionality.

@@ -238,7 +238,6 @@ public class FrequencyMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Collided with " + other.gameObject.tag);
         
         // The !isInBlock is there to make sure we dont change the last location after it is changed once. This is to prevent
         // The player from being stuck in the block by having the lastLocation being inside the block. 
