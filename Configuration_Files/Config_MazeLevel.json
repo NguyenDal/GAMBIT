@@ -33,7 +33,7 @@
             "Trial 1": "Level 2",
             "DisplayText": "Collect The Goals!",
             "TrialTime": 600,
-            "Scene": 3,  
+            "Scene": 8,  
             "StartPosition": [-1, 0.6],
             "StartFacing": 0,
             "Rotate": 0,
