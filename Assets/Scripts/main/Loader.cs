@@ -75,7 +75,7 @@ namespace main
 
         public static void LogHeaders()
         {
-            using (var writer = new StreamWriter("Assets/OutputFiles~/" + DS.GetData().OutputFile, false))
+            using (var writer = new StreamWriter("Assets/Outputfiles/" + DS.GetData().OutputFile, false))
             {
                 writer.Write(
                     "StartField1, StartField2, StartField3, StartField4, TimeStamp, BlockIndex, TrialIndex, TrialInBlock, Instructional, 2D, Scene, Enclosure, PositionX, PositionY, PositionZ, RotationY, " +
@@ -92,7 +92,7 @@ namespace main
             // Don't output anything if the Y position is at default (avoids incorrect output data)
             if (t.position.y != -1000 && (targetFound == 1 || _timer > 1f / (DS.GetData().OutputTimesPerSecond == 0 ? 1000 : DS.GetData().OutputTimesPerSecond)))
             {
-                using (var writer = new StreamWriter("Assets/OutputFiles~/" + DS.GetData().OutputFile, true))
+                using (var writer = new StreamWriter("Assets/Outputfiles/" + DS.GetData().OutputFile, true))
                 {
                     var PositionX = t.position.x.ToString();
                     var PositionZ = t.position.z.ToString();
