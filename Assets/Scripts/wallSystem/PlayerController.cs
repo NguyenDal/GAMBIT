@@ -32,7 +32,10 @@ namespace wallSystem
         private GameObject participant; // Corrected variable name
         public respawn respawn;
         public Animator animator;
-
+        
+        [SerializeField] private int deathCount = 0;
+        public Text attemptCounterText;
+        
         private void Start()
         {
             
@@ -209,12 +212,16 @@ namespace wallSystem
         private void OnTriggerEnter(Collider other)
         {
             if(other.name == "FlagGoal(Clone)"){
+                GetComponent<FrequencyMovement>().isDead = true;
                 StartCoroutine(WaitForVictoryAnimation());
             }
 
             if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Bullet"))
             {
+                GetComponent<FrequencyMovement>().HandleDeath();
                 StartCoroutine(respawn.WaitForDeathAnimation(animator));
+                HandleDeath();
+
             }
 
             if (other.gameObject.CompareTag("Pickup"))
@@ -281,7 +288,9 @@ namespace wallSystem
             if (participant.transform.position.y < -1) // Corrected variable name
             {
                 respawn.Respawn();
+                HandleDeath();
             }
+
             E.LogData(TrialProgress.GetCurrTrial().TrialProgress, TrialProgress.GetCurrTrial().TrialStartTime, transform);
 
             if (_playingSound)
@@ -341,5 +350,12 @@ namespace wallSystem
             
             yield break;
         }
+        
+        public void HandleDeath()
+        {
+            deathCount++;
+            attemptCounterText.text = "Attempts: " + deathCount;
+        }
+
     }
 }
