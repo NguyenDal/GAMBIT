@@ -93,7 +93,6 @@ public class LevelCompleteDisplay : MonoBehaviour
 
         if (currentBestTime < BestLevelTime)
         {
-            starsToAward++;
             Debug.Log("Stars: " + starsToAward);
             PlayerPrefs.SetFloat("BestTime" + PlayerPrefs.GetString("previousLevelName"),
                 PlayerPrefs.GetFloat("CurrentBestTime" + PlayerPrefs.GetString("previousLevelName")));
@@ -101,6 +100,35 @@ public class LevelCompleteDisplay : MonoBehaviour
             PlayerPrefs.Save();
             
         }
+        
+        //If the player beats the threshold time, grant them an extra star
+        
+        //Check which level the player just beat
+        switch (PlayerPrefs.GetString("previousLevelName"))
+        {
+            case "Level1":
+                if (currentBestTime < 30)
+                {
+                    starsToAward++;
+                }
+
+                break;
+            case "Level2":
+                if (currentBestTime < 25)
+                {
+                    starsToAward++;
+                }
+
+                break;
+            case "Level3":
+                if (currentBestTime < 40)
+                {
+                    starsToAward++;
+                }
+
+                break;
+        }
+
         Debug.Log("Previous Level's Best time: " + PlayerPrefs.GetFloat("BestTime" + PlayerPrefs.GetString("previousLevelName")));
         DisplayStars(starsToAward);
         ShowStars(starsToAward);
