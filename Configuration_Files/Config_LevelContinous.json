@@ -52,7 +52,7 @@
             "StartPosition": [-0.96, 0.4285],
             "StartFacing": 0,
             "Rotate": 0,
-            "ActiveGoals": [1, 2, 3, 4],
+            "ActiveGoals": [5,6,7,8]x,
             "InactiveGoals": [],
             "InvisibleGoals": [],
             "Quota": 4,
@@ -110,6 +110,42 @@
             "Object": "FlagGoal",
             "Color": "ffff00",
             "Position": [-0.95, 0.3, -14.42],
+            "Rotation": [0,0,0],
+            "Scale": [0.3, 0.3, 0.3]
+        },
+        {
+            "Goal 5" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Coin",
+            "Position": [1.262, 0.6, -4.989],
+            "Rotation": [0,0,0],
+            "Scale": [0.15, 0.15, 0.15]
+        },
+
+        {
+            "Goal 6" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Coin",
+            "Position": [-0.103, 0.6, -10.755],
+            "Rotation": [0,0,0],
+            "Scale": [0.15, 0.15, 0.15]
+        },
+
+        {
+            "Goal 7" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "Coin",
+            "Position": [-3.6, 0.6, -7.49],
+            "Rotation": [0,0,0],
+            "Scale": [0.15, 0.15, 0.15]
+        },
+
+        {
+            "Goal 8" : "3D Object Goal",
+            "Type": "3D",
+            "Object": "FlagGoal",
+            "Color": "ffff00",
+            "Position": [-3.46, 0.3, -10.31],
             "Rotation": [0,0,0],
             "Scale": [0.3, 0.3, 0.3]
         }
