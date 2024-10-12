@@ -52,7 +52,7 @@
             "StartPosition": [-0.96, 0.4285],
             "StartFacing": 0,
             "Rotate": 0,
-            "ActiveGoals": [5,6,7,8]x,
+            "ActiveGoals": [5,6,7,8],
             "InactiveGoals": [],
             "InvisibleGoals": [],
             "Quota": 4,
