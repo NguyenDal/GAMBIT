@@ -21,6 +21,11 @@ public class FrequencyMimicKeyboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(freqMovement.isDead) // if the player is dead do not accept any inputs
+        {
+            return;
+        }
+
         // Forward
         if (Keyboard.current.wKey.isPressed)
         {
