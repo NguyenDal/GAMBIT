@@ -9,6 +9,8 @@ using DS = data.DataSingleton;
 using E = main.Loader;
 using Random = UnityEngine.Random;
 using System.Collections;
+using System.IO;
+using Newtonsoft.Json.Linq;
 using UnityEngine.Analytics;
 using UnityEditor;
 using UnityEngine.SceneManagement;
@@ -28,6 +30,7 @@ namespace wallSystem
         private bool _isStarted = false;
         private bool _reset;
         private int localQuota;
+        private int coinsCollected = 0;
         public bool firstperson;
         private GameObject participant; // Corrected variable name
         public respawn respawn;
@@ -212,6 +215,34 @@ namespace wallSystem
         private void OnTriggerEnter(Collider other)
         {
             if(other.name == "FlagGoal(Clone)"){
+                //Check if we are doing continuous level this is set to true for now, will change later
+                if (true)
+                {
+                    JObject json = JObject.Parse(File.ReadAllText("Configuration_Files/Config_Level3.json"));
+                    json["CoinsCollectedPreviousLevel"] = TrialProgress.GetCurrTrial().NumCollected; 
+                    json["TimeTakenPreviousLevel"] = TrialProgress.GetCurrTrial().TrialProgress.TimeSinceExperimentStart;
+
+                    String pathToWrite = "Unknown Path";
+                    
+                    Debug.Log("The trial we are on right now: " + TrialProgress.GetCurrTrial().TrialID);
+                    
+                    switch (TrialProgress.GetCurrTrial().TrialID)
+                    {
+                        //We are on level 2, so write to level 3
+                        case 0:
+                            pathToWrite = "Configuration_Files/Config_Level3.json";
+                            break;
+                        default:
+                            Debug.Log("Unknown trial ID");
+                            break;
+                    }
+                    //Write pickups collected and time taken to the JSON
+                    using (var writer = new StreamWriter(pathToWrite, false))
+                    {
+                        writer.Write(json.ToString());
+                    }
+                }
+
                 GetComponent<FrequencyMovement>().isDead = true;
                 StartCoroutine(WaitForVictoryAnimation());
             }
@@ -226,6 +257,7 @@ namespace wallSystem
 
             if (other.gameObject.CompareTag("Pickup"))
             {
+                coinsCollected++;
                 GetComponent<AudioSource>().PlayOneShot(other.gameObject.GetComponent<AudioSource>().clip, 1);
                 Destroy(other.gameObject);
 

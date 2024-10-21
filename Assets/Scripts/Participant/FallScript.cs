@@ -7,6 +7,7 @@ public class FallScript : MonoBehaviour {
 
     void Start() {
         GetComponent<CharacterController>().enabled = true;
+        playerRigidBody = GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision collision) {
