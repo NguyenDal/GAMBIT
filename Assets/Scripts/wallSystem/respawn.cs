@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class respawn : MonoBehaviour{
-    private GameObject participant;
-    private Transform respawnLocation;
+    public GameObject participant;
+    public Transform respawnLocation;
     private Vector3 checkpointPosition;
-    private Rigidbody participantRigidbody;
+    public Rigidbody participantRigidbody;
     public Animator animator;
 
     void Start(){

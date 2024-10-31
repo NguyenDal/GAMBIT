@@ -46,8 +46,8 @@ public class PeaShooter : MonoBehaviour
         while (inRange){
             //Create a new bullet, and spawn it on the eye of the shooter
             GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
-            StartCoroutine(MoveBullet(newBullet, new Vector3(player.position.x, player.position.y, player.position.z), 5));
-            yield return new WaitForSeconds(3f); //You can change the rate of fire here
+            StartCoroutine(MoveBullet(newBullet, new Vector3(player.position.x, player.position.y, player.position.z), 2));
+            yield return new WaitForSeconds(2f); //You can change the rate of fire here
         }
     }
 
