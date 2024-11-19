@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class KillBill : MonoBehaviour
 {
-    public Transform spawnPoint;         
-    public Animator animator;            
-    public MonoBehaviour movementScript; 
-    public float respawnDelay = 1.5f;    
+    public Transform spawnPoint;
+    public Animator animator;
+    public MonoBehaviour movementScript;
+    public float respawnDelay = 1.5f;
 
-    private bool isDead = false;         
+    private bool isDead = false;
+
     void Start()
     {
-        
         if (animator == null)
             animator = GetComponent<Animator>();
 
@@ -30,15 +30,12 @@ public class KillBill : MonoBehaviour
     private void TriggerDeath()
     {
         isDead = true;
+        DeathManager.IncrementDeathCount();
 
-        
         if (movementScript != null)
             movementScript.enabled = false;
 
-       
         animator.Play("Death");
-
-        
         StartCoroutine(HandleDeathAndRespawn());
     }
 
@@ -46,14 +43,11 @@ public class KillBill : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnDelay);
 
-       
         transform.position = spawnPoint.position;
 
-        
         if (movementScript != null)
             movementScript.enabled = true;
 
-        
         isDead = false;
     }
 }

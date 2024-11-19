@@ -14,6 +14,6 @@ public class Level_Complete : MonoBehaviour
 
     void EndLevel()
     {
-        SceneManager.LoadScene("LevelCompleteDisplay");
+        SceneManager.LoadScene("LevelCompleteDisplay_Level1");
     }
 }
