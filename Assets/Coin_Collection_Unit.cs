@@ -12,6 +12,13 @@ public class Coin_Collection_Unit : MonoBehaviour
 
     void Start()
     {
+
+
+        if (CoinList == null)
+        {
+            CoinList = new List<GameObject>();
+        }
+
         CoinCount = 0;
     }
 

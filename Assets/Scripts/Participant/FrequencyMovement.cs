@@ -61,6 +61,15 @@ public class FrequencyMovement : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if (!isInblock)
+        {
+            // Continuously update the last valid position
+            lastLocation = transform.position;
+        }
+    }
+
     // Resets values on disable/die
     private void OnDisable()
     {
@@ -137,10 +146,6 @@ public class FrequencyMovement : MonoBehaviour
                     StartCoroutine(TurnDirection(turnAngle, turnTime));
                     break;
 
-                // Break wall / interact
-                case breakWallOffset:
-                    gameObject.GetComponent<InteractionHandler>().BreakWall();
-                    break;
 
                 default: 
                     break;
@@ -256,12 +261,20 @@ public class FrequencyMovement : MonoBehaviour
         
         // The !isInBlock is there to make sure we dont change the last location after it is changed once. This is to prevent
         // The player from being stuck in the block by having the lastLocation being inside the block. 
-        if (other.gameObject.tag.Equals("Cube") && !isInblock)
+        if (other.gameObject.tag.Equals("Cube") && !isInblock && other.gameObject.activeInHierarchy)
         {
             Debug.Log("IN BLOCK");
             isInblock = true;
             transform.position = lastLocation;
+
         }
+
+        else
+        {
+            isInblock = false;
+        }
+
+        
     }
 
     public void SetIsInblock(bool value)

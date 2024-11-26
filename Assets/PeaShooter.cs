@@ -51,12 +51,33 @@ public class PeaShooter : MonoBehaviour
         }
     }
 
-    IEnumerator MoveBullet(GameObject bullet, Vector3 endPos, float time){
+    IEnumerator MoveBullet(GameObject bullet, Vector3 endPos, float time)
+    {
         Vector3 beginPos = bullet.transform.position;
-        for (float t = 0; t < 1; t += Time.deltaTime / time){
-            bullet.transform.position = Vector3.Lerp(beginPos, endPos, t);
+        float maxDistance = 4f; // Set the maximum distance the bullet can travel.
+        float traveledDistance = 0f;
+
+        for (float t = 0; t < 1; t += Time.deltaTime / time)
+        {
+            if (bullet == null) yield break; // Exit if the bullet is destroyed externally.
+
+            Vector3 nextPosition = Vector3.Lerp(beginPos, endPos, t);
+            traveledDistance += Vector3.Distance(bullet.transform.position, nextPosition);
+
+            // Move the bullet
+            bullet.transform.position = nextPosition;
+
+            // Check if the bullet exceeds the maximum distance
+            if (traveledDistance >= maxDistance)
+            {
+                Destroy(bullet);
+                yield break;
+            }
+
             yield return null;
         }
-        Destroy(bullet); 
+
+        // If the loop ends without exceeding the distance, destroy the bullet
+        Destroy(bullet);
     }
 }
