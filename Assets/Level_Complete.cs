@@ -22,6 +22,6 @@ public class Level_Complete : MonoBehaviour
     void EndLevel()
     {
         timerScript.OnSceneChangede();
-        SceneManager.LoadScene("LevelCompleteDisplay_Level1");
+        SceneManager.LoadScene(levelcomplete);
     }
 }
