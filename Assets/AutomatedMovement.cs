@@ -58,12 +58,6 @@ public class AutomatedMovement : MonoBehaviour
         if (newMovementSystem) {
             disableOtherMovementSystems();
 
-            // "p" key to interact during tile movement
-            if (Keyboard.current.pKey.isPressed)
-            {
-                gameObject.GetComponent<InteractionHandler>().BreakWall();
-            }
-
             // Check if left mouse button is clicked and player is not already moving
             if (Input.GetMouseButtonDown(0) && !isMoving)
             {

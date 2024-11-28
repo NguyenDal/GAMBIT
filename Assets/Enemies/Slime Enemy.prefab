@@ -393,8 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8672883250913606027}
   - component: {fileID: 9185013536881958464}
-  - component: {fileID: 2433468842428744610}
-  - component: {fileID: 6758003574017344751}
+  - component: {fileID: 4498908049926861137}
   m_Layer: 0
   m_Name: SlimePolyart
   m_TagString: Enemy
@@ -440,7 +439,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.1966336, z: 1}
   m_Center: {x: 0, y: 0.6760927, z: 0}
---- !u!114 &2433468842428744610
+--- !u!114 &4498908049926861137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -449,25 +448,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4385620176630379448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82fa835664c196a43ac58c253302269e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 0}
---- !u!114 &6758003574017344751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4385620176630379448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ef43f81a54fd9144a05fb0f18c4433f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2022e5bf9b6a46242b1782e84bf2f592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints:
-  - {fileID: 5625083064340325672}
-  - {fileID: 1290736647724978772}
+  - {fileID: 3115607926355284764}
+  - {fileID: 3976654389233589075}
+  - {fileID: 3001981545631164074}
+  - {fileID: 3165425511756955802}
   speed: 0.5
 --- !u!1 &5625083064340325672
 GameObject:

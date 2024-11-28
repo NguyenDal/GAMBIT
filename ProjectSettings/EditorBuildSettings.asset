@@ -12,24 +12,36 @@ EditorBuildSettings:
     path: Assets/_Scenes/LoadingScreen.unity
     guid: c371aa8a3e024b049a4576a08b57b0b5
   - enabled: 1
-    path: Assets/_Scenes/Levels/Level1.unity
-    guid: 5eca1899e5543cc4fbff271a18816794
+    path: Assets/_Scenes/Levels/Level2.unity
+    guid: c8e383d86e2c4e44498af6570ababa12
   - enabled: 1
     path: Assets/_Scenes/Levels/Level2.unity
     guid: c8e383d86e2c4e44498af6570ababa12
   - enabled: 1
     path: Assets/_Scenes/Levels/Level3.unity
-    guid: 9aae1ebb3e49e014aab5288338f38def
-  - enabled: 1
+    guid: d758709f815886f4290f2b6c42fcb7d7
+  - enabled: 0
     path: Assets/_Scenes/Levels/Level0.unity
     guid: 8533d46685a41dd47a88b29ce23dd2c5
   - enabled: 1
     path: Assets/_Scenes/EndingScene.unity
     guid: a4e0f5f07dc154834a417f90e2ed9917
   - enabled: 1
-    path: Assets/_Scenes/Levels/LevelCompleteDisplay.unity
+    path: Assets/_Scenes/Levels/LevelCompleteDisplay_Level1.unity
     guid: d44f70fd7e03f40459f2f76f32bc9503
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Levels/MazeLevel.unity
     guid: 0cc8d9fa6b4fa6149a675f1ca9dc840e
+  - enabled: 1
+    path: Assets/_Scenes/Levels/LevelCompleteDisplay_Level2.unity
+    guid: 51ba1a8db57d36d4485fcd7cef290fa4
+  - enabled: 1
+    path: Assets/_Scenes/Levels/LevelCompleteDisplay_Level3.unity
+    guid: 1fde137818382774eaa886ac1532e996
+  - enabled: 1
+    path: Assets/_Scenes/Levels/Level4.unity
+    guid: 8a0b89a4819b6ad4f833957cbe171f91
+  - enabled: 1
+    path: Assets/_Scenes/Levels/LevelCompleteDisplay_Level4.unity
+    guid: 595e2c65cb022ca46ad55761aab1d3e2
   m_configObjects: {}
