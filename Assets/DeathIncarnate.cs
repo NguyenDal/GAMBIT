@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class DeathIncarnate : MonoBehaviour
 {
-    public Transform respawnPoint;  
-    public float fallThreshold = -10f;  
+    public Transform respawnPoint;
+    public float fallThreshold = -10f;
 
     void Update()
     {
-        
         if (transform.position.y < fallThreshold)
         {
-            Debug.Log("dsajdjaks");
+            DeathManager.IncrementDeathCount();
             Respawn();
         }
     }
@@ -19,7 +18,6 @@ public class DeathIncarnate : MonoBehaviour
     {
         transform.position = respawnPoint.position;
 
-        
         if (TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             rb.velocity = Vector3.zero;
