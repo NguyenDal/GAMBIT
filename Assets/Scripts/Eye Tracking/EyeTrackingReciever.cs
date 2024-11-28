@@ -3,17 +3,19 @@ using System.IO;
 
 public class EyeTrackingReciever : MonoBehaviour
 {
-    private ArrowMovementConfig config; // Update the config class to match your settings
+    private ArrowMovementConfig config; 
     private GazeData _latestGazeData;
 
     private float cellWidth;
     private float cellHeight;
     public float movementSpeed = 5f; // Speed for movement
-    public Camera playerCamera; // Reference to the player's camera
+    public GameObject player; // Reference to the player's camera
 
-    private void Start()
+    public RectTransform forwardArrow, leftArrow, rightArrow, backwardArrow;
+    
+    public void Start()
     {
-        // Path to your Config_ArrowMovement.json file
+        // Path to Config_ArrowMovement.json file
         string filePath = Path.Combine(Application.dataPath, "../Configuration_Files/Config_ArrowMovement.json");
         config = LoadConfig(filePath);
 
@@ -28,6 +30,25 @@ public class EyeTrackingReciever : MonoBehaviour
         }
     }
 
+    public void AdjustArrowPosition()
+    {
+        Vector2 center = new Vector2(config.screenWidth / 2, config.screenHeight / 2);
+        float offset = config.arrowSpacing;
+
+        // Set positions and sizes for arrows
+        forwardArrow.anchoredPosition = center + new Vector2(0, offset);
+        forwardArrow.sizeDelta = new Vector2(config.arrowSize, config.arrowSize);
+
+        backwardArrow.anchoredPosition = center + new Vector2(0, -offset);
+        backwardArrow.sizeDelta = new Vector2(config.arrowSize, config.arrowSize);
+
+        leftArrow.anchoredPosition = center + new Vector2(-offset, 0);
+        leftArrow.sizeDelta = new Vector2(config.arrowSize, config.arrowSize);
+
+        rightArrow.anchoredPosition = center + new Vector2(offset, 0);
+        rightArrow.sizeDelta = new Vector2(config.arrowSize, config.arrowSize);
+    }
+
     public void ReceiveGazeData(GazeData gazeData)
     {
         _latestGazeData = gazeData;
@@ -39,51 +60,65 @@ public class EyeTrackingReciever : MonoBehaviour
 
     private void HandleGazePosition(Vector2 gazePosition)
     {
-        int col = Mathf.FloorToInt(gazePosition.x / cellWidth);
-
-        Debug.Log($"Gaze Column: {col}");
-
-        switch (col)
+        if (IsWitinArrow(gazePosition, forwardArrow))
         {
-            case 0:
-                MoveCameraLeft();
-                break;
-            case 1:
-                CenterCamera();
-                break;
-            case 2:
-                MoveCameraRight();
-                break;
+            MoveForward();
+        }
+        else if (IsWitinArrow(gazePosition, backwardArrow))
+        {
+            MoveBackward();
+        }
+        else if (IsWitinArrow(gazePosition, leftArrow))
+        {
+            MoveLeft();
+        }
+        else if (IsWitinArrow(gazePosition, rightArrow))
+        {
+            MoveRight();
         }
     }
 
-    private void MoveCameraLeft()
+    private bool IsWitinArrow(Vector2 gazePosition , RectTransform arrow) 
     {
-        Debug.Log("Moving Camera Left");
-        transform.Translate(Vector3.left * movementSpeed * Time.deltaTime); // Use movement settings
-        playerCamera.transform.localEulerAngles = new Vector3(0, -config.cameraAngle, 0); // Adjust the angle from config
+        Vector2 arrowPositon = arrow.anchoredPosition;
+        Vector2 arrowSize = arrow.sizeDelta;
+
+        return gazePosition.x > arrowPositon.x - arrowSize.x / 2 &&
+               gazePosition.x < arrowPositon.x + arrowSize.x / 2 &&
+               gazePosition.y > arrowPositon.y - arrowSize.y / 2 &&
+               gazePosition.y < arrowPositon.y + arrowSize.y / 2;
     }
 
-    private void MoveCameraRight()
+    private void MoveForward()
     {
-        Debug.Log("Moving Camera Right");
-        transform.Translate(Vector3.right * movementSpeed * Time.deltaTime); // Use movement settings
-        playerCamera.transform.localEulerAngles = new Vector3(0, config.cameraAngle, 0); // Adjust the angle from config
+        Debug.Log("Moving Forward");
+        player.transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
     }
 
-    private void CenterCamera()
+    private void MoveBackward()
     {
-        Debug.Log("Centering Camera");
-        transform.Translate(Vector3.zero); // Stop movement
-        playerCamera.transform.localEulerAngles = Vector3.zero;
+        Debug.Log("Moving Backward");
+        player.transform.Translate(Vector3.back * movementSpeed * Time.deltaTime);
     }
+
+    private void MoveLeft()
+    {
+        Debug.Log("Moving Left");
+        player.transform.Translate(Vector3.left * movementSpeed * Time.deltaTime);
+    }
+    private void MoveRight()
+    {
+        Debug.Log("Moving Right");
+        player.transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
+    }
+
 
     public GazeData GetGazeData()
     {
         return _latestGazeData;
     }
 
-    private ArrowMovementConfig LoadConfig(string filePath)
+    private ArrowMovementConfig LoadConfig(string filePath) // Loads arrow movement configuration from a JSON file or initializes default settings if the file is missing.
     {
         if (File.Exists(filePath))
         {
@@ -107,5 +142,6 @@ public class ArrowMovementConfig
 {
     public float screenWidth;
     public float screenHeight;
-    public float cameraAngle; // Angle adjustment for camera movement
+    public float arrowSize; //  djustment for size of the arrows
+    public float arrowSpacing; // Spacing between arrows
 }
