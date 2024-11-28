@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class respawn : MonoBehaviour{
-    private GameObject participant;
-    private Transform respawnLocation;
+    public GameObject participant;
+    public Transform respawnLocation;
     private Vector3 checkpointPosition;
-    private bool checkpointSet = false;
-    private Rigidbody participantRigidbody;
+    public Rigidbody participantRigidbody;
     public Animator animator;
 
     void Start(){
         GameObject.FindGameObjectsWithTag("Cube");
+        participant = GameObject.FindGameObjectWithTag("Player");
+        participantRigidbody = participant.GetComponent<Rigidbody>();
+        
+        checkpointPosition = GameObject.FindGameObjectWithTag("Respawn").transform.position;
+        
     }
 
     //If the player hits something that should kill it, kill the player
@@ -31,6 +35,7 @@ public class respawn : MonoBehaviour{
         }
         playerAnimator.SetBool("IsDead", false);
         Respawn();
+
     }
 
     //Respawns the player from either the default respawn point or last picked up coin
@@ -38,22 +43,31 @@ public class respawn : MonoBehaviour{
         participant = GameObject.FindGameObjectWithTag("Player");
         participantRigidbody = participant.GetComponent<Rigidbody>();
         var characterController = participant.GetComponent<CharacterController>();
+        
+        var frequencyMovement = participant.GetComponent<FrequencyMovement>();
+        if (frequencyMovement != null)
+        {
+            frequencyMovement.HandleRespawn();
+        }
+        else
+        {
+            Debug.LogError("FrequencyMovement component not found on participant");
+        }
 
-        if (checkpointSet){
-            participant.transform.position = checkpointPosition;
-        }
-        else{
-            respawnLocation = GameObject.FindGameObjectWithTag("Respawn").transform;
-            participant.transform.position = respawnLocation.position;
-        }
+        participant.transform.position = checkpointPosition;
 
         if (characterController != null){
             characterController.enabled = true;
         }
+        
+        if(participantRigidbody != null){
+            participantRigidbody.velocity = Vector3.zero;
+            participantRigidbody.angularVelocity = Vector3.zero;
+        }
+
     }
 
     public void SetCheckpoint(Vector3 position){
         checkpointPosition = new Vector3(position.x, 0.4f, position.z);
-        checkpointSet = true;
     }
 }

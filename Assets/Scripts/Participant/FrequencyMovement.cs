@@ -22,11 +22,13 @@ public class FrequencyMovement : MonoBehaviour
     [SerializeField] float tileSize = 0.5f;
     [SerializeField] float turnAngle = 45f;
     [SerializeField] float turnTime = 0.3f;
-
+    
     private bool isMoving = false;
     private bool isTurning = false;
     public bool isInblock = false;
     private Vector3 lastLocation;
+    
+    public bool isDead = false;
 
     
 
@@ -71,6 +73,12 @@ public class FrequencyMovement : MonoBehaviour
     // Update input based on frequency
     public void UpdateFrequency(float frequency)
     {
+        // Check if the player is dead before doing any inputs
+        if (isDead)
+        {
+            return;
+        }
+        
         float baselineFreq = GetBaselineFrequency();
 
         // Update last frequency received text
@@ -260,4 +268,20 @@ public class FrequencyMovement : MonoBehaviour
     {
         this.isInblock = value;
     }
+    
+    public void HandleDeath()
+    {
+        Debug.Log("Player died");
+        isDead = true;
+        StopAllCoroutines();
+        OnDisable();
+    }
+    
+    public void HandleRespawn()
+    {
+        Debug.Log("Player respawned");
+        isDead = false;
+        OnDisable();
+    }
+
 }
