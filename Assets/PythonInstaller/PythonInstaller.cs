@@ -195,7 +195,10 @@ public class PythonInstaller : MonoBehaviour
         //{
         //        installWindowsDeps();
         //}
-            
+
+        
+
+
         GambitInstallation installation = new GambitInstallation();
 
         startShellExecuteHalting(installation.getPythonPath(), installation.getOSFPath());

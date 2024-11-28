@@ -188,7 +188,7 @@ MonoBehaviour:
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
   m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
+  m_ShowCustomSorter: 1
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
@@ -215,6 +215,8 @@ GameObject:
   - component: {fileID: 5613480597006317118}
   - component: {fileID: 9190663925666389450}
   - component: {fileID: 7131127805735462407}
+  - component: {fileID: 2610041840559858175}
+  - component: {fileID: 5113766548487604506}
   m_Layer: 0
   m_Name: Participant
   m_TagString: Player
@@ -552,6 +554,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
   fallThreshold: -10
+--- !u!114 &2610041840559858175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280264944427126249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1584681b6fba9a44fa74fdb0eafee0be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5113766548487604506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280264944427126249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7e684d13e454e4e8c961eff2a05ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4142525631170374109
 GameObject:
   m_ObjectHideFlags: 0
@@ -2528,17 +2554,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Rigs.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5655526682565091581}
     - target: {fileID: 3237389536146605598, guid: 018021763fa02c04daef1723b7fd3d0a,
         type: 3}
       propertyPath: m_Rigs.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7621981454301081521}
     - target: {fileID: 3237389536146605598, guid: 018021763fa02c04daef1723b7fd3d0a,
         type: 3}
       propertyPath: m_Rigs.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5306564840355615423}
     m_RemovedComponents:
     - {fileID: 3237389535589092142, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
     - {fileID: 3237389535589092141, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
@@ -2613,6 +2639,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1772128230517446715}
   m_SourcePrefab: {fileID: 100100000, guid: 018021763fa02c04daef1723b7fd3d0a, type: 3}
+--- !u!4 &101422487382103300 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3237389534495134645, guid: 018021763fa02c04daef1723b7fd3d0a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3280264943248852657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &101422487382103301 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3237389534495134644, guid: 018021763fa02c04daef1723b7fd3d0a,
@@ -2789,7 +2821,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &5306564840355615423
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2832,7 +2864,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 0}
+  m_ComponentOwner: {fileID: 101422487382103300}
 --- !u!4 &101422487902424744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3237389535049074713, guid: 018021763fa02c04daef1723b7fd3d0a,
@@ -3015,7 +3047,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7621981454301081521
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3067,7 +3099,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &5655526682565091581
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

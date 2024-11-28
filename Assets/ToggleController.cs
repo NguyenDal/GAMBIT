@@ -43,6 +43,9 @@ public class ToggleController : MonoBehaviour
                 case "SafeMode":
                     toggleState = DS.GetData().CharacterData.SafeMode;
                     break;
+                case "FacialMovement":
+                    toggleState = DS.GetData().CharacterData.FacialMovement;
+                    break;
                 default://Default to MoveWithTiles, shouldn't land here without reason though
                     toggleState = DS.GetData().CharacterData.MoveWithTiles;
                     break;

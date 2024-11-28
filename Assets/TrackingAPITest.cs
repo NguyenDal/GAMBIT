@@ -8,11 +8,13 @@ public class TrackingAPITest : MonoBehaviour
 {
     // Start is called before the first frame update
     TrackingAPI TrackingAPI;
-
+    GameObject openSee;
 
     void Start()
     {
-        TrackingAPI = GetComponent<TrackingAPI>();
+        openSee = GameObject.Find("OpenSee");
+
+        TrackingAPI = openSee.GetComponent<TrackingAPI>();
 
         TrackingAPI.bindToList(eyeCheckerTest, eyeActionTest);
     }
