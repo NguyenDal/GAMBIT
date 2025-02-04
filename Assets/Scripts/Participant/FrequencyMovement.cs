@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Timeline;
 
 public class FrequencyMovement : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class FrequencyMovement : MonoBehaviour
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
+
+    ButtonFlicker buttonFlickerUp = null; 
+    ButtonFlicker buttonFlickerBack = null; 
+    ButtonFlicker buttonFlickerLeft = null; 
+    ButtonFlicker buttonFlickerRight = null; 
 
     public const float forwardOffset = 0;
     public const float backwardOffset = 1;
@@ -38,9 +44,16 @@ public class FrequencyMovement : MonoBehaviour
 
     void Start()
     {
+        //get buttonFlicker
+        buttonFlickerUp = GameObject.Find("Forward-Button").GetComponent<ButtonFlicker>();
+        buttonFlickerBack = GameObject.Find("Backward-Button").GetComponent<ButtonFlicker>();
+        buttonFlickerLeft = GameObject.Find("Left-Button").GetComponent<ButtonFlicker>();
+        buttonFlickerRight = GameObject.Find("Right-Button").GetComponent<ButtonFlicker>();
+
         // If frequency movement is not enabled, this script is disabled!
         if (frequencyMovementEnabled)
         {
+            
             // Default hertz text
             text.SetText("Previous Frequency: --");
 
@@ -109,6 +122,8 @@ public class FrequencyMovement : MonoBehaviour
                     lastLocation = transform.position;
                     Debug.Log("LASTPOS F: " + lastLocation);
                     isMoving = true;
+                    //make button north flicker with method
+                    buttonFlickerUp.inputUp();
                     charaterAnimator.SetBool("IsWalking", isMoving);
                     StartCoroutine(MoveDirection(tileSize, transform.forward));
                     break;
@@ -122,6 +137,8 @@ public class FrequencyMovement : MonoBehaviour
                     lastLocation = transform.position;
                     Debug.Log("LASTPOS B: " + lastLocation);
                     isMoving = true;
+                    //make it move back
+                    buttonFlickerUp.inputUp();
                     charaterAnimator.SetBool("IsWalking", isMoving);
                     StartCoroutine(MoveDirection(tileSize, -transform.forward));
                     break;
@@ -133,6 +150,8 @@ public class FrequencyMovement : MonoBehaviour
                         break;
                     }
                     isTurning = true;
+                    //make it light up while turning
+                    buttonFlickerLeft.inputUp();
                     StartCoroutine(TurnDirection(-turnAngle, turnTime));
                     break;
                 
@@ -143,6 +162,7 @@ public class FrequencyMovement : MonoBehaviour
                         break;
                     }
                     isTurning = true;
+                    buttonFlickerRight.inputUp();
                     StartCoroutine(TurnDirection(turnAngle, turnTime));
                     break;
 
