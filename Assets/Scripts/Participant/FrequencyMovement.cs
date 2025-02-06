@@ -18,6 +18,9 @@ public class FrequencyMovement : MonoBehaviour
     ButtonFlicker buttonFlickerBack = null; 
     ButtonFlicker buttonFlickerLeft = null; 
     ButtonFlicker buttonFlickerRight = null; 
+    bool forward = false;
+    bool left = false;
+
 
     public const float forwardOffset = 0;
     public const float backwardOffset = 1;
@@ -122,10 +125,13 @@ public class FrequencyMovement : MonoBehaviour
                     lastLocation = transform.position;
                     Debug.Log("LASTPOS F: " + lastLocation);
                     isMoving = true;
-                    //make button north flicker with method
-                    buttonFlickerUp.inputUp();
+                    //set forwards to true for button flicker
+                    forward = true;
                     charaterAnimator.SetBool("IsWalking", isMoving);
                     StartCoroutine(MoveDirection(tileSize, transform.forward));
+                    //reset it to default grey
+                    buttonFlickerUp.resetColour();
+
                     break;
 
                 // Backward
@@ -137,11 +143,14 @@ public class FrequencyMovement : MonoBehaviour
                     lastLocation = transform.position;
                     Debug.Log("LASTPOS B: " + lastLocation);
                     isMoving = true;
-                    //make it move back
-                    buttonFlickerUp.inputUp();
+                    //set it to false so it knows backwards
+                    forward = false;
                     charaterAnimator.SetBool("IsWalking", isMoving);
                     StartCoroutine(MoveDirection(tileSize, -transform.forward));
+                    //reset button flicker
+                    buttonFlickerBack.resetColour();
                     break;
+  
                 
                 // Left
                 case leftOffset:
@@ -150,9 +159,11 @@ public class FrequencyMovement : MonoBehaviour
                         break;
                     }
                     isTurning = true;
-                    //make it light up while turning
-                    buttonFlickerLeft.inputUp();
+                    //set it to left so it knows
+                    left = true;
                     StartCoroutine(TurnDirection(-turnAngle, turnTime));
+                    //make it reset back to grey
+                    buttonFlickerLeft.resetColour();
                     break;
                 
                 // Right
@@ -162,8 +173,11 @@ public class FrequencyMovement : MonoBehaviour
                         break;
                     }
                     isTurning = true;
-                    buttonFlickerRight.inputUp();
+                    //make it right
+                    left = false;
                     StartCoroutine(TurnDirection(turnAngle, turnTime));
+                    //reset button back to grey
+                    buttonFlickerRight.resetColour();
                     break;
 
 
@@ -196,6 +210,15 @@ public class FrequencyMovement : MonoBehaviour
             if (IsGrounded())
             {
                 transform.position = Vector3.Lerp(startingPos, finalPos, progress / moveDistance);
+                if(forward == true){
+                    //if it is forwards make forwards blink
+                    buttonFlickerUp.inputUp();
+                }
+                //else it is backwards so make back blink
+                else{
+                    buttonFlickerBack.inputUp();
+                }
+
             }
             else
             {
@@ -214,7 +237,9 @@ public class FrequencyMovement : MonoBehaviour
         {
             transform.position = finalPos;
         }
-
+        //reset blinking
+        buttonFlickerUp.resetColour();
+        buttonFlickerBack.resetColour();
         isMoving = false;
         charaterAnimator.SetBool("IsWalking", isMoving);
     }
@@ -229,6 +254,13 @@ public class FrequencyMovement : MonoBehaviour
 
         while (elapsedTime < rotationTime)
         {
+            //if left then make left blink if right make right blink
+            if(left == true){
+                buttonFlickerLeft.inputUp();
+            }
+            else{
+                buttonFlickerRight.inputUp();
+            }
             // Calculate interpolation factor based on elapsed time
             float t = elapsedTime / rotationTime;
 
@@ -239,6 +271,9 @@ public class FrequencyMovement : MonoBehaviour
 
             yield return null;
         }
+        //reset blinking light buttons
+        buttonFlickerLeft.resetColour();
+        buttonFlickerRight.resetColour();
 
         // Ensure final rotation is exact
         transform.rotation = finalRotation;
