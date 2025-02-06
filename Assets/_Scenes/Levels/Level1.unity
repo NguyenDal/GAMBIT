@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5494606, g: 0.8546849, b: 0.9216459, a: 1}
+  m_IndirectSpecularColor: {r: 0.262814, g: 0.7014316, b: 0.83198744, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -599,6 +599,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 12384277}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &13898241 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2249969209048975538, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 708888669}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a6b8e294006d4d309def1516c767e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &26846989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8321,6 +8333,11 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 119010387}
+    - target: {fileID: 7165188665621417306, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+        type: 3}
+      propertyPath: buttonFlicker
+      value: 
+      objectReference: {fileID: 13898241}
     - target: {fileID: 7533946213111574371, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
         type: 3}
       propertyPath: m_LocalPosition.x
