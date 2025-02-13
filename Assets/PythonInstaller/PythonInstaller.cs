@@ -9,10 +9,14 @@ using System.Threading.Tasks;
 using Python.Runtime;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEditor;
-using UnityEditor.PackageManager;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor.PackageManager;
+#endif
+ 
+#if UNITY_WSA
 using UnityEngine.WSA;
-
+#endif
 public class GambitInstallation
 {
     private String localAppData;
