@@ -12,6 +12,7 @@ public class FlickerScript : MonoBehaviour
     public bool flicker;
     private bool isFlickering = false;
     private float flickerFrequency;
+    private Coroutine flickerCoroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class FlickerScript : MonoBehaviour
     void Update()
     {
         if(flicker && !isFlickering){
-            StartCoroutine(FlickerObject(flickerFrequency));
+            flickerCoroutine = StartCoroutine(FlickerObject(flickerFrequency));
         }
     }
 }

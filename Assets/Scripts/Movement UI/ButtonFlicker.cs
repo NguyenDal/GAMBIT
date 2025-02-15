@@ -30,5 +30,7 @@ public class ButtonFlicker : MonoBehaviour
         // Calculation for changing the color with time
         imgs.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time * frequency, 0.5f));
     }
-
+    public void UpdateFrequency(float value){
+        frequency = value;
+    }
 }
