@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Runtime.CompilerServices;
+using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -18,17 +19,35 @@ public class ButtonFlicker : MonoBehaviour
 
     // Image object of button
     Image imgs;
+    //button game objects
+    GameObject forwardButton;
+    GameObject backButton;
+    //[SerializeField] GameObject leftButton;
+    //[SerializeField] GameObject rightButton;
+    Image forwardButtonImage;
 
 
     void Awake()
     {
         imgs = GetComponent<Image>();
+        forwardButton = GameObject.Find("Forward-Button");
+        forwardButtonImage = forwardButton.GetComponent<Image>();
+        
     }
 
     void Update()
     {
         // Calculation for changing the color with time
-        imgs.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time * frequency, 0.5f));
+        //imgs.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time * frequency, 0.5f));
+    }
+
+    //when user moves up
+    public void inputUp(){
+        imgs.color = Color.Lerp(startColor, Color.blue, Mathf.PingPong(Time.time * frequency, 0.5f));
+        print("up");
+    }
+    public void resetColour(){
+        imgs.color = Color.Lerp(startColor, startColor, Mathf.PingPong(Time.time * frequency, 0.5f));
     }
     public void UpdateFrequency(float value){
         frequency = value;
