@@ -49,5 +49,7 @@ public class ButtonFlicker : MonoBehaviour
     public void resetColour(){
         imgs.color = Color.Lerp(startColor, startColor, Mathf.PingPong(Time.time * frequency, 0.5f));
     }
-
+    public void UpdateFrequency(float value){
+        frequency = value;
+    }
 }
