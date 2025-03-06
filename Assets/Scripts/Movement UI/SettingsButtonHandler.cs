@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class SettingsButtonHandler : MonoBehaviour
 {
-    public GameObject settingsMenuPrefab;
+    public GameObject settingsMenuPrefab;  // Drag the Pause Menu UI here in the Inspector
     private bool isPaused = false;
-
 
     void Update()
     {
-        // Check if the Escape key is pressed to toggle settings menu
+        // Check if the Escape key is pressed to toggle the settings menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ToggleSettingsMenu();
@@ -19,27 +18,38 @@ public class SettingsButtonHandler : MonoBehaviour
     {
         isPaused = !isPaused;
 
+        if (settingsMenuPrefab == null)
+        {
+            Debug.LogError("🚨 settingsMenuPrefab is NOT assigned! Please assign it in the Inspector.");
+            return;
+        }
+
         if (isPaused)
         {
-            // Stop timers or game processes
-            Time.timeScale = 0;
+            Debug.Log("🛑 Game Paused - Showing Settings Menu");
             settingsMenuPrefab.SetActive(true);
+            Time.timeScale = 0;
         }
         else
         {
-            // Resume timers or game processes
-            Time.timeScale = 1;
+            Debug.Log("▶ Game Resumed - Hiding Settings Menu");
             settingsMenuPrefab.SetActive(false);
+            Time.timeScale = 1;  // Fix: Ensure the game resumes properly
         }
     }
+
     public void ContinueButton()
     {
-        if(!isPaused)
+        if (settingsMenuPrefab == null)
         {
-            // Resume timers or game processes
-            Time.timeScale = 1;
-            settingsMenuPrefab.SetActive(false);
-
+            Debug.LogError("🚨 settingsMenuPrefab is NOT assigned! Please assign it in the Inspector.");
+            return;
         }
+
+        Debug.Log("▶ Continue Button Pressed - Resuming Game");
+        isPaused = false;
+        Time.timeScale = 1;
+        settingsMenuPrefab.SetActive(false);
     }
 }
+
