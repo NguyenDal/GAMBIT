@@ -4,24 +4,25 @@ using TMPro;
 
 public class FrequencySlider : MonoBehaviour
 {
-    public Slider slider; // Reference to the slider
-    public TextMeshProUGUI frequencyText; // Reference to the UI text to display the frequency
-    private const string frequencyFormat = "Frequency: {0:0.0} Hz"; // Format for the text
+    public Slider slider; 
+    public TextMeshProUGUI frequencyText; // Shows the frequency in the settings
+
+    private const string frequencyFormat = "{0:0.0} Hz";
 
     void Start()
     {
-        // Ensure the slider starts with the correct value
-        if (slider != null && frequencyText != null)
+        if (slider != null)
         {
-            slider.onValueChanged.AddListener(UpdateFrequencyDisplay);
-            UpdateFrequencyDisplay(slider.value); // Set initial value
+            slider.onValueChanged.AddListener(UpdateFrequency);
+            UpdateFrequency(slider.value); // Set initial value
         }
     }
 
-    // Method to update text when slider value changes
-    void UpdateFrequencyDisplay(float value)
+    void UpdateFrequency(float value)
     {
-        if (frequencyText != null)
+        FrequencyManager.Instance.SetFrequency(value); // Store the value globally
+
+        if (frequencyText != null) 
         {
             frequencyText.text = string.Format(frequencyFormat, value);
         }
