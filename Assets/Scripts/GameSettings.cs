@@ -19,4 +19,5 @@ public class GameSettings : MonoBehaviour
         movementSpeed = PlayerPrefs.GetFloat("MovementSpeed", movementSpeed);
         rotationSpeed = PlayerPrefs.GetFloat("RotationSpeed", rotationSpeed);
     }
+    
 }

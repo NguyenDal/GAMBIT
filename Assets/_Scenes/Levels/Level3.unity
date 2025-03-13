@@ -11091,6 +11091,21 @@ PrefabInstance:
       propertyPath: connector3
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 867464749731858046, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1198761564726802176, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562230335037541351, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2249969208434092920, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
         type: 3}
       propertyPath: m_Material
@@ -11130,6 +11145,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652301541476277847, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3280264944427126249, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
         type: 3}
@@ -11194,7 +11214,7 @@ PrefabInstance:
     - target: {fileID: 3780677931967628891, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3809694507865383683, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
         type: 3}
@@ -11221,11 +11241,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4701546825682530067, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4772643592700063175, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
         type: 3}
       propertyPath: floorAndConnectorObject
       value: 
       objectReference: {fileID: 156355785}
+    - target: {fileID: 5254172294699262460, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5671494015453562098, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
         type: 3}
       propertyPath: respawnPoint
@@ -11236,7 +11266,17 @@ PrefabInstance:
       propertyPath: fallThreshold
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5737843219214513770, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5761496517073645179, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306713332377467257, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
