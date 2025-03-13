@@ -1,16 +1,11 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-
-/*
- * This class represents the script for the flickering color for the buttons
- * on the UI HUD, a slider is created to manually change the speed for each
- * button inside unity as well.
- */
 public class ButtonFlicker : MonoBehaviour
 {
-
     // Color objects
     public Color startColor = Color.white;
     public Color endColor = Color.grey;
@@ -19,37 +14,38 @@ public class ButtonFlicker : MonoBehaviour
 
     // Image object of button
     Image imgs;
-    //button game objects
-    GameObject forwardButton;
-    GameObject backButton;
-    //[SerializeField] GameObject leftButton;
-    //[SerializeField] GameObject rightButton;
-    Image forwardButtonImage;
 
+    // Reference to the TextMeshProUGUI for displaying frequency
+    [SerializeField] private TextMeshProUGUI frequencyText;
 
     void Awake()
     {
         imgs = GetComponent<Image>();
-        forwardButton = GameObject.Find("Forward-Button");
-        forwardButtonImage = forwardButton.GetComponent<Image>();
-        
     }
 
     void Update()
     {
-        // Calculation for changing the color with time
-        //imgs.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time * frequency, 0.5f));
+        // Update the frequency text in real-time
+        if (frequencyText != null)
+        {
+            frequencyText.text = string.Format("{0:0.0} Hz", frequency);
+        }
     }
 
-    //when user moves up
-    public void inputUp(){
+    // When user moves up
+    public void InputUp()
+    {
         imgs.color = Color.Lerp(startColor, Color.blue, Mathf.PingPong(Time.time * frequency, 0.5f));
         print("up");
     }
-    public void resetColour(){
+
+    public void ResetColour()
+    {
         imgs.color = Color.Lerp(startColor, startColor, Mathf.PingPong(Time.time * frequency, 0.5f));
     }
-    public void UpdateFrequency(float value){
+
+    public void UpdateFrequency(float value)
+    {
         frequency = value;
     }
 }
