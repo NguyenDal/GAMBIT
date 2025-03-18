@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsButtonHandler : MonoBehaviour
 {
     public GameObject settingsMenuPrefab;  // Drag the Pause Menu UI here in the Inspector
     private bool isPaused = false;
+    public Button resumeButton;
 
     void Update()
     {
@@ -12,6 +14,7 @@ public class SettingsButtonHandler : MonoBehaviour
         {
             ToggleSettingsMenu();
         }
+        resumeButton.onClick.AddListener(() => ContinueButton());
     }
 
     public void ToggleSettingsMenu()
