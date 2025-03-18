@@ -8,7 +8,7 @@ public class SettingsButtonHandler : MonoBehaviour
     public GameObject settingsMenuPrefab;  // Drag the Pause Menu UI here in the Inspector
     private bool isPaused = false;
     public Button resumeButton;
-
+    //when scene starts
     void Awake()
     {
         if(resumeButton != null){
