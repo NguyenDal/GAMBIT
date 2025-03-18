@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class SettingsButtonHandler : MonoBehaviour
 {
@@ -7,6 +9,12 @@ public class SettingsButtonHandler : MonoBehaviour
     private bool isPaused = false;
     public Button resumeButton;
 
+    void Awake()
+    {
+        if(resumeButton != null){
+            resumeButton.onClick.AddListener(() => ContinueButton());
+        }
+    }
     void Update()
     {
         // Check if the Escape key is pressed to toggle the settings menu
@@ -14,7 +22,6 @@ public class SettingsButtonHandler : MonoBehaviour
         {
             ToggleSettingsMenu();
         }
-        resumeButton.onClick.AddListener(() => ContinueButton());
     }
 
     public void ToggleSettingsMenu()
