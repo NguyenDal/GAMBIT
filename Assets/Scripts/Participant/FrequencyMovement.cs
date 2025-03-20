@@ -79,6 +79,8 @@ public class FrequencyMovement : MonoBehaviour
             // Continuously update the last valid position
             lastLocation = transform.position;
         }
+        turnAngle = (float)PlayerPrefs.GetInt("PlayerAngle", (int)turnAngle);
+
     }
 
     // Resets values on disable/die
