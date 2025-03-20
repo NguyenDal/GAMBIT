@@ -19,6 +19,7 @@ public class RotationSpeedSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (_dropdown.value == DROPDOWN45)
         {
             PlayerPrefs.SetInt("PlayerAngle", 45);
