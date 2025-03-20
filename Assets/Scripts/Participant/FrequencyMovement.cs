@@ -21,7 +21,6 @@ public class FrequencyMovement : MonoBehaviour
     bool forward = false;
     bool left = false;
 
-
     public const float forwardOffset = 0;
     public const float backwardOffset = 1;
     public const float leftOffset = 2;
@@ -39,8 +38,6 @@ public class FrequencyMovement : MonoBehaviour
     
     public bool isDead = false;
 
-    
-
     // Default movement speeds (will be overwritten by PlayerPrefs)
     [SerializeField] float defaultMovementSpeed = 4f;
     [SerializeField] float defaultBaselineFrequency = 10;
@@ -56,7 +53,6 @@ public class FrequencyMovement : MonoBehaviour
         // If frequency movement is not enabled, this script is disabled!
         if (frequencyMovementEnabled)
         {
-            
             // Default hertz text
             text.SetText("Previous Frequency: --");
 
@@ -69,7 +65,6 @@ public class FrequencyMovement : MonoBehaviour
             // Apply retrieved speeds
             SetMovementSpeed(movementSpeed);
             turnAngle = (float)PlayerPrefs.GetInt("PlayerAngle", (int)turnAngle);
-
         }
         else
         {
@@ -109,7 +104,7 @@ public class FrequencyMovement : MonoBehaviour
         // Update last frequency received text
         if (text != null)
         {
-        text.SetText(string.Format("Previous Frequency: {0:0}", frequency));
+            text.SetText(string.Format("Previous Frequency: {0:0}", frequency));
         }
 
         if (IsGrounded() && !isMoving && !isTurning)
@@ -130,8 +125,7 @@ public class FrequencyMovement : MonoBehaviour
                     charaterAnimator.SetBool("IsWalking", isMoving);
                     StartCoroutine(MoveDirection(tileSize, transform.forward));
                     //reset it to default grey
-                    buttonFlickerUp.resetColour();
-
+                    buttonFlickerUp.ResetColour(); // Fixed method name
                     break;
 
                 // Backward
@@ -148,10 +142,9 @@ public class FrequencyMovement : MonoBehaviour
                     charaterAnimator.SetBool("IsWalking", isMoving);
                     StartCoroutine(MoveDirection(tileSize, -transform.forward));
                     //reset button flicker
-                    buttonFlickerBack.resetColour();
+                    buttonFlickerBack.ResetColour(); // Fixed method name
                     break;
   
-                
                 // Left
                 case leftOffset:
                     if (isInblock)
@@ -163,7 +156,7 @@ public class FrequencyMovement : MonoBehaviour
                     left = true;
                     StartCoroutine(TurnDirection(-turnAngle, turnTime));
                     //make it reset back to grey
-                    buttonFlickerLeft.resetColour();
+                    buttonFlickerLeft.ResetColour(); // Fixed method name
                     break;
                 
                 // Right
@@ -177,9 +170,8 @@ public class FrequencyMovement : MonoBehaviour
                     left = false;
                     StartCoroutine(TurnDirection(turnAngle, turnTime));
                     //reset button back to grey
-                    buttonFlickerRight.resetColour();
+                    buttonFlickerRight.ResetColour(); // Fixed method name
                     break;
-
 
                 default: 
                     break;
@@ -212,13 +204,12 @@ public class FrequencyMovement : MonoBehaviour
                 transform.position = Vector3.Lerp(startingPos, finalPos, progress / moveDistance);
                 if(forward == true){
                     //if it is forwards make forwards blink
-                    buttonFlickerUp.inputUp();
+                    buttonFlickerUp.InputUp(); // Fixed method name
                 }
                 //else it is backwards so make back blink
                 else{
-                    buttonFlickerBack.inputUp();
+                    buttonFlickerBack.InputUp(); // Fixed method name
                 }
-
             }
             else
             {
@@ -238,8 +229,8 @@ public class FrequencyMovement : MonoBehaviour
             transform.position = finalPos;
         }
         //reset blinking
-        buttonFlickerUp.resetColour();
-        buttonFlickerBack.resetColour();
+        buttonFlickerUp.ResetColour(); // Fixed method name
+        buttonFlickerBack.ResetColour(); // Fixed method name
         isMoving = false;
         charaterAnimator.SetBool("IsWalking", isMoving);
     }
@@ -256,10 +247,10 @@ public class FrequencyMovement : MonoBehaviour
         {
             //if left then make left blink if right make right blink
             if(left == true){
-                buttonFlickerLeft.inputUp();
+                buttonFlickerLeft.InputUp(); // Fixed method name
             }
             else{
-                buttonFlickerRight.inputUp();
+                buttonFlickerRight.InputUp(); // Fixed method name
             }
             // Calculate interpolation factor based on elapsed time
             float t = elapsedTime / rotationTime;
@@ -272,8 +263,8 @@ public class FrequencyMovement : MonoBehaviour
             yield return null;
         }
         //reset blinking light buttons
-        buttonFlickerLeft.resetColour();
-        buttonFlickerRight.resetColour();
+        buttonFlickerLeft.ResetColour(); // Fixed method name
+        buttonFlickerRight.ResetColour(); // Fixed method name
 
         // Ensure final rotation is exact
         transform.rotation = finalRotation;
@@ -313,7 +304,6 @@ public class FrequencyMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        
         // The !isInBlock is there to make sure we dont change the last location after it is changed once. This is to prevent
         // The player from being stuck in the block by having the lastLocation being inside the block. 
         if (other.gameObject.tag.Equals("Cube") && !isInblock && other.gameObject.activeInHierarchy)
@@ -321,15 +311,11 @@ public class FrequencyMovement : MonoBehaviour
             Debug.Log("IN BLOCK");
             isInblock = true;
             transform.position = lastLocation;
-
         }
-
         else
         {
             isInblock = false;
         }
-
-        
     }
 
     public void SetIsInblock(bool value)
@@ -351,5 +337,4 @@ public class FrequencyMovement : MonoBehaviour
         isDead = false;
         OnDisable();
     }
-
 }
