@@ -7,8 +7,8 @@ using TMPro;
 public class ButtonFlicker : MonoBehaviour
 {
     // Color objects
-    public Color startColor = Color.white;
-    public Color endColor = Color.grey;
+    public Color startColor = Color.red;
+    public Color endColor = Color.yellow;
 
     public float frequency = 1;
 
@@ -35,13 +35,13 @@ public class ButtonFlicker : MonoBehaviour
     // When user moves up
     public void InputUp()
     {
-        imgs.color = Color.Lerp(startColor, Color.blue, Mathf.PingPong(Time.time * frequency, 0.5f));
+        imgs.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time * frequency, 1f));
         print("up");
     }
 
     public void ResetColour()
     {
-        imgs.color = Color.Lerp(startColor, startColor, Mathf.PingPong(Time.time * frequency, 0.5f));
+        imgs.color = Color.Lerp(startColor, startColor, Mathf.PingPong(Time.time * frequency, 1f));
     }
 
     public void UpdateFrequency(float value)
