@@ -79,6 +79,12 @@ public class FrequencyMovement : MonoBehaviour
             // Continuously update the last valid position
             lastLocation = transform.position;
         }
+        if(IsGrounded()){
+                    buttonFlickerUp.InputUp();
+                    buttonFlickerBack.InputUp();
+                    buttonFlickerLeft.InputUp();
+                    buttonFlickerRight.InputUp();
+        }
     }
 
     // Resets values on disable/die
@@ -106,6 +112,7 @@ public class FrequencyMovement : MonoBehaviour
         {
             text.SetText(string.Format("Previous Frequency: {0:0}", frequency));
         }
+        
 
         if (IsGrounded() && !isMoving && !isTurning)
         {
