@@ -7,8 +7,8 @@ using TMPro;
 public class ButtonFlicker : MonoBehaviour
 {
     // Color objects
-    public Color startColor = Color.white;
-    public Color endColor = Color.grey;
+    public Color startColor = Color.red;
+    public Color endColor = Color.yellow;
 
     public float frequency = 1;
 
@@ -41,7 +41,7 @@ public class ButtonFlicker : MonoBehaviour
 
     public void ResetColour()
     {
-        imgs.color = Color.Lerp(startColor, startColor, Mathf.PingPong(Time.time * frequency, 0.5f));
+        imgs.color = Color.Lerp(startColor, startColor, Mathf.PingPong(Time.time * frequency, 1f));
     }
 
     public void UpdateFrequency(float value)
