@@ -6500,6 +6500,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 517582407}
+  - component: {fileID: 517582409}
+  - component: {fileID: 517582408}
   m_Layer: 5
   m_Name: ArduinoInput
   m_TagString: Untagged
@@ -6527,6 +6529,31 @@ RectTransform:
   m_AnchoredPosition: {x: -522, y: 306}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &517582408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517582406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c58d392ac553148bdf73a56b0c6a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &517582409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517582406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6e3e7b909c4084b81f2b1227af10df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: 0
 --- !u!1001 &521971410
 PrefabInstance:
   m_ObjectHideFlags: 0
