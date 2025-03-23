@@ -35,7 +35,7 @@ public class ButtonFlicker : MonoBehaviour
     // When user moves up
     public void InputUp()
     {
-        imgs.color = Color.Lerp(startColor, Color.blue, Mathf.PingPong(Time.time * frequency, 0.5f));
+        imgs.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time * frequency, 1f));
         // print("up");
     }
 
