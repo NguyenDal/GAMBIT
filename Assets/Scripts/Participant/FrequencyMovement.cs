@@ -82,10 +82,10 @@ public class FrequencyMovement : MonoBehaviour
         turnAngle = (float)PlayerPrefs.GetInt("PlayerAngle", (int)turnAngle);
 
         if(IsGrounded()){
-                    buttonFlickerUp.InputUp();
-                    buttonFlickerBack.InputUp();
-                    buttonFlickerLeft.InputUp();
-                    buttonFlickerRight.InputUp();
+                    buttonFlickerUp.ArrowFlicker();
+                    buttonFlickerBack.ArrowFlicker();
+                    buttonFlickerLeft.ArrowFlicker();
+                    buttonFlickerRight.ArrowFlicker();
         }
     }
 
