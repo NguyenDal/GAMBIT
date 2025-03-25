@@ -79,7 +79,6 @@ public class FrequencyMovement : MonoBehaviour
             // Continuously update the last valid position
             lastLocation = transform.position;
         }
-        turnAngle = (float)PlayerPrefs.GetInt("PlayerAngle", (int)turnAngle);
 
         if(IsGrounded()){
                     buttonFlickerUp.InputUp();
@@ -107,6 +106,8 @@ public class FrequencyMovement : MonoBehaviour
             return;
         }
         
+        turnAngle = (float)PlayerPrefs.GetInt("PlayerAngle", (int)turnAngle);
+
         float baselineFreq = GetBaselineFrequency();
 
         // Update last frequency received text
