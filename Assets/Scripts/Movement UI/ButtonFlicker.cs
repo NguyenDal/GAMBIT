@@ -38,6 +38,11 @@ public class ButtonFlicker : MonoBehaviour
         imgs.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time * frequency, 1f));
         // print("up");
     }
+        public void ArrowFlicker()
+    {
+        imgs.color = Color.Lerp(startColor, Color.magenta, Mathf.PingPong(Time.time * frequency, 1f));
+        // print("up");
+    }
 
     public void ResetColour()
     {
