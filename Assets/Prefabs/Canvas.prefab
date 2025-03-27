@@ -675,6 +675,7 @@ MonoBehaviour:
   timeRemaining: 2
   timerIsRunning: 1
   timerText: {fileID: 7596102738174036340}
+  onSceneChange: 0
 --- !u!1 &9156034989548908231
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a88ba1054e5f64ebbd41c65e1a1536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Deather: {fileID: 0}
 --- !u!1001 &2945193435138371731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1229,6 +1231,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -222.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186714521369181487, guid: 74c4ce83a253d50458c981c9ad04671c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
