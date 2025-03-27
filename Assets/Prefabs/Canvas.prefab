@@ -30,6 +30,7 @@ RectTransform:
   m_LocalScale: {x: 3.8402, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3153316932672019106}
   - {fileID: 1415553375575311902}
   - {fileID: 3153316934110134621}
   m_Father: {fileID: 2945193436375586383}
@@ -316,7 +317,6 @@ RectTransform:
   m_Children:
   - {fileID: 3095813727594942929}
   - {fileID: 3153316933294462466}
-  - {fileID: 3153316932672019106}
   - {fileID: 2945193434528716609}
   - {fileID: 2945193436359506774}
   - {fileID: 2632501137467665533}
@@ -997,7 +997,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2945193436375586383}
+    m_TransformParent: {fileID: 3095813727594942929}
     m_Modifications:
     - target: {fileID: 1122306667366684, guid: 74c4ce83a253d50458c981c9ad04671c, type: 3}
       propertyPath: m_Name
@@ -1006,7 +1006,27 @@ PrefabInstance:
     - target: {fileID: 114956003166578868, guid: 74c4ce83a253d50458c981c9ad04671c,
         type: 3}
       propertyPath: m_Text
-      value: 'Deaths:'
+      value: Deaths
+      objectReference: {fileID: 0}
+    - target: {fileID: 114956003166578868, guid: 74c4ce83a253d50458c981c9ad04671c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.16201496
+      objectReference: {fileID: 0}
+    - target: {fileID: 114956003166578868, guid: 74c4ce83a253d50458c981c9ad04671c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.16201496
+      objectReference: {fileID: 0}
+    - target: {fileID: 114956003166578868, guid: 74c4ce83a253d50458c981c9ad04671c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 114956003166578868, guid: 74c4ce83a253d50458c981c9ad04671c,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114956003166578868, guid: 74c4ce83a253d50458c981c9ad04671c,
         type: 3}
@@ -1017,6 +1037,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Alignment
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114956003166578868, guid: 74c4ce83a253d50458c981c9ad04671c,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114956003166578868, guid: 74c4ce83a253d50458c981c9ad04671c,
         type: 3}
@@ -1075,6 +1100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224538795799212494, guid: 74c4ce83a253d50458c981c9ad04671c,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.26040313
+      objectReference: {fileID: 0}
+    - target: {fileID: 224538795799212494, guid: 74c4ce83a253d50458c981c9ad04671c,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1096,27 +1126,27 @@ PrefabInstance:
     - target: {fileID: 224538795799212494, guid: 74c4ce83a253d50458c981c9ad04671c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 224538795799212494, guid: 74c4ce83a253d50458c981c9ad04671c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 224538795799212494, guid: 74c4ce83a253d50458c981c9ad04671c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 224538795799212494, guid: 74c4ce83a253d50458c981c9ad04671c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 677.7
+      value: 56.6
       objectReference: {fileID: 0}
     - target: {fileID: 224538795799212494, guid: 74c4ce83a253d50458c981c9ad04671c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -80
+      value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
