@@ -10437,6 +10437,11 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 2945193436259685910}
+    - target: {fileID: 8302714531365328316, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9053771766176104765, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
         type: 3}
       propertyPath: spawnPoint
@@ -12807,6 +12812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsMenuPrefab: {fileID: 1020961159}
+  resumeButton: {fileID: 0}
 --- !u!4 &1199538359 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2171312758941732294, guid: e90aa0e90d9550e40aa826d904c5b9e3,

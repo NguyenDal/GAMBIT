@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2621259, g: 0.70091647, b: 0.83179533, a: 1}
+  m_IndirectSpecularColor: {r: 0.262814, g: 0.7014316, b: 0.83198744, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18605,6 +18605,11 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 2945193436259685910}
+    - target: {fileID: 8302714531365328316, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9053771766176104765, guid: 30ffc61b10ab1dd44aa9d31b910265f9,
         type: 3}
       propertyPath: spawnPoint
@@ -22901,6 +22906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsMenuPrefab: {fileID: 719075638}
+  resumeButton: {fileID: 0}
 --- !u!4 &1199412585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2171312758941732294, guid: e90aa0e90d9550e40aa826d904c5b9e3,
