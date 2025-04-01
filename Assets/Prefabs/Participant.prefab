@@ -1226,6 +1226,16 @@ PrefabInstance:
       propertyPath: m_textInfo.characterCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1758173166520203441, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -190
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758173166520203441, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 105
+      objectReference: {fileID: 0}
     - target: {fileID: 1758173166520203447, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
         type: 3}
       propertyPath: m_Interactable
@@ -1281,6 +1291,16 @@ PrefabInstance:
       propertyPath: m_Colors.m_DisabledColor.r
       value: 0.9607844
       objectReference: {fileID: 0}
+    - target: {fileID: 1758173166669014350, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -140
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758173166669014350, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1758173166907110056, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
         type: 3}
       propertyPath: m_textAlignment
@@ -1325,6 +1345,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.characterCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758173166965260644, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -190
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758173166965260644, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1758173166965260665, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
         type: 3}
@@ -1551,6 +1581,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[HUD] Buttons '
       objectReference: {fileID: 0}
+    - target: {fileID: 1758173168556759700, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -240
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758173168556759700, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1758173168556759721, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
         type: 3}
       propertyPath: participant
@@ -1575,6 +1615,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Colors.m_DisabledColor.r
       value: 0.9607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626861218823621559, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -99.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626861218823621559, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -32.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976639865103742462, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -174.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976639865103742462, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 43.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5840449580544723362, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5840449580544723362, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 46.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896327017566296273, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -65.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896327017566296273, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 122.7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1758173166520203594, guid: 2e7e6ceed5b24443ba50d10e4edeb6a3, type: 3}
