@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< HEAD
-  m_IndirectSpecularColor: {r: 0.262814, g: 0.7014316, b: 0.83198744, a: 1}
-=======
   m_IndirectSpecularColor: {r: 0.26212177, g: 0.7014462, b: 0.8327779, a: 1}
->>>>>>> d5a0de66 (moved actual counter in relation to moved death text)
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
